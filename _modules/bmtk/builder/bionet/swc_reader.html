@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bmtk.builder.bionet.swc_reader &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
+    <title>bmtk.builder.bionet.swc_reader &#8212; Brain Modeling Toolkit 1.0.8 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/aibs_sphinx.css" />
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
@@ -959,7 +958,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 
         <span class="n">frac_overlap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">seg_d1</span><span class="p">,</span> <span class="n">dmax</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">seg_d0</span><span class="p">,</span> <span class="n">dmin</span><span class="p">)))</span> <span class="o">/</span> <span class="n">seg_length</span>
         <span class="n">ix_drange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">frac_overlap</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># find indexes with non-zero overlap</span>
-        <span class="n">ix_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+        <span class="n">ix_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">tar_sec_label</span> <span class="ow">in</span> <span class="n">section_names</span><span class="p">:</span>  <span class="c1"># find indexes within sec_labels</span>
             <span class="n">sec_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sec_type_swc</span><span class="p">[</span><span class="n">tar_sec_label</span><span class="p">]</span>  <span class="c1"># get swc code for the section label</span>

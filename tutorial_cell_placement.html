@@ -1,18 +1,17 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Tools for generating cell placements &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
+    <title>Tools for generating cell placements &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css?v=1b18bd45" />
+    <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <script src="_static/documentation_options.js?v=fc837d61"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -624,10 +623,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
           <div class="body" role="main">
             
   <section id="Tools-for-generating-cell-placements">
-<h1>Tools for generating cell placements<a class="headerlink" href="#Tools-for-generating-cell-placements" title="Permalink to this heading">¶</a></h1>
+<h1>Tools for generating cell placements<a class="headerlink" href="#Tools-for-generating-cell-placements" title="Link to this heading">¶</a></h1>
 <p>Although users are always welcomed to place their neuronal somata according to their own custom generated positions, BMTK provides several tools to facilitate this placement, including simple geometries and placement based on geometries or densities from *.nrrd files. Units can be placed with a minimum distance between them (please see second part of this tutorial).</p>
 <section id="Generate-a-cylindrical-column-of-cell-positions">
-<h2>Generate a cylindrical column of cell positions<a class="headerlink" href="#Generate-a-cylindrical-column-of-cell-positions" title="Permalink to this heading">¶</a></h2>
+<h2>Generate a cylindrical column of cell positions<a class="headerlink" href="#Generate-a-cylindrical-column-of-cell-positions" title="Link to this heading">¶</a></h2>
 <p>This function places random locations uniformly within a cylinder or cylindrical ring. Note that ‘y’ is the vertical axis.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -666,7 +665,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </div>
 </section>
 <section id="Generate-a-rectangular-prism-volume-of-cell-positions">
-<h2>Generate a rectangular prism volume of cell positions<a class="headerlink" href="#Generate-a-rectangular-prism-volume-of-cell-positions" title="Permalink to this heading">¶</a></h2>
+<h2>Generate a rectangular prism volume of cell positions<a class="headerlink" href="#Generate-a-rectangular-prism-volume-of-cell-positions" title="Link to this heading">¶</a></h2>
 <p>Alternatively, if a sheet of cells (with some thickness) or other such geometry is desired, the following function can be used.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -687,7 +686,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </div>
 </section>
 <section id="Generate-an-ovoid-volume-of-cell-positions">
-<h2>Generate an ovoid volume of cell positions<a class="headerlink" href="#Generate-an-ovoid-volume-of-cell-positions" title="Permalink to this heading">¶</a></h2>
+<h2>Generate an ovoid volume of cell positions<a class="headerlink" href="#Generate-an-ovoid-volume-of-cell-positions" title="Link to this heading">¶</a></h2>
 <p>Lastly, if an ellipsoid is desired, e.g., to simulate a nucleus, one can use the following function:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -708,7 +707,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </div>
 </section>
 <section id="Generate-random-locations-according-to-an-Nrrd-file">
-<h2>Generate random locations according to an Nrrd file<a class="headerlink" href="#Generate-random-locations-according-to-an-Nrrd-file" title="Permalink to this heading">¶</a></h2>
+<h2>Generate random locations according to an Nrrd file<a class="headerlink" href="#Generate-random-locations-according-to-an-Nrrd-file" title="Link to this heading">¶</a></h2>
 <p>We may want to place the units according to a file containing 3D location information, such as the <a class="reference external" href="https://help.brain-map.org/display/mouseconnectivity/API#API-DownloadAtlas3-DReferenceModels">Allen Brain Atlas Common Coordinate Framework</a>. You can obtain a structural mask that describes the extent of a structure of interest. Cells will be placed randomly within that structure at a density of max_dens. If the *.nrrd file contains varying cell densities, this function can also be used to
 place cells randomly according to that density raster.</p>
 <p>You will need to install the <code class="docutils literal notranslate"><span class="pre">pynrrd</span></code> library to use this function.</p>
@@ -767,7 +766,7 @@ positions: (51218, 3)
 <p>You can also directly use a 3-dimensional density matrix with the function <code class="docutils literal notranslate"><span class="pre">positions_density_matrix</span></code> to generate cell placements.</p>
 </section>
 <section id="Cell-Placements-with-minimum-distance-between-units">
-<h2>Cell Placements with minimum distance between units<a class="headerlink" href="#Cell-Placements-with-minimum-distance-between-units" title="Permalink to this heading">¶</a></h2>
+<h2>Cell Placements with minimum distance between units<a class="headerlink" href="#Cell-Placements-with-minimum-distance-between-units" title="Link to this heading">¶</a></h2>
 <p>The same built-in placement options above are available now with a minimum distance enforced between cells. With the use of the cell placement object, multiple populations can be placed at the same time, but must use the same minimum distance, which is enforced between and within populations.</p>
 <p>For a given minimum distance, there is a maximum density above which it will be physically impossible to pack the units. The functions will inform users of the packing limit for random close packing or hexagonal close packing. The default method is progressive sampling (‘prog’), which iteratively replaces units that violate the minimum distance until the final density is achieved. As this can be slow to run when the requested density is near the packing limit, you may set <code class="docutils literal notranslate"><span class="pre">verbose</span></code> to True to
 monitor the progress. You may find that in such cases just slightly decreasing the dmin value significantly speeds up the run.</p>
@@ -1055,8 +1054,9 @@ Max density requested:127323.954
 <li class="toctree-l2"><a class="reference internal" href="tutorial_single_pop.html">BioNet: Multiple Nodes with single cell-type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial_multi_pop.html">BioNet: Heterogeneous network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial_pointnet_modeling.html">PointNet: Point-neuron modeling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial_population_modeling.html">PopNet: Population-based firing rate models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial_filter_models.html">FilterNet: Full-field flashing movie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_auditory_filternet.html">Auditory FilterNet: Generating stimuli from auditory input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_population_modeling.html">PopNet: Population-based firing rate models</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="ad_tutorials.html">Additional Tutorials</a><ul class="current">
@@ -1082,7 +1082,7 @@ Max density requested:127323.954
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -1090,7 +1090,7 @@ Max density requested:127323.954
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

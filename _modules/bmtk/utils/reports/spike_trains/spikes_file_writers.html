@@ -1,16 +1,15 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bmtk.utils.reports.spike_trains.spikes_file_writers &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/aibs_sphinx.css" />
-    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../_static/doctools.js"></script>
-    <script src="../../../../../_static/sphinx_highlight.js"></script>
+    <title>bmtk.utils.reports.spike_trains.spikes_file_writers &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="../../../../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" /> 
@@ -644,13 +643,17 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <span class="kn">import</span> <span class="nn">csv</span>
 <span class="kn">import</span> <span class="nn">h5py</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
+<span class="kn">import</span> <span class="nn">bmtk</span>
 <span class="kn">from</span> <span class="nn">.core</span> <span class="kn">import</span> <span class="n">SortOrder</span><span class="p">,</span> <span class="n">csv_headers</span><span class="p">,</span> <span class="n">col_population</span><span class="p">,</span> <span class="n">find_conversion</span>
 <span class="kn">from</span> <span class="nn">.core</span> <span class="kn">import</span> <span class="n">MPI_rank</span><span class="p">,</span> <span class="n">comm_barrier</span>
 <span class="kn">from</span> <span class="nn">bmtk.utils.sonata.utils</span> <span class="kn">import</span> <span class="n">add_hdf5_magic</span><span class="p">,</span> <span class="n">add_hdf5_version</span>
 
 
-<div class="viewcode-block" id="write_sonata"><a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.reports.spike_trains.html#bmtk.utils.reports.spike_trains.spikes_file_writers.write_sonata">[docs]</a><span class="k">def</span> <span class="nf">write_sonata</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">spiketrain_reader</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">sort_order</span><span class="o">=</span><span class="n">SortOrder</span><span class="o">.</span><span class="n">none</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">,</span>
+<div class="viewcode-block" id="write_sonata">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.reports.spike_trains.html#bmtk.utils.reports.spike_trains.spikes_file_writers.write_sonata">[docs]</a>
+<span class="k">def</span> <span class="nf">write_sonata</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">spiketrain_reader</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">sort_order</span><span class="o">=</span><span class="n">SortOrder</span><span class="o">.</span><span class="n">none</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">,</span>
                  <span class="n">population_renames</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">compression</span><span class="o">=</span><span class="s1">&#39;gzip&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     
     <span class="c1"># make sure to take care of &#39;none&#39; or &#39;None&#39; compression</span>
@@ -691,7 +694,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     <span class="n">comm_barrier</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="write_sonata_itr"><a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.reports.spike_trains.html#bmtk.utils.reports.spike_trains.spikes_file_writers.write_sonata_itr">[docs]</a><span class="k">def</span> <span class="nf">write_sonata_itr</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">spiketrain_reader</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">sort_order</span><span class="o">=</span><span class="n">SortOrder</span><span class="o">.</span><span class="n">none</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">,</span> <span class="n">population_renames</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+
+<div class="viewcode-block" id="write_sonata_itr">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.reports.spike_trains.html#bmtk.utils.reports.spike_trains.spikes_file_writers.write_sonata_itr">[docs]</a>
+<span class="k">def</span> <span class="nf">write_sonata_itr</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">spiketrain_reader</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">sort_order</span><span class="o">=</span><span class="n">SortOrder</span><span class="o">.</span><span class="n">none</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">,</span> <span class="n">population_renames</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                      <span class="n">compression</span><span class="o">=</span><span class="s1">&#39;gzip&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">path_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">MPI_rank</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">path_dir</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path_dir</span><span class="p">):</span>
@@ -730,7 +736,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     <span class="n">comm_barrier</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="write_csv"><a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.reports.spike_trains.html#bmtk.utils.reports.spike_trains.spikes_file_writers.write_csv">[docs]</a><span class="k">def</span> <span class="nf">write_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">spiketrain_reader</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">sort_order</span><span class="o">=</span><span class="n">SortOrder</span><span class="o">.</span><span class="n">none</span><span class="p">,</span> <span class="n">include_header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+
+<div class="viewcode-block" id="write_csv">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.reports.spike_trains.html#bmtk.utils.reports.spike_trains.spikes_file_writers.write_csv">[docs]</a>
+<span class="k">def</span> <span class="nf">write_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">spiketrain_reader</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">sort_order</span><span class="o">=</span><span class="n">SortOrder</span><span class="o">.</span><span class="n">none</span><span class="p">,</span> <span class="n">include_header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
               <span class="n">include_population</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">path_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">MPI_rank</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">path_dir</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path_dir</span><span class="p">):</span>
@@ -744,7 +753,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     <span class="n">comm_barrier</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="write_csv_itr"><a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.reports.spike_trains.html#bmtk.utils.reports.spike_trains.spikes_file_writers.write_csv_itr">[docs]</a><span class="k">def</span> <span class="nf">write_csv_itr</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">spiketrain_reader</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">sort_order</span><span class="o">=</span><span class="n">SortOrder</span><span class="o">.</span><span class="n">none</span><span class="p">,</span> <span class="n">include_header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+
+<div class="viewcode-block" id="write_csv_itr">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.reports.spike_trains.html#bmtk.utils.reports.spike_trains.spikes_file_writers.write_csv_itr">[docs]</a>
+<span class="k">def</span> <span class="nf">write_csv_itr</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">spiketrain_reader</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">sort_order</span><span class="o">=</span><span class="n">SortOrder</span><span class="o">.</span><span class="n">none</span><span class="p">,</span> <span class="n">include_header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                   <span class="n">include_population</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">path_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">MPI_rank</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">path_dir</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path_dir</span><span class="p">):</span>
@@ -765,6 +777,54 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
             <span class="n">csv_writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">c_data</span><span class="p">)</span>
 
     <span class="n">comm_barrier</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="write_nwb">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.reports.spike_trains.html#bmtk.utils.reports.spike_trains.spikes_file_writers.write_nwb">[docs]</a>
+<span class="k">def</span> <span class="nf">write_nwb</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">spiketrain_reader</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">include_population</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">pynwb</span>
+    
+    <span class="n">path_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">MPI_rank</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">path_dir</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path_dir</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path_dir</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">MPI_rank</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1"># Last checked pynwb doesn&#39;t support writing on multiple cores, must let first core do all the</span>
+        <span class="c1"># writing to NWB.</span>
+        <span class="n">nwbfile</span> <span class="o">=</span> <span class="n">pynwb</span><span class="o">.</span><span class="n">NWBFile</span><span class="p">(</span>
+            <span class="n">session_description</span><span class="o">=</span><span class="s1">&#39;BMTK </span><span class="si">{}</span><span class="s1"> generated NWB spikes file&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bmtk</span><span class="o">.</span><span class="n">__version__</span><span class="p">),</span>
+            <span class="n">identifier</span><span class="o">=</span><span class="s1">&#39;Generated in-silico, no session id&#39;</span><span class="p">,</span>  <span class="c1"># TODO: No idea what to put here?</span>
+            <span class="n">session_start_time</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">astimezone</span><span class="p">(),</span>
+            <span class="c1"># experiment_description=str(session.experiment_metadata[&#39;experiment_id&#39;])</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">include_population</span><span class="p">:</span>
+            <span class="n">nwbfile</span><span class="o">.</span><span class="n">add_unit_column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;population&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;node population identifier&quot;</span><span class="p">)</span>
+            <span class="n">add_unit</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">nid</span><span class="p">,</span> <span class="n">pop</span><span class="p">,</span> <span class="n">st</span><span class="p">:</span> <span class="n">nwbfile</span><span class="o">.</span><span class="n">add_unit</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">nid</span><span class="p">,</span> <span class="n">spike_times</span><span class="o">=</span><span class="n">st</span><span class="p">,</span> <span class="n">population</span><span class="o">=</span><span class="n">pop</span><span class="p">,</span> <span class="n">node_id</span><span class="o">=</span><span class="n">nid</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">add_unit</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">nid</span><span class="p">,</span> <span class="n">pop</span><span class="p">,</span> <span class="n">st</span><span class="p">:</span> <span class="n">nwbfile</span><span class="o">.</span><span class="n">add_unit</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">nid</span><span class="p">,</span> <span class="n">spike_times</span><span class="o">=</span><span class="n">st</span><span class="p">,</span> <span class="n">node_id</span><span class="o">=</span><span class="n">nid</span><span class="p">)</span>
+
+        <span class="n">nwbfile</span><span class="o">.</span><span class="n">add_unit_column</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;node_id&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;id of each node within a population&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">population</span> <span class="ow">in</span> <span class="n">spiketrain_reader</span><span class="o">.</span><span class="n">populations</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">node_id</span> <span class="ow">in</span> <span class="n">spiketrain_reader</span><span class="o">.</span><span class="n">node_ids</span><span class="p">(</span><span class="n">population</span><span class="o">=</span><span class="n">population</span><span class="p">):</span>
+                <span class="n">spikes_times</span> <span class="o">=</span> <span class="n">spiketrain_reader</span><span class="o">.</span><span class="n">get_times</span><span class="p">(</span><span class="n">node_id</span><span class="o">=</span><span class="n">node_id</span><span class="p">,</span> <span class="n">population</span><span class="o">=</span><span class="n">population</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">spikes_times</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">spikes_times</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="c1"># No spikes for given node, don&#39;t try to write to nwb </span>
+                    <span class="k">continue</span>
+
+                <span class="c1"># sometimes bmtk/sonata may default to use different 32 or unsigned data-types which will cause</span>
+                <span class="c1"># nwb to throw a fit. Need to explicity convert data-types just in case.</span>
+                <span class="n">spikes_times</span> <span class="o">=</span> <span class="n">spikes_times</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+                <span class="n">node_id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">node_id</span><span class="p">)</span>
+                <span class="n">add_unit</span><span class="p">(</span><span class="n">node_id</span><span class="p">,</span> <span class="n">population</span><span class="p">,</span> <span class="n">spikes_times</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">pynwb</span><span class="o">.</span><span class="n">NWBHDF5IO</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">io</span><span class="p">:</span>
+            <span class="n">io</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">nwbfile</span><span class="p">)</span>
+
+    <span class="n">comm_barrier</span><span class="p">()</span></div>
+
 </pre></div>
 
             <div class="clearer"></div>
@@ -819,7 +879,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../../search.html" method="get">
@@ -827,7 +887,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

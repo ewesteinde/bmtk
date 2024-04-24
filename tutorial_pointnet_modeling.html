@@ -1,24 +1,23 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Tutorial 5: Point-Neuron Network Models (with PointNet) &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
+    <title>Tutorial 5: Point-Neuron Network Models (with PointNet) &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css?v=1b18bd45" />
+    <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <script src="_static/documentation_options.js?v=fc837d61"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Tutorial 6: Population Level Modeling (with PopNet)" href="tutorial_population_modeling.html" />
+    <link rel="next" title="Chapter 7: Modeling the visual field (with FilterNet)" href="tutorial_filter_models.html" />
     <link rel="prev" title="Tutorial 4: Multi-population recurrent network (with BioNet)" href="tutorial_multi_pop.html" /> 
   </head><body>
 <script type="text/javascript" src="_static/external_assets/javascript/portal.js"></script>
@@ -624,15 +623,15 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
           <div class="body" role="main">
             
   <section id="Tutorial-5:-Point-Neuron-Network-Models-(with-PointNet)">
-<h1>Tutorial 5: Point-Neuron Network Models (with PointNet)<a class="headerlink" href="#Tutorial-5:-Point-Neuron-Network-Models-(with-PointNet)" title="Permalink to this heading">¶</a></h1>
+<h1>Tutorial 5: Point-Neuron Network Models (with PointNet)<a class="headerlink" href="#Tutorial-5:-Point-Neuron-Network-Models-(with-PointNet)" title="Link to this heading">¶</a></h1>
 <p>In this chapter we will create a heterogeneous network of point-model neurons and use the PointNet simulator which will run the network using the NEST simulator. As with the previous BioNet examples will create both a internal recurrently-connected network of different node types, and an external network of “virtual” neurons that will drive the firing of the internal neurons. And we’ll show how to drive network activity by using a current clamp.</p>
 <p>PointNet, like BioNet and the other simulators, use the SONATA data format for representing networks, setting up simulations and saving results. Thus the tools used to build and display biophysically detailed networks in the previous chapters will work just the same.</p>
 <p>Requirements: * bmtk * NEST 2.11+</p>
 <section id="1.-Building-the-network">
-<h2>1. Building the network<a class="headerlink" href="#1.-Building-the-network" title="Permalink to this heading">¶</a></h2>
+<h2>1. Building the network<a class="headerlink" href="#1.-Building-the-network" title="Link to this heading">¶</a></h2>
 <p>There are two ways of generating a network of point-neurons. Either we can take the existing biophysical network created in the previous chapters and make some minor adjustments to the neuron models being used. Or we can build a new network from scratch using the BMTK Builder.</p>
 <section id="Converting-networks">
-<h3>Converting networks<a class="headerlink" href="#Converting-networks" title="Permalink to this heading">¶</a></h3>
+<h3>Converting networks<a class="headerlink" href="#Converting-networks" title="Link to this heading">¶</a></h3>
 <p>We want to take the BioNet V1 network and change parameters so that the individual neurons are using point models. Luckily there parameters are stored in the node and edge “types” csv files, thus we can easily change them with a simple text editor (emacs, vi, sublime-text, etc). Here is an example of the old <em>V1_node_types.csv</em>:</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -976,10 +975,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <p>Notice we don’t have to change any of the hdf5 files. The network topology remains the same making it a powerful tool for comparing networks of different levels of resolution.</p>
 </section>
 <section id="Building-a-model-from-scratch.">
-<h3>Building a model from scratch.<a class="headerlink" href="#Building-a-model-from-scratch." title="Permalink to this heading">¶</a></h3>
+<h3>Building a model from scratch.<a class="headerlink" href="#Building-a-model-from-scratch." title="Link to this heading">¶</a></h3>
 <p>We can use the BMTK Network Builder to create new network files just for point-based modeling</p>
 <section id="V1-Network">
-<h4>V1 Network<a class="headerlink" href="#V1-Network" title="Permalink to this heading">¶</a></h4>
+<h4>V1 Network<a class="headerlink" href="#V1-Network" title="Link to this heading">¶</a></h4>
 <p>First lets build a “V1” network of 400 cells, split into 4 different populations</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -1118,7 +1117,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </section>
 </section>
 <section id="Building-external-network">
-<h3>Building external network<a class="headerlink" href="#Building-external-network" title="Permalink to this heading">¶</a></h3>
+<h3>Building external network<a class="headerlink" href="#Building-external-network" title="Link to this heading">¶</a></h3>
 <p>Next we want to create an external network of “virtual cells” with spike-trains that will synapse onto our V1 cells and drive activity. We will call this external network “LGN” and contains 500 excitatory cells.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
@@ -1205,9 +1204,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </section>
 </section>
 <section id="2.-Setting-up-PointNet-Environment">
-<h2>2. Setting up PointNet Environment<a class="headerlink" href="#2.-Setting-up-PointNet-Environment" title="Permalink to this heading">¶</a></h2>
+<h2>2. Setting up PointNet Environment<a class="headerlink" href="#2.-Setting-up-PointNet-Environment" title="Link to this heading">¶</a></h2>
 <section id="Directory-Structure">
-<h3>Directory Structure<a class="headerlink" href="#Directory-Structure" title="Permalink to this heading">¶</a></h3>
+<h3>Directory Structure<a class="headerlink" href="#Directory-Structure" title="Link to this heading">¶</a></h3>
 <p>Before running a simulation, we will need to create the runtime environment, including parameter files, run-script and configuration files. If using the tutorial these files will already be in place. Otherwise we can use a command-line:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>bmtk.utils.sim_setup<span class="w">        </span><span class="se">\</span>
 <span class="w">    </span>--network<span class="w"> </span>sim_ch05/network/<span class="w">         </span><span class="se">\</span>
@@ -1234,7 +1233,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </div>
 <p>The network files are written to <strong>circuit_config.json</strong> and the simulation parameters are set in <strong>simulation_config</strong>, which are both linked to the main <strong>config.json</strong> file. The simulation time is set to run for 3000.0 ms (tstop). In general, all the parameters needed to setup and start a simulation are found in the config files, and adjusting network/simulation conditions can be done by editing these json files in a text editor.</p>
 <section id="lgn-input">
-<h4>lgn input<a class="headerlink" href="#lgn-input" title="Permalink to this heading">¶</a></h4>
+<h4>lgn input<a class="headerlink" href="#lgn-input" title="Link to this heading">¶</a></h4>
 <p>We need to provide our LGN external network cells with spike-trains so they can activate our recurrent network. Previously we showed how to do this by generating csv files. We can also use SONATA spike files.</p>
 <p>First download the file:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>sim_ch05
@@ -1258,7 +1257,7 @@ $<span class="w"> </span>wget<span class="w"> </span>https://github.com/AllenIns
 </section>
 </section>
 <section id="3.-Running-the-simulation">
-<h2>3. Running the simulation<a class="headerlink" href="#3.-Running-the-simulation" title="Permalink to this heading">¶</a></h2>
+<h2>3. Running the simulation<a class="headerlink" href="#3.-Running-the-simulation" title="Link to this heading">¶</a></h2>
 <p>The call to sim_setup created a file run_pointnet.py which we can run directly in a command line:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>run_pointnet.py<span class="w"> </span>config.json
 </pre></div>
@@ -1460,7 +1459,7 @@ INFO:NestIOUtils:Done.
 </div>
 </section>
 <section id="4.-Analyzing-results">
-<h2>4. Analyzing results<a class="headerlink" href="#4.-Analyzing-results" title="Permalink to this heading">¶</a></h2>
+<h2>4. Analyzing results<a class="headerlink" href="#4.-Analyzing-results" title="Link to this heading">¶</a></h2>
 <p>Results of the simulation, as specified in the config, are saved into the output directory. Using the analyzer functions, we can do things like plot the raster plot</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
@@ -1498,9 +1497,9 @@ INFO:NestIOUtils:Done.
 <p>In our simulation_config.json in the reports section, we can see we also record the V_m (i.e membrane potential) of a select sample of cells. By default these files are written to an hdf5 file with the same name as the report (membrane_potential.h5), and we can use the analyzer to show the time course of some of these cells.</p>
 </section>
 <section id="5.-Additional-Information">
-<h2>5. Additional Information<a class="headerlink" href="#5.-Additional-Information" title="Permalink to this heading">¶</a></h2>
+<h2>5. Additional Information<a class="headerlink" href="#5.-Additional-Information" title="Link to this heading">¶</a></h2>
 <section id="Recording-membrane-potential-(and-other-cell-properties).">
-<h3>Recording membrane potential (and other cell properties).<a class="headerlink" href="#Recording-membrane-potential-(and-other-cell-properties)." title="Permalink to this heading">¶</a></h3>
+<h3>Recording membrane potential (and other cell properties).<a class="headerlink" href="#Recording-membrane-potential-(and-other-cell-properties)." title="Link to this heading">¶</a></h3>
 <p>By default bmtk will automatically record and save the spike-trains of our (non-virtual) cells. Sometimes it can be useful to record other properties besides spikes, like the membrane voltage traces, of all or a subsection of the cells. To do so we only need to open the <em>simulation_config.json</em> with our prefered text editor and insert the following section:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;reports&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1537,9 +1536,9 @@ INFO:NestIOUtils:Done.
 </div>
 </section>
 <section id="Perturbation-simulations">
-<h3>Perturbation simulations<a class="headerlink" href="#Perturbation-simulations" title="Permalink to this heading">¶</a></h3>
+<h3>Perturbation simulations<a class="headerlink" href="#Perturbation-simulations" title="Link to this heading">¶</a></h3>
 <p>A common use case is to mimick a network where the firing rate of select cells are being depressed or stimulated using current clamps or optogenetic methods. The best way to do this is by applying a current clamp in a similar manner used in <a class="reference external" href="http://localhost:32000/notebooks/Workspace/bmtk/docs/tutorial/01_single_cell_clamped.ipynb">bionet</a>.</p>
-<p>The point_120cells network in the bmtk examples consists of 120 recurrently connected excitatory and inhibitory cells with randomized inputs. Normally the results without any type of perturbations will look as follows: <img alt="8e0224878ffa452d94d570eaacc0c80d" src="_images/raster_120cells_orig.png" /></p>
+<p>The point_120cells network in the bmtk examples consists of 120 recurrently connected excitatory and inhibitory cells with randomized inputs. Normally the results without any type of perturbations will look as follows: <img alt="4b887ad4962b4367a8bac41d61163464" src="_images/raster_120cells_orig.png" /></p>
 <p>To artifically excite some of the cells we can open the config.json file and add the following section to the “inputs”:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;exc_perturbation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1582,7 +1581,7 @@ INFO:NestIOUtils:Done.
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>After we rerun the simulation: <img alt="7256ba2f2f2147ceb46da9af1f2bbf22" src="_images/raster_120cells_perturbed.png" /></p>
+<p>After we rerun the simulation: <img alt="38e01241b00146f39964fc1c3255ba2d" src="_images/raster_120cells_perturbed.png" /></p>
 </section>
 </section>
 </section>
@@ -1613,8 +1612,9 @@ INFO:NestIOUtils:Done.
 <li class="toctree-l2"><a class="reference internal" href="tutorial_single_pop.html">BioNet: Multiple Nodes with single cell-type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial_multi_pop.html">BioNet: Heterogeneous network</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">PointNet: Point-neuron modeling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial_population_modeling.html">PopNet: Population-based firing rate models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial_filter_models.html">FilterNet: Full-field flashing movie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_auditory_filternet.html">Auditory FilterNet: Generating stimuli from auditory input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_population_modeling.html">PopNet: Population-based firing rate models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ad_tutorials.html">Additional Tutorials</a><ul>
@@ -1640,7 +1640,7 @@ INFO:NestIOUtils:Done.
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -1648,7 +1648,7 @@ INFO:NestIOUtils:Done.
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

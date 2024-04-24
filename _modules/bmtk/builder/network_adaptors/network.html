@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bmtk.builder.network_adaptors.network &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
+    <title>bmtk.builder.network_adaptors.network &#8212; Brain Modeling Toolkit 1.0.8 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/aibs_sphinx.css" />
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
@@ -977,18 +976,24 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="bp">self</span><span class="o">.</span><span class="n">_connection_maps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">connection</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">connection</span></div>
 
-<div class="viewcode-block" id="Network.add_gap_junctions"><a class="viewcode-back" href="../../../../bmtk/bmtk.builder.network_adaptors.html#bmtk.builder.network_adaptors.network.Network.add_gap_junctions">[docs]</a>    <span class="k">def</span> <span class="nf">add_gap_junctions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">iterator</span><span class="o">=</span><span class="s1">&#39;one_to_one&#39;</span><span class="p">,</span> <span class="n">resistance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                          <span class="n">target_sections</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;somatic&#39;</span><span class="p">],</span> <span class="n">connection_rule</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">connection_params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;A special function for marking a edge group as gap junctions. Just a wrapper for add_edges&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="Network.add_gap_junctions"><a class="viewcode-back" href="../../../../bmtk/bmtk.builder.network_adaptors.html#bmtk.builder.network_adaptors.network.Network.add_gap_junctions">[docs]</a>    <span class="k">def</span> <span class="nf">add_gap_junctions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">resistance</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">conductance</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                          <span class="n">distance_range</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">300.0</span><span class="p">],</span> <span class="n">target_sections</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;somatic&#39;</span><span class="p">],</span>
+                          <span class="n">connection_rule</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">iterator</span><span class="o">=</span><span class="s1">&#39;one_to_one&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">edge_type_properties</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A special function for marking a edge group as gap junctions. Just a wrapper for add_edges.</span>
+
+<span class="sd">        :param resistance: gap junction resistance (megaohm)</span>
+<span class="sd">        :param conductance: gap junction conductance (microsiemens). If specified, resistance is ignored.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">target_sections</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                 <span class="s1">&#39;For gap junctions, the target sections variable is used for both the source and target sections.&#39;</span>
             <span class="p">)</span>
 
+        <span class="n">syn_weight</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">resistance</span> <span class="k">if</span> <span class="n">conductance</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">conductance</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_edges</span><span class="p">(</span>
-            <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">iterator</span><span class="o">=</span><span class="n">iterator</span><span class="p">,</span> <span class="n">distance_range</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">300.0</span><span class="p">],</span> <span class="n">syn_weight</span><span class="o">=</span><span class="n">resistance</span><span class="p">,</span>
-            <span class="n">is_gap_junction</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">target_sections</span><span class="o">=</span><span class="n">target_sections</span><span class="p">,</span> <span class="n">connection_rule</span><span class="o">=</span><span class="n">connection_rule</span><span class="p">,</span>
-            <span class="n">connection_params</span><span class="o">=</span><span class="n">connection_params</span>
+            <span class="n">source</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">syn_weight</span><span class="o">=</span><span class="n">syn_weight</span><span class="p">,</span> <span class="n">is_gap_junction</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">distance_range</span><span class="o">=</span><span class="n">distance_range</span><span class="p">,</span> <span class="n">target_sections</span><span class="o">=</span><span class="n">target_sections</span><span class="p">,</span>
+            <span class="n">connection_rule</span><span class="o">=</span><span class="n">connection_rule</span><span class="p">,</span> <span class="n">iterator</span><span class="o">=</span><span class="n">iterator</span><span class="p">,</span> <span class="o">**</span><span class="n">edge_type_properties</span>
         <span class="p">)</span></div>
 
 <div class="viewcode-block" id="Network.nodes"><a class="viewcode-back" href="../../../../bmtk/bmtk.builder.network_adaptors.html#bmtk.builder.network_adaptors.network.Network.nodes">[docs]</a>    <span class="k">def</span> <span class="nf">nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">properties</span><span class="p">):</span>

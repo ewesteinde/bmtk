@@ -36,6 +36,30 @@ bmtk.simulator.pointnet.modules.record\_spikes module
    :undoc-members:
    :show-inheritance:
 
+bmtk.simulator.pointnet.modules.sim\_module module
+--------------------------------------------------
+
+.. automodule:: bmtk.simulator.pointnet.modules.sim_module
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bmtk.simulator.pointnet.modules.spikes\_inputs module
+-----------------------------------------------------
+
+.. automodule:: bmtk.simulator.pointnet.modules.spikes_inputs
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bmtk.simulator.pointnet.modules.weight\_recorder module
+-------------------------------------------------------
+
+.. automodule:: bmtk.simulator.pointnet.modules.weight_recorder
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

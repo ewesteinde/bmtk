@@ -1,16 +1,15 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bmtk.simulator.pointnet.pointsimulator &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/aibs_sphinx.css" />
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/sphinx_highlight.js"></script>
+    <title>bmtk.simulator.pointnet.pointsimulator &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="../../../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
@@ -656,8 +655,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <span class="kn">from</span> <span class="nn">bmtk.simulator.core.node_sets</span> <span class="kn">import</span> <span class="n">NodeSet</span>
 
 
-<div class="viewcode-block" id="PointSimulator"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.pointsimulator.PointSimulator">[docs]</a><span class="k">class</span> <span class="nc">PointSimulator</span><span class="p">(</span><span class="n">Simulator</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">print_time</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="PointSimulator">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.pointsimulator.PointSimulator">[docs]</a>
+<span class="k">class</span> <span class="nc">PointSimulator</span><span class="p">(</span><span class="n">Simulator</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">print_time</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_thread</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_tstop</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># simulation time</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_dt</span> <span class="o">=</span> <span class="n">dt</span>  <span class="c1"># time step</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_output_dir</span> <span class="o">=</span> <span class="s1">&#39;./output/&#39;</span>  <span class="c1"># directory where log and temporary output will be stored</span>
@@ -691,7 +692,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="c1"># Reset the NEST kernel for a new simualtion</span>
         <span class="c1"># TODO: move this into it&#39;s own function and make sure it is called before network is built</span>
         <span class="n">nest</span><span class="o">.</span><span class="n">ResetKernel</span><span class="p">()</span>
-        <span class="n">nest</span><span class="o">.</span><span class="n">SetKernelStatus</span><span class="p">({</span><span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dt</span><span class="p">,</span> <span class="s2">&quot;overwrite_files&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_overwrite</span><span class="p">,</span> <span class="s2">&quot;print_time&quot;</span><span class="p">:</span> <span class="n">print_time</span><span class="p">})</span>
+        <span class="n">nest</span><span class="o">.</span><span class="n">SetKernelStatus</span><span class="p">({</span><span class="s2">&quot;resolution&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dt</span><span class="p">,</span> <span class="s2">&quot;overwrite_files&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_overwrite</span><span class="p">,</span> <span class="s2">&quot;print_time&quot;</span><span class="p">:</span> <span class="n">print_time</span><span class="p">,</span> <span class="s2">&quot;local_num_threads&quot;</span><span class="p">:</span> <span class="n">n_thread</span><span class="p">})</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">tstart</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -705,13 +706,16 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     <span class="k">def</span> <span class="nf">tstop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tstop</span>
 
-<div class="viewcode-block" id="PointSimulator.simulation_time"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.pointsimulator.PointSimulator.simulation_time">[docs]</a>    <span class="k">def</span> <span class="nf">simulation_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="PointSimulator.simulation_time">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.pointsimulator.PointSimulator.simulation_time">[docs]</a>
+    <span class="k">def</span> <span class="nf">simulation_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;ms&#39;</span><span class="p">):</span>
         <span class="n">units_lc</span> <span class="o">=</span> <span class="n">units</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="n">time_ms</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tstop</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">tstart</span>
         <span class="k">if</span> <span class="n">units_lc</span> <span class="o">==</span> <span class="s1">&#39;ms&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">time_ms</span>
         <span class="k">elif</span> <span class="n">units_lc</span> <span class="o">==</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">time_ms</span><span class="o">/</span><span class="mf">1000.0</span></div>
+
 
     <span class="nd">@tstop</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">tstop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
@@ -729,11 +733,17 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     <span class="k">def</span> <span class="nf">gid_map</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">_nestid2gid</span>
 
-<div class="viewcode-block" id="PointSimulator.set_spike_generator_params"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.pointsimulator.PointSimulator.set_spike_generator_params">[docs]</a>    <span class="k">def</span> <span class="nf">set_spike_generator_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+<div class="viewcode-block" id="PointSimulator.set_spike_generator_params">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.pointsimulator.PointSimulator.set_spike_generator_params">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_spike_generator_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sg_params</span> <span class="o">=</span> <span class="n">params</span></div>
 
-<div class="viewcode-block" id="PointSimulator.get_spike_generator_params"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.pointsimulator.PointSimulator.get_spike_generator_params">[docs]</a>    <span class="k">def</span> <span class="nf">get_spike_generator_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="PointSimulator.get_spike_generator_params">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.pointsimulator.PointSimulator.get_spike_generator_params">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_spike_generator_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sg_params</span></div>
+
 
     <span class="k">def</span> <span class="nf">_get_block_trial</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -766,7 +776,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <span class="sd">        # exit()</span>
 <span class="sd">    &#39;&#39;&#39;</span>
             
-<div class="viewcode-block" id="PointSimulator.run"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.pointsimulator.PointSimulator.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tstop</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="PointSimulator.run">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.pointsimulator.PointSimulator.run">[docs]</a>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tstop</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">tstop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">tstop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tstop</span>
 
@@ -792,11 +804,17 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="n">io</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>
         <span class="n">io</span><span class="o">.</span><span class="n">log_info</span><span class="p">(</span><span class="s1">&#39;Done.&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="PointSimulator.add_mod"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.pointsimulator.PointSimulator.add_mod">[docs]</a>    <span class="k">def</span> <span class="nf">add_mod</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mod</span><span class="p">):</span>
+
+<div class="viewcode-block" id="PointSimulator.add_mod">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.pointsimulator.PointSimulator.add_mod">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_mod</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mod</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_mods</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="PointSimulator.from_config"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.pointsimulator.PointSimulator.from_config">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">configure</span><span class="p">,</span> <span class="n">graph</span><span class="p">):</span>
+
+<div class="viewcode-block" id="PointSimulator.from_config">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.pointsimulator.PointSimulator.from_config">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">configure</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">n_thread</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># load the json file or object</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">configure</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
             <span class="n">config</span> <span class="o">=</span> <span class="n">Config</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">configure</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -806,15 +824,28 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Could not convert </span><span class="si">{}</span><span class="s1"> (type &quot;</span><span class="si">{}</span><span class="s1">&quot;) to json.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">configure</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">configure</span><span class="p">)))</span>
 
         <span class="k">if</span> <span class="s1">&#39;run&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Json file is missing &quot;run&quot; entry. Unable to build Bionetwork.&#39;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Json file is missing &quot;run&quot; entry. Unable to build PointNetwork.&#39;</span><span class="p">)</span>
         <span class="n">run_dict</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;run&#39;</span><span class="p">]</span>
+        
+        <span class="c1"># override the n_thread setting from the config file</span>
+        <span class="k">if</span> <span class="s1">&#39;n_thread&#39;</span> <span class="ow">in</span> <span class="n">run_dict</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">n_thread</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">n_thread</span> <span class="o">!=</span> <span class="n">run_dict</span><span class="p">[</span><span class="s1">&#39;n_thread&#39;</span><span class="p">]:</span>
+                <span class="c1"># give a warinig that the user is overriding the argument.</span>
+                <span class="n">io</span><span class="o">.</span><span class="n">log_warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">&#39;Overriding n_thread setting in an argument (</span><span class="si">{</span><span class="n">n_thread</span><span class="si">}</span><span class="s1">) with the value in config file (</span><span class="si">{</span><span class="n">run_dict</span><span class="p">[</span><span class="s2">&quot;n_thread&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">).&#39;</span>
+                <span class="p">)</span>
+            <span class="n">n_thread</span> <span class="o">=</span> <span class="n">run_dict</span><span class="p">[</span><span class="s1">&#39;n_thread&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">n_thread</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">n_thread</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># default to 1 thread if not set in config or argument</span>
+
 
         <span class="c1"># Get network parameters</span>
         <span class="c1"># step time (dt) is set in the kernel and should be passed</span>
         <span class="n">overwrite</span> <span class="o">=</span> <span class="n">run_dict</span><span class="p">[</span><span class="s1">&#39;overwrite_output_dir&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="s1">&#39;overwrite_output_dir&#39;</span> <span class="ow">in</span> <span class="n">run_dict</span> <span class="k">else</span> <span class="kc">True</span>
         <span class="n">print_time</span> <span class="o">=</span> <span class="n">run_dict</span><span class="p">[</span><span class="s1">&#39;print_time&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="s1">&#39;print_time&#39;</span> <span class="ow">in</span> <span class="n">run_dict</span> <span class="k">else</span> <span class="kc">False</span>
         <span class="n">dt</span> <span class="o">=</span> <span class="n">run_dict</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span>  <span class="c1"># TODO: make sure dt exists</span>
-        <span class="n">network</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="n">overwrite</span><span class="p">)</span>
+        <span class="n">network</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="n">overwrite</span><span class="p">,</span> <span class="n">n_thread</span><span class="o">=</span><span class="n">n_thread</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="s1">&#39;output_dir&#39;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">]:</span>
             <span class="n">network</span><span class="o">.</span><span class="n">output_dir</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">][</span><span class="s1">&#39;output_dir&#39;</span><span class="p">]</span>
@@ -843,22 +874,16 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
             <span class="k">for</span> <span class="n">gfile</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">][</span><span class="s1">&#39;output_dir&#39;</span><span class="p">],</span> <span class="s1">&#39;*.gdf&#39;</span><span class="p">)):</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">gfile</span><span class="p">)</span>
 
-        <span class="n">graph</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">log_info</span><span class="p">(</span><span class="s1">&#39;Building cells.&#39;</span><span class="p">)</span>
-        <span class="n">graph</span><span class="o">.</span><span class="n">build_nodes</span><span class="p">()</span>
-
-        <span class="n">graph</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">log_info</span><span class="p">(</span><span class="s1">&#39;Building recurrent connections&#39;</span><span class="p">)</span>
-        <span class="n">graph</span><span class="o">.</span><span class="n">build_recurrent_edges</span><span class="p">()</span>
-
         <span class="k">for</span> <span class="n">sim_input</span> <span class="ow">in</span> <span class="n">inputs</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">config</span><span class="p">):</span>
-            <span class="n">node_set</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">get_node_set</span><span class="p">(</span><span class="n">sim_input</span><span class="o">.</span><span class="n">node_set</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">sim_input</span><span class="o">.</span><span class="n">input_type</span> <span class="o">==</span> <span class="s1">&#39;spikes&#39;</span> <span class="ow">and</span> <span class="n">sim_input</span><span class="o">.</span><span class="n">module</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;nwb&#39;</span><span class="p">,</span> <span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="s1">&#39;sonata&#39;</span><span class="p">]:</span>
-                <span class="n">io</span><span class="o">.</span><span class="n">log_info</span><span class="p">(</span><span class="s1">&#39;Build virtual cell stimulations for </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sim_input</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
-                <span class="n">path</span> <span class="o">=</span> <span class="n">sim_input</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;input_file&#39;</span><span class="p">]</span>
-                <span class="n">spikes</span> <span class="o">=</span> <span class="n">SpikeTrains</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="n">path</span><span class="p">,</span> <span class="n">file_type</span><span class="o">=</span><span class="n">sim_input</span><span class="o">.</span><span class="n">module</span><span class="p">,</span> <span class="o">**</span><span class="n">sim_input</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
-                <span class="c1">#spikes = spike_trains.SpikesInput.load(name=sim_input.name, module=sim_input.module,</span>
-                <span class="c1">#                                       input_type=sim_input.input_type, params=sim_input.params)</span>
-                <span class="n">graph</span><span class="o">.</span><span class="n">add_spike_trains</span><span class="p">(</span><span class="n">spikes</span><span class="p">,</span> <span class="n">node_set</span><span class="p">,</span> <span class="n">network</span><span class="o">.</span><span class="n">get_spike_generator_params</span><span class="p">())</span>
-            
+            <span class="k">if</span> <span class="n">sim_input</span><span class="o">.</span><span class="n">input_type</span> <span class="o">==</span> <span class="s1">&#39;spikes&#39;</span> <span class="ow">and</span> <span class="n">sim_input</span><span class="o">.</span><span class="n">module</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;nwb&#39;</span><span class="p">,</span> <span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="s1">&#39;sonata&#39;</span><span class="p">,</span> <span class="s1">&#39;h5&#39;</span><span class="p">,</span> <span class="s1">&#39;hdf5&#39;</span><span class="p">]:</span>
+                <span class="n">network</span><span class="o">.</span><span class="n">add_mod</span><span class="p">(</span><span class="n">mods</span><span class="o">.</span><span class="n">SpikesInputsMod</span><span class="p">(</span>
+                    <span class="n">name</span><span class="o">=</span><span class="n">sim_input</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="n">input_type</span><span class="o">=</span><span class="n">sim_input</span><span class="o">.</span><span class="n">input_type</span><span class="p">,</span>
+                    <span class="n">module</span><span class="o">=</span><span class="n">sim_input</span><span class="o">.</span><span class="n">module</span><span class="p">,</span>
+                    <span class="c1"># node_set=sim_input.node_set,</span>
+                    <span class="o">**</span><span class="n">sim_input</span><span class="o">.</span><span class="n">params</span>
+                <span class="p">))</span>
+
             <span class="k">elif</span> <span class="n">sim_input</span><span class="o">.</span><span class="n">module</span> <span class="o">==</span> <span class="s1">&#39;IClamp&#39;</span><span class="p">:</span>
                 <span class="n">network</span><span class="o">.</span><span class="n">add_mod</span><span class="p">(</span><span class="n">mods</span><span class="o">.</span><span class="n">IClampMod</span><span class="p">(</span><span class="n">input_type</span><span class="o">=</span><span class="n">sim_input</span><span class="o">.</span><span class="n">input_type</span><span class="p">,</span> <span class="o">**</span><span class="n">sim_input</span><span class="o">.</span><span class="n">params</span><span class="p">))</span>
 
@@ -869,7 +894,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
                 <span class="n">graph</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">log_warning</span><span class="p">(</span><span class="s1">&#39;Unknown input type </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sim_input</span><span class="o">.</span><span class="n">input_type</span><span class="p">))</span>
 
         <span class="n">sim_reports</span> <span class="o">=</span> <span class="n">reports</span><span class="o">.</span><span class="n">from_config</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="n">sim_reports</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="n">sim_reports</span><span class="p">:</span>           
             <span class="k">if</span> <span class="n">report</span><span class="o">.</span><span class="n">module</span> <span class="o">==</span> <span class="s1">&#39;spikes_report&#39;</span><span class="p">:</span>
                 <span class="n">mod</span> <span class="o">=</span> <span class="n">mods</span><span class="o">.</span><span class="n">SpikesMod</span><span class="p">(</span><span class="o">**</span><span class="n">report</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
 
@@ -877,14 +902,26 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
                 <span class="c1"># For convience and for compliance with SONATA format. &quot;membrane_report&quot; and &quot;multimeter_report is the</span>
                 <span class="c1"># same in pointnet.</span>
                 <span class="n">mod</span> <span class="o">=</span> <span class="n">mods</span><span class="o">.</span><span class="n">MultimeterMod</span><span class="p">(</span><span class="o">**</span><span class="n">report</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+            
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">report</span><span class="p">,</span> <span class="n">reports</span><span class="o">.</span><span class="n">WeightRecorder</span><span class="p">):</span>
+                <span class="n">mod</span> <span class="o">=</span> <span class="n">mods</span><span class="o">.</span><span class="n">WeightRecorder</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">report</span><span class="o">.</span><span class="n">report_name</span><span class="p">,</span> <span class="o">**</span><span class="n">report</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
 
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">graph</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">log_exception</span><span class="p">(</span><span class="s1">&#39;Unknown report type </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">report</span><span class="o">.</span><span class="n">module</span><span class="p">))</span>
 
+            <span class="n">mod</span><span class="o">.</span><span class="n">preload</span><span class="p">(</span><span class="n">sim</span><span class="o">=</span><span class="n">graph</span><span class="p">)</span>
             <span class="n">network</span><span class="o">.</span><span class="n">add_mod</span><span class="p">(</span><span class="n">mod</span><span class="p">)</span>
 
+        <span class="n">graph</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">log_info</span><span class="p">(</span><span class="s1">&#39;Building cells.&#39;</span><span class="p">)</span>
+        <span class="n">graph</span><span class="o">.</span><span class="n">build_nodes</span><span class="p">()</span>
+
+        <span class="n">graph</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">log_info</span><span class="p">(</span><span class="s1">&#39;Building recurrent connections&#39;</span><span class="p">)</span>
+        <span class="n">graph</span><span class="o">.</span><span class="n">build_recurrent_edges</span><span class="p">()</span>
+
         <span class="n">io</span><span class="o">.</span><span class="n">log_info</span><span class="p">(</span><span class="s1">&#39;Network created.&#39;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">network</span></div></div>
+        <span class="k">return</span> <span class="n">network</span></div>
+</div>
+
 </pre></div>
 
             <div class="clearer"></div>
@@ -939,7 +976,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../search.html" method="get">
@@ -947,7 +984,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

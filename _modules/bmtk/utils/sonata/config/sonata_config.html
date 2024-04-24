@@ -1,17 +1,15 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bmtk.utils.sonata.config.sonata_config &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/aibs_sphinx.css" />
-    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../_static/jquery.js"></script>
-    <script src="../../../../../_static/underscore.js"></script>
-    <script src="../../../../../_static/doctools.js"></script>
+    <title>bmtk.utils.sonata.config.sonata_config &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="../../../../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" /> 
@@ -649,8 +647,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">string_types</span>
 
 
-<div class="viewcode-block" id="SonataConfig"><a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.SonataConfig">[docs]</a><span class="k">class</span> <span class="nc">SonataConfig</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="SonataConfig">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.SonataConfig">[docs]</a>
+<span class="k">class</span> <span class="nc">SonataConfig</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A special type of dict designed specially to handle SONATA configuration files.</span>
 
 <span class="sd">    It handles things like manifest variables and combining network and circuit configurations into a single dictionary,</span>
@@ -762,23 +762,37 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="k">assert</span><span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="s1">&#39;validate&#39;</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_validator</span> <span class="o">=</span> <span class="n">v</span>
 
-<div class="viewcode-block" id="SonataConfig.validate"><a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.SonataConfig.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="SonataConfig.validate">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.SonataConfig.validate">[docs]</a>
+    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">validator</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span></div>
 
-<div class="viewcode-block" id="SonataConfig.from_json"><a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.SonataConfig.from_json">[docs]</a>    <span class="nd">@classmethod</span>
+
+<div class="viewcode-block" id="SonataConfig.from_json">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.SonataConfig.from_json">[docs]</a>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_json</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">ConfigParser</span><span class="p">(</span><span class="o">**</span><span class="n">opts</span><span class="p">)</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">config_file</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="SonataConfig.from_dict"><a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.SonataConfig.from_dict">[docs]</a>    <span class="nd">@classmethod</span>
+
+<div class="viewcode-block" id="SonataConfig.from_dict">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.SonataConfig.from_dict">[docs]</a>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config_dict</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">ConfigParser</span><span class="p">(</span><span class="o">**</span><span class="n">opts</span><span class="p">)</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">config_dict</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="SonataConfig.from_yaml"><a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.SonataConfig.from_yaml">[docs]</a>    <span class="nd">@classmethod</span>
+
+<div class="viewcode-block" id="SonataConfig.from_yaml">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.SonataConfig.from_yaml">[docs]</a>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_yaml</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="SonataConfig.load"><a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.SonataConfig.load">[docs]</a>    <span class="nd">@classmethod</span>
+
+<div class="viewcode-block" id="SonataConfig.load">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.SonataConfig.load">[docs]</a>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config_file</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span><span class="p">):</span>
         <span class="c1"># Implement factory method that can resolve the format/type of input configuration.</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
@@ -790,6 +804,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
                 <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="n">validator</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Unable to open </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">config_file</span><span class="p">))</span></div>
+
 
     <span class="k">def</span> <span class="nf">_set_class_props</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Properties common to Sonata that will be regularly read by the simulators.</span>
@@ -826,8 +841,11 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="bp">self</span><span class="o">.</span><span class="n">node_sets</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;node_sets&#39;</span><span class="p">,</span> <span class="p">{})</span></div>
 
 
-<div class="viewcode-block" id="copy_config"><a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.copy_config">[docs]</a><span class="k">def</span> <span class="nf">copy_config</span><span class="p">(</span><span class="n">conf</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Copy configuration file to different directory, with manifest variables resolved.</span>
+
+<div class="viewcode-block" id="copy_config">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.copy_config">[docs]</a>
+<span class="k">def</span> <span class="nf">copy_config</span><span class="p">(</span><span class="n">conf</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Copy configuration file to different directory, with manifest variables resolved.</span>
 
 <span class="sd">    :param conf: configuration dictionary</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -841,8 +859,11 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">out_cfg</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="from_dict"><a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.from_dict">[docs]</a><span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="n">config_dict</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="from_dict">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.from_dict">[docs]</a>
+<span class="k">def</span> <span class="nf">from_dict</span><span class="p">(</span><span class="n">config_dict</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">    :param config_dict:</span>
 <span class="sd">    :param validator:</span>
@@ -853,8 +874,11 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     <span class="k">return</span> <span class="n">SonataConfig</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">config_dict</span><span class="p">,</span> <span class="n">validator</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="from_json"><a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.from_json">[docs]</a><span class="k">def</span> <span class="nf">from_json</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Builds and validates a configuration json file.</span>
+
+<div class="viewcode-block" id="from_json">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.from_json">[docs]</a>
+<span class="k">def</span> <span class="nf">from_json</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Builds and validates a configuration json file.</span>
 
 <span class="sd">    :param config_file: File object or path to a json file.</span>
 <span class="sd">    :param validator: A SimConfigValidator object to validate json file. Won&#39;t validate if set to None</span>
@@ -865,8 +889,11 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     <span class="k">return</span> <span class="n">SonataConfig</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="n">validator</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="from_yaml"><a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.from_yaml">[docs]</a><span class="k">def</span> <span class="nf">from_yaml</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="from_yaml">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.from_yaml">[docs]</a>
+<span class="k">def</span> <span class="nf">from_yaml</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="n">validator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">    :param config_file:</span>
 <span class="sd">    :param validator:</span>
@@ -876,8 +903,11 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="ConfigParser"><a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.ConfigParser">[docs]</a><span class="k">class</span> <span class="nc">ConfigParser</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Helper class for parsing all the configs. Use the parse() method to return a normal dictionary to save into</span>
+
+<div class="viewcode-block" id="ConfigParser">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.ConfigParser">[docs]</a>
+<span class="k">class</span> <span class="nc">ConfigParser</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Helper class for parsing all the configs. Use the parse() method to return a normal dictionary to save into</span>
 <span class="sd">    SonataConfig class</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">opts</span><span class="p">):</span>
@@ -887,8 +917,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     <span class="k">def</span> <span class="nf">usr_vars</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_usr_vars</span>
 
-<div class="viewcode-block" id="ConfigParser.parse"><a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.ConfigParser.parse">[docs]</a>    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg_obj</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Builds and validates a configuration json dictionary object. Best to directly use from_json when possible.</span>
+<div class="viewcode-block" id="ConfigParser.parse">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.utils.sonata.config.html#bmtk.utils.sonata.config.sonata_config.ConfigParser.parse">[docs]</a>
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cfg_obj</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Builds and validates a configuration json dictionary object. Best to directly use from_json when possible.</span>
 
 <span class="sd">        :param cfg_obj: Dictionary/json file containing a sonata configuration</span>
 <span class="sd">        :return: A dictionary, verified against json validator and with manifest variables resolved.</span>
@@ -929,8 +961,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 
         <span class="k">return</span> <span class="n">conf</span></div>
 
+
     <span class="k">def</span> <span class="nf">_special_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conf</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;A list of preloaded variables to insert into the manifest, containing things like path to run-time directory,</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A list of preloaded variables to insert into the manifest, containing things like path to run-time directory,</span>
 <span class="sd">        configuration directory, etc.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">pre_manifest</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
@@ -947,7 +980,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="k">return</span> <span class="n">pre_manifest</span>
 
     <span class="k">def</span> <span class="nf">_build_manifest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conf</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Resolves the manifest section and resolve any internal variables&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Resolves the manifest section and resolve any internal variables&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="s1">&#39;manifest&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">conf</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_special_variables</span><span class="p">(</span><span class="n">conf</span><span class="p">)</span>
 
@@ -984,7 +1017,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="k">return</span> <span class="n">resolved_manifest</span>
 
     <span class="k">def</span> <span class="nf">_recursive_insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">json_obj</span><span class="p">,</span> <span class="n">manifest</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Loop through the config and substitute the path variables (e.g.: $MY_DIR) with the values from the manifest</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Loop through the config and substitute the path variables (e.g.: $MY_DIR) with the values from the manifest</span>
 
 <span class="sd">        :param json_obj: A json dictionary object that may contain variables needing to be resolved.</span>
 <span class="sd">        :param manifest: A dictionary of variable values</span>
@@ -1011,7 +1044,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
             <span class="k">return</span> <span class="n">json_obj</span>
 
     <span class="k">def</span> <span class="nf">_find_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">json_str</span><span class="p">,</span> <span class="n">manifest</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Replaces variables (i.e. $VAR, ${VAR}) with their values from the manifest.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Replaces variables (i.e. $VAR, ${VAR}) with their values from the manifest.</span>
 
 <span class="sd">        :param json_str: a json string that may contain none, one or multiple variable</span>
 <span class="sd">        :param manifest: dictionary of variable lookup values</span>
@@ -1046,7 +1079,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="k">return</span> <span class="n">ret_val</span>
 
     <span class="k">def</span> <span class="nf">_post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conf</span><span class="p">,</span> <span class="n">manifest</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Last parsing to do before &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Last parsing to do before &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="s1">&#39;output&#39;</span> <span class="ow">in</span> <span class="n">conf</span> <span class="ow">and</span> <span class="s1">&#39;output_dir&#39;</span> <span class="ow">in</span> <span class="n">conf</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">]:</span>
             <span class="c1"># Special case for the &#39;output&#39; section. Need to update certain pairs (log_file, spikes_file, etc) to</span>
@@ -1063,6 +1096,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="k">if</span> <span class="s1">&#39;node_sets&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">conf</span> <span class="ow">and</span> <span class="s1">&#39;node_sets_file&#39;</span> <span class="ow">in</span> <span class="n">conf</span><span class="p">:</span>
             <span class="c1"># Load in node_sets_file json if a reference to it exists</span>
             <span class="n">conf</span><span class="p">[</span><span class="s1">&#39;node_sets&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">conf</span><span class="p">[</span><span class="s1">&#39;node_sets_file&#39;</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">))</span></div>
+
 </pre></div>
 
             <div class="clearer"></div>
@@ -1117,7 +1151,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../../search.html" method="get">
@@ -1125,8 +1159,8 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>

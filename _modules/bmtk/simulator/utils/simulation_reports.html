@@ -1,16 +1,15 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bmtk.simulator.utils.simulation_reports &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/aibs_sphinx.css" />
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/sphinx_highlight.js"></script>
+    <title>bmtk.simulator.utils.simulation_reports &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="../../../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
@@ -621,7 +620,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <span></span><span class="kn">import</span> <span class="nn">os</span>
 
 
-<div class="viewcode-block" id="SimReport"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SimReport">[docs]</a><span class="k">class</span> <span class="nc">SimReport</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="SimReport">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SimReport">[docs]</a>
+<span class="k">class</span> <span class="nc">SimReport</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Used for parsing reports section from a SONATA configuration file. It will take care of implicit and default</span>
 <span class="sd">    values.</span>
 
@@ -666,12 +667,17 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Should be overwritten by subclass with list of (var_name, default_val) tuples.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[]</span>
 
-<div class="viewcode-block" id="SimReport.avail_modules"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SimReport.avail_modules">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="SimReport.avail_modules">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SimReport.avail_modules">[docs]</a>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">avail_modules</span><span class="p">():</span>
         <span class="c1"># Return a string (or list of strings) to identify module name for each subclass</span>
         <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
 
-<div class="viewcode-block" id="SimReport.build"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SimReport.build">[docs]</a>    <span class="nd">@classmethod</span>
+
+<div class="viewcode-block" id="SimReport.build">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SimReport.build">[docs]</a>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">report_name</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Factory method to get the module subclass, using the params (particularlly the &#39;module&#39; value, which is</span>
 <span class="sd">        required). If there is no registered subclass a generic SimReport object will be returned</span>
@@ -689,7 +695,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="n">module_cls</span> <span class="o">=</span> <span class="n">SimReport</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">module_name</span><span class="p">,</span> <span class="n">SimReport</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">module_cls</span><span class="p">(</span><span class="n">report_name</span><span class="p">,</span> <span class="n">module_name</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="SimReport.register_module"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SimReport.register_module">[docs]</a>    <span class="nd">@classmethod</span>
+
+<div class="viewcode-block" id="SimReport.register_module">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SimReport.register_module">[docs]</a>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">register_module</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">subclass</span><span class="p">):</span>
         <span class="c1"># For factory, register subclass based on the module name(s)</span>
         <span class="k">assert</span><span class="p">(</span><span class="nb">issubclass</span><span class="p">(</span><span class="n">subclass</span><span class="p">,</span> <span class="bp">cls</span><span class="p">))</span>
@@ -701,10 +710,14 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
                 <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Multiple modules named </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mod_name</span><span class="p">))</span>
             <span class="n">mod_registry</span><span class="p">[</span><span class="n">mod_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">subclass</span>
 
-        <span class="k">return</span> <span class="n">subclass</span></div></div>
+        <span class="k">return</span> <span class="n">subclass</span></div>
+</div>
 
 
-<div class="viewcode-block" id="MembraneReport"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.MembraneReport">[docs]</a><span class="nd">@SimReport</span><span class="o">.</span><span class="n">register_module</span>
+
+<div class="viewcode-block" id="MembraneReport">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.MembraneReport">[docs]</a>
+<span class="nd">@SimReport</span><span class="o">.</span><span class="n">register_module</span>
 <span class="k">class</span> <span class="nc">MembraneReport</span><span class="p">(</span><span class="n">SimReport</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report_name</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MembraneReport</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">report_name</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
@@ -737,21 +750,32 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="k">return</span> <span class="p">[(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="s1">&#39;biophysical&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;sections&#39;</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;tmp_dir&#39;</span><span class="p">,</span> <span class="n">tmp_dir</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;file_name&#39;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span>
                 <span class="p">(</span><span class="s1">&#39;buffer&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;transform&#39;</span><span class="p">,</span> <span class="p">{})]</span>
 
-<div class="viewcode-block" id="MembraneReport.add_variables"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.MembraneReport.add_variables">[docs]</a>    <span class="k">def</span> <span class="nf">add_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_name</span><span class="p">,</span> <span class="n">transform</span><span class="p">):</span>
+<div class="viewcode-block" id="MembraneReport.add_variables">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.MembraneReport.add_variables">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var_name</span><span class="p">,</span> <span class="n">transform</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;variable_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">var_name</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;transform&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">transform</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MembraneReport.can_combine"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.MembraneReport.can_combine">[docs]</a>    <span class="k">def</span> <span class="nf">can_combine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+
+<div class="viewcode-block" id="MembraneReport.can_combine">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.MembraneReport.can_combine">[docs]</a>
+    <span class="k">def</span> <span class="nf">can_combine</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">def</span> <span class="nf">param_eq</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">param_eq</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">param_eq</span><span class="p">(</span><span class="s1">&#39;sections&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">param_eq</span><span class="p">(</span><span class="s1">&#39;file_name&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">param_eq</span><span class="p">(</span><span class="s1">&#39;buffer&#39;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MembraneReport.avail_modules"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.MembraneReport.avail_modules">[docs]</a>    <span class="nd">@staticmethod</span>
+
+<div class="viewcode-block" id="MembraneReport.avail_modules">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.MembraneReport.avail_modules">[docs]</a>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">avail_modules</span><span class="p">():</span>
         <span class="k">return</span> <span class="s1">&#39;membrane_report&#39;</span></div>
 
-<div class="viewcode-block" id="MembraneReport.build"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.MembraneReport.build">[docs]</a>    <span class="nd">@classmethod</span>
+
+<div class="viewcode-block" id="MembraneReport.build">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.MembraneReport.build">[docs]</a>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
         <span class="n">report</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="n">report</span><span class="o">.</span><span class="n">cells</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;cells&#39;</span><span class="p">,</span> <span class="s1">&#39;biophysical&#39;</span><span class="p">)</span>
@@ -770,23 +794,35 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="k">else</span><span class="p">:</span>
             <span class="n">report</span><span class="o">.</span><span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="n">variables</span><span class="p">]</span>
 
-        <span class="k">return</span> <span class="n">report</span></div></div>
+        <span class="k">return</span> <span class="n">report</span></div>
+</div>
 
 
-<div class="viewcode-block" id="SpikesReport"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SpikesReport">[docs]</a><span class="nd">@SimReport</span><span class="o">.</span><span class="n">register_module</span>
+
+<div class="viewcode-block" id="SpikesReport">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SpikesReport">[docs]</a>
+<span class="nd">@SimReport</span><span class="o">.</span><span class="n">register_module</span>
 <span class="k">class</span> <span class="nc">SpikesReport</span><span class="p">(</span><span class="n">SimReport</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report_name</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SpikesReport</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">report_name</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
-<div class="viewcode-block" id="SpikesReport.build"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SpikesReport.build">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="SpikesReport.build">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SpikesReport.build">[docs]</a>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
         <span class="k">return</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="SpikesReport.avail_modules"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SpikesReport.avail_modules">[docs]</a>    <span class="nd">@staticmethod</span>
+
+<div class="viewcode-block" id="SpikesReport.avail_modules">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SpikesReport.avail_modules">[docs]</a>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">avail_modules</span><span class="p">():</span>
         <span class="k">return</span> <span class="s1">&#39;spikes_report&#39;</span></div>
 
-<div class="viewcode-block" id="SpikesReport.from_output_dict"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SpikesReport.from_output_dict">[docs]</a>    <span class="nd">@classmethod</span>
+
+<div class="viewcode-block" id="SpikesReport.from_output_dict">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SpikesReport.from_output_dict">[docs]</a>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_output_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">output_dict</span><span class="p">):</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s1">&#39;spikes_file&#39;</span><span class="p">:</span> <span class="n">output_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;spikes_file&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
@@ -802,17 +838,24 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
             <span class="c1"># User hasn&#39;t specified any spikes file</span>
             <span class="n">params</span><span class="p">[</span><span class="s1">&#39;enabled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
 
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;spikes_report&#39;</span><span class="p">,</span> <span class="s1">&#39;spikes_report&#39;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="s1">&#39;spikes_report&#39;</span><span class="p">,</span> <span class="s1">&#39;spikes_report&#39;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span></div>
+</div>
 
 
-<div class="viewcode-block" id="ClampReport"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.ClampReport">[docs]</a><span class="nd">@SimReport</span><span class="o">.</span><span class="n">register_module</span>
+
+<div class="viewcode-block" id="ClampReport">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.ClampReport">[docs]</a>
+<span class="nd">@SimReport</span><span class="o">.</span><span class="n">register_module</span>
 <span class="k">class</span> <span class="nc">ClampReport</span><span class="p">(</span><span class="n">SimReport</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report_name</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ClampReport</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">report_name</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
-<div class="viewcode-block" id="ClampReport.avail_modules"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.ClampReport.avail_modules">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="ClampReport.avail_modules">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.ClampReport.avail_modules">[docs]</a>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">avail_modules</span><span class="p">():</span>
         <span class="k">return</span> <span class="s1">&#39;clamp_report&#39;</span></div>
+
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">node_set</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -839,17 +882,26 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="k">return</span> <span class="p">[(</span><span class="s1">&#39;file_name&#39;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;tmp_dir&#39;</span><span class="p">,</span> <span class="n">tmp_dir</span><span class="p">)]</span></div>
 
 
-<div class="viewcode-block" id="SEClampReport"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SEClampReport">[docs]</a><span class="nd">@SimReport</span><span class="o">.</span><span class="n">register_module</span>
+
+<div class="viewcode-block" id="SEClampReport">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SEClampReport">[docs]</a>
+<span class="nd">@SimReport</span><span class="o">.</span><span class="n">register_module</span>
 <span class="k">class</span> <span class="nc">SEClampReport</span><span class="p">(</span><span class="n">SimReport</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report_name</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SEClampReport</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">report_name</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
-<div class="viewcode-block" id="SEClampReport.avail_modules"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SEClampReport.avail_modules">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="SEClampReport.avail_modules">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SEClampReport.avail_modules">[docs]</a>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">avail_modules</span><span class="p">():</span>
-        <span class="k">return</span> <span class="s1">&#39;SEClamp&#39;</span></div></div>
+        <span class="k">return</span> <span class="s1">&#39;SEClamp&#39;</span></div>
+</div>
 
 
-<div class="viewcode-block" id="ECPReport"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.ECPReport">[docs]</a><span class="nd">@SimReport</span><span class="o">.</span><span class="n">register_module</span>
+
+<div class="viewcode-block" id="ECPReport">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.ECPReport">[docs]</a>
+<span class="nd">@SimReport</span><span class="o">.</span><span class="n">register_module</span>
 <span class="k">class</span> <span class="nc">ECPReport</span><span class="p">(</span><span class="n">SimReport</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report_name</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ECPReport</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">report_name</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
@@ -857,9 +909,12 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="bp">self</span><span class="o">.</span><span class="n">positions_file</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">file_name</span> <span class="o">=</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="ECPReport.avail_modules"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.ECPReport.avail_modules">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="ECPReport.avail_modules">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.ECPReport.avail_modules">[docs]</a>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">avail_modules</span><span class="p">():</span>
         <span class="k">return</span> <span class="s1">&#39;extracellular&#39;</span></div>
+
 
     <span class="k">def</span> <span class="nf">_get_defaults</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="s1">&#39;file_name&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">:</span>
@@ -872,7 +927,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 
         <span class="k">return</span> <span class="p">[(</span><span class="s1">&#39;tmp_dir&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_dir</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;file_name&#39;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)]</span>
 
-<div class="viewcode-block" id="ECPReport.build"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.ECPReport.build">[docs]</a>    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="ECPReport.build">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.ECPReport.build">[docs]</a>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
         <span class="n">report</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 
@@ -885,35 +942,82 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 
         <span class="n">report</span><span class="o">.</span><span class="n">contributions_dir</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;contributions_dir&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="n">report</span><span class="o">.</span><span class="n">positions_file</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;electrode_positions&#39;</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">report</span></div></div>
+        <span class="k">return</span> <span class="n">report</span></div>
+</div>
 
 
-<div class="viewcode-block" id="SaveSynapses"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SaveSynapses">[docs]</a><span class="nd">@SimReport</span><span class="o">.</span><span class="n">register_module</span>
+
+<div class="viewcode-block" id="SaveSynapses">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SaveSynapses">[docs]</a>
+<span class="nd">@SimReport</span><span class="o">.</span><span class="n">register_module</span>
 <span class="k">class</span> <span class="nc">SaveSynapses</span><span class="p">(</span><span class="n">SimReport</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">report_name</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SaveSynapses</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">report_name</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 
-<div class="viewcode-block" id="SaveSynapses.avail_modules"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SaveSynapses.avail_modules">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="SaveSynapses.avail_modules">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SaveSynapses.avail_modules">[docs]</a>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">avail_modules</span><span class="p">():</span>
-        <span class="k">return</span> <span class="s1">&#39;SaveSynapses&#39;</span></div></div>
+        <span class="k">return</span> <span class="s1">&#39;SaveSynapses&#39;</span></div>
+</div>
 
 
-<div class="viewcode-block" id="MultimeterReport"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.MultimeterReport">[docs]</a><span class="nd">@SimReport</span><span class="o">.</span><span class="n">register_module</span>
+
+<div class="viewcode-block" id="MultimeterReport">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.MultimeterReport">[docs]</a>
+<span class="nd">@SimReport</span><span class="o">.</span><span class="n">register_module</span>
 <span class="k">class</span> <span class="nc">MultimeterReport</span><span class="p">(</span><span class="n">MembraneReport</span><span class="p">):</span>
-
-<div class="viewcode-block" id="MultimeterReport.avail_modules"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.MultimeterReport.avail_modules">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="MultimeterReport.avail_modules">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.MultimeterReport.avail_modules">[docs]</a>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">avail_modules</span><span class="p">():</span>
-        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;multimeter&#39;</span><span class="p">,</span> <span class="s1">&#39;multimeter_report&#39;</span><span class="p">]</span></div></div>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;multimeter&#39;</span><span class="p">,</span> <span class="s1">&#39;multimeter_report&#39;</span><span class="p">]</span></div>
+</div>
 
 
-<div class="viewcode-block" id="NetconReport"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.NetconReport">[docs]</a><span class="nd">@SimReport</span><span class="o">.</span><span class="n">register_module</span>
+
+<div class="viewcode-block" id="NetconReport">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.NetconReport">[docs]</a>
+<span class="nd">@SimReport</span><span class="o">.</span><span class="n">register_module</span>
 <span class="k">class</span> <span class="nc">NetconReport</span><span class="p">(</span><span class="n">MembraneReport</span><span class="p">):</span>
-<div class="viewcode-block" id="NetconReport.avail_modules"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.NetconReport.avail_modules">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="NetconReport.avail_modules">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.NetconReport.avail_modules">[docs]</a>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">avail_modules</span><span class="p">():</span>
-        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;netcon_report&#39;</span><span class="p">]</span></div></div>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;netcon_report&#39;</span><span class="p">]</span></div>
+</div>
 
 
-<div class="viewcode-block" id="from_config"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.from_config">[docs]</a><span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="n">cfg</span><span class="p">):</span>
+
+<div class="viewcode-block" id="WeightRecorder">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.WeightRecorder">[docs]</a>
+<span class="nd">@SimReport</span><span class="o">.</span><span class="n">register_module</span>
+<span class="k">class</span> <span class="nc">WeightRecorder</span><span class="p">(</span><span class="n">SimReport</span><span class="p">):</span>
+<div class="viewcode-block" id="WeightRecorder.avail_modules">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.WeightRecorder.avail_modules">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">avail_modules</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s1">&#39;weight_recorder&#39;</span></div>
+
+   
+    <span class="k">def</span> <span class="nf">_get_defaults</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">output_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;output_dir&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_dir</span><span class="p">)</span>
+
+        <span class="n">file_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;file_name&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">file_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.csv&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">report_name</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
+            <span class="n">file_name</span> <span class="o">=</span> <span class="n">file_name</span>           
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">[(</span><span class="s1">&#39;file_name&#39;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;output_dir&#39;</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;clean_temp_file&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)]</span></div>
+
+
+
+<div class="viewcode-block" id="from_config">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.from_config">[docs]</a>
+<span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="n">cfg</span><span class="p">):</span>
     <span class="n">SimReport</span><span class="o">.</span><span class="n">default_dir</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">output_dir</span>
 
     <span class="n">reports_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -954,6 +1058,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
             <span class="n">reports_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">reports_list</span></div>
+
 </pre></div>
 
             <div class="clearer"></div>
@@ -1008,7 +1113,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../search.html" method="get">
@@ -1016,7 +1121,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

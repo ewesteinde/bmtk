@@ -1,16 +1,15 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bmtk.simulator.filternet.lgnmodel.cursor &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/aibs_sphinx.css" />
-    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../_static/doctools.js"></script>
-    <script src="../../../../../_static/sphinx_highlight.js"></script>
+    <title>bmtk.simulator.filternet.lgnmodel.cursor &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="../../../../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" /> 
@@ -621,10 +620,50 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.signal</span> <span class="k">as</span> <span class="nn">spsig</span>
 
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">mpi4py</span> <span class="kn">import</span> <span class="n">MPI</span>
+    <span class="n">mpi_size</span> <span class="o">=</span> <span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="o">.</span><span class="n">Get_size</span><span class="p">()</span>
+    <span class="n">numba_parallel</span> <span class="o">=</span> <span class="n">mpi_size</span> <span class="o">==</span> <span class="mi">1</span>  <span class="c1"># if there is only 1 thread, turn on numba parallel</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">numba_parallel</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># If there is no MPI, turn on numba parallel</span>
+
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span><span class="p">,</span> <span class="n">prange</span>
+
+    <span class="c1"># a faster version of the commented out part of the above class method. Results agree up to a round off error.</span>
+    <span class="nd">@njit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="n">numba_parallel</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">kernel_dot_product</span><span class="p">(</span><span class="n">movie_data</span><span class="p">,</span> <span class="n">ti_offset</span><span class="p">,</span> <span class="n">kernel_t_inds</span><span class="p">,</span> <span class="n">kernel_row_inds</span><span class="p">,</span> <span class="n">kernel_col_inds</span><span class="p">,</span> <span class="n">kernel_kernel</span><span class="p">):</span>
+        <span class="n">t_inds</span> <span class="o">=</span> <span class="n">kernel_t_inds</span> <span class="o">+</span> <span class="n">ti_offset</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">prange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_inds</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">t_inds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">t_inds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">movie_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">+</span> <span class="n">movie_data</span><span class="p">[</span><span class="n">t_inds</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">kernel_row_inds</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">kernel_col_inds</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">*</span> <span class="n">kernel_kernel</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">result</span>
+<span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">ie</span><span class="p">:</span>
+    
+    <span class="c1"># Normal way to calculate dot-product not using numba library. Also had to create because for some reason numba</span>
+    <span class="c1"># is interfering with NEST (at-least ver 3.3) binary causing a segmentation fault.</span>
+<div class="viewcode-block" id="kernel_dot_product">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.kernel_dot_product">[docs]</a>
+    <span class="k">def</span> <span class="nf">kernel_dot_product</span><span class="p">(</span><span class="n">movie_data</span><span class="p">,</span> <span class="n">ti_offset</span><span class="p">,</span> <span class="n">kernel_t_inds</span><span class="p">,</span> <span class="n">kernel_row_inds</span><span class="p">,</span> <span class="n">kernel_col_inds</span><span class="p">,</span> <span class="n">kernel_kernel</span><span class="p">):</span>
+        <span class="n">t_inds</span> <span class="o">=</span> <span class="n">kernel_t_inds</span> <span class="o">+</span> <span class="n">ti_offset</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># Offset by one nhc 14 Apr &#39;17</span>
+        <span class="n">min_ind</span><span class="p">,</span> <span class="n">max_ind</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">movie_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">allowed_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">min_ind</span> <span class="o">&lt;=</span> <span class="n">t_inds</span><span class="p">,</span> <span class="n">t_inds</span> <span class="o">&lt;</span> <span class="n">max_ind</span><span class="p">))</span>
+        <span class="n">t_inds</span> <span class="o">=</span> <span class="n">t_inds</span><span class="p">[</span><span class="n">allowed_inds</span><span class="p">]</span>
+        <span class="n">row_inds</span> <span class="o">=</span> <span class="n">kernel_row_inds</span><span class="p">[</span><span class="n">allowed_inds</span><span class="p">]</span>
+        <span class="n">col_inds</span> <span class="o">=</span> <span class="n">kernel_col_inds</span><span class="p">[</span><span class="n">allowed_inds</span><span class="p">]</span>
+        <span class="n">kernel_vector</span> <span class="o">=</span> <span class="n">kernel_kernel</span><span class="p">[</span><span class="n">allowed_inds</span><span class="p">]</span> 
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">movie_data</span><span class="p">[</span><span class="n">t_inds</span><span class="p">,</span> <span class="n">row_inds</span><span class="p">,</span> <span class="n">col_inds</span><span class="p">],</span> <span class="n">kernel_vector</span><span class="p">)</span></div>
+
+
+
 <span class="kn">from</span> <span class="nn">.utilities</span> <span class="kn">import</span> <span class="n">convert_tmin_tmax_framerate_to_trange</span>
+<span class="kn">from</span> <span class="nn">.linearfilter</span> <span class="kn">import</span> <span class="n">SpatioTemporalFilter</span><span class="p">,</span> <span class="n">SpectroTemporalFilter</span>
 
-
-<div class="viewcode-block" id="KernelCursor"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.KernelCursor">[docs]</a><span class="k">class</span> <span class="nc">KernelCursor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="KernelCursor">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.KernelCursor">[docs]</a>
+<span class="k">class</span> <span class="nc">KernelCursor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A class that takes care of the convolution of the (non-separable) spatial-temporal linear filter with the move.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">movie</span><span class="p">):</span>
@@ -652,7 +691,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     <span class="k">def</span> <span class="nf">frame_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">movie</span><span class="o">.</span><span class="n">frame_rate</span>
     
-<div class="viewcode-block" id="KernelCursor.evaluate"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.KernelCursor.evaluate">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">t_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">downsample</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="KernelCursor.evaluate">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.KernelCursor.evaluate">[docs]</a>
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_min</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">t_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">downsample</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">t_max</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">t_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_range</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
             
@@ -663,6 +704,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="n">y_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_range</span><span class="p">])</span>
 
         <span class="k">return</span> <span class="n">t_range</span><span class="p">,</span> <span class="n">y_vals</span>  </div>
+
     
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
         <span class="c1"># TODO: Using call is not a good idea here, change to evaluate</span>
@@ -690,25 +732,30 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         
         <span class="k">return</span> <span class="n">curr_rate</span>
 
-<div class="viewcode-block" id="KernelCursor.apply_dot_product"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.KernelCursor.apply_dot_product">[docs]</a>    <span class="k">def</span> <span class="nf">apply_dot_product</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ti_offset</span><span class="p">):</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="c1"># TODO: This needs to be altered asap</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">ti_offset</span><span class="p">]</span>
-        
-        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-            <span class="n">t_inds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">t_inds</span> <span class="o">+</span> <span class="n">ti_offset</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># Offset by one nhc 14 Apr &#39;17</span>
-            <span class="n">min_ind</span><span class="p">,</span> <span class="n">max_ind</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">movie</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">allowed_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">min_ind</span> <span class="o">&lt;=</span> <span class="n">t_inds</span><span class="p">,</span> <span class="n">t_inds</span> <span class="o">&lt;</span> <span class="n">max_ind</span><span class="p">))</span>
-            <span class="n">t_inds</span> <span class="o">=</span> <span class="n">t_inds</span><span class="p">[</span><span class="n">allowed_inds</span><span class="p">]</span>
-            <span class="n">row_inds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">row_inds</span><span class="p">[</span><span class="n">allowed_inds</span><span class="p">]</span>
-            <span class="n">col_inds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">col_inds</span><span class="p">[</span><span class="n">allowed_inds</span><span class="p">]</span>
-            <span class="n">kernel_vector</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">kernel</span><span class="p">[</span><span class="n">allowed_inds</span><span class="p">]</span> 
-            <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">movie</span><span class="p">[</span><span class="n">t_inds</span><span class="p">,</span> <span class="n">row_inds</span><span class="p">,</span> <span class="n">col_inds</span><span class="p">],</span> <span class="n">kernel_vector</span><span class="p">)</span>
+<div class="viewcode-block" id="KernelCursor.apply_dot_product">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.KernelCursor.apply_dot_product">[docs]</a>
+    <span class="k">def</span> <span class="nf">apply_dot_product</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ti_offset</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ti_offset</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">ti_offset</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">kernel_dot_product</span><span class="p">(</span>
+                <span class="n">movie_data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">movie</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+                <span class="n">ti_offset</span><span class="o">=</span><span class="n">ti_offset</span><span class="p">,</span>
+                <span class="n">kernel_t_inds</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">t_inds</span><span class="p">,</span>
+                <span class="n">kernel_row_inds</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">row_inds</span><span class="p">,</span>
+                <span class="n">kernel_col_inds</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">col_inds</span><span class="p">,</span>
+                <span class="n">kernel_kernel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">kernel</span><span class="o">.</span><span class="n">kernel</span><span class="p">,</span>
+            <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">ti_offset</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span>
-            <span class="k">return</span> <span class="n">result</span></div></div>
+
+        <span class="k">return</span> <span class="n">result</span></div>
+</div>
 
 
-<div class="viewcode-block" id="FilterCursor"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.FilterCursor">[docs]</a><span class="k">class</span> <span class="nc">FilterCursor</span><span class="p">(</span><span class="n">KernelCursor</span><span class="p">):</span>
+
+<div class="viewcode-block" id="FilterCursor">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.FilterCursor">[docs]</a>
+<span class="k">class</span> <span class="nc">FilterCursor</span><span class="p">(</span><span class="n">KernelCursor</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spatiotemporal_filter</span><span class="p">,</span> <span class="n">movie</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="c1"># TODO: not sure why this needs to have it&#39;s own class and shouldn&#39;t be merged into parent?</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">spatiotemporal_filter</span> <span class="o">=</span> <span class="n">spatiotemporal_filter</span>
@@ -719,15 +766,52 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="nb">super</span><span class="p">(</span><span class="n">FilterCursor</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span> <span class="n">movie</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="LNUnitCursor"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.LNUnitCursor">[docs]</a><span class="k">class</span> <span class="nc">LNUnitCursor</span><span class="p">(</span><span class="n">KernelCursor</span><span class="p">):</span>
+
+<div class="viewcode-block" id="LNUnitCursor">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.LNUnitCursor">[docs]</a>
+<span class="k">class</span> <span class="nc">LNUnitCursor</span><span class="p">(</span><span class="n">KernelCursor</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A class that takes care of applying a linear-nonlinear filter to a movie. Parent class is used to apply the</span>
 <span class="sd">    spatial-termporal filter convolution to the movie, when then the lnunit non-linear transfer function is applied.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lnunit</span><span class="p">,</span> <span class="n">movie</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lnunit</span> <span class="o">=</span> <span class="n">lnunit</span>
-        <span class="n">kernel</span> <span class="o">=</span> <span class="n">lnunit</span><span class="o">.</span><span class="n">get_spatiotemporal_kernel</span><span class="p">(</span><span class="n">movie</span><span class="o">.</span><span class="n">row_range</span><span class="p">,</span> <span class="n">movie</span><span class="o">.</span><span class="n">col_range</span><span class="p">,</span> <span class="n">movie</span><span class="o">.</span><span class="n">t_range</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">movie</span><span class="p">,</span> <span class="s2">&quot;t_range_orig&quot;</span><span class="p">):</span>    <span class="c1"># Reset padded to original</span>
+            <span class="n">movie</span><span class="o">.</span><span class="n">t_range</span> <span class="o">=</span> <span class="n">movie</span><span class="o">.</span><span class="n">t_range_orig</span>
+            <span class="n">movie</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">movie</span><span class="o">.</span><span class="n">data_orig</span>
+            <span class="n">movie</span><span class="o">.</span><span class="n">row_range</span> <span class="o">=</span> <span class="n">movie</span><span class="o">.</span><span class="n">row_range_orig</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lnunit</span><span class="o">.</span><span class="n">linear_filter</span><span class="p">,</span> <span class="n">SpatioTemporalFilter</span><span class="p">):</span>
+            <span class="n">kernel</span> <span class="o">=</span> <span class="n">lnunit</span><span class="o">.</span><span class="n">get_spatiotemporal_kernel</span><span class="p">(</span><span class="n">movie</span><span class="o">.</span><span class="n">row_range</span><span class="p">,</span> <span class="n">movie</span><span class="o">.</span><span class="n">col_range</span><span class="p">,</span> <span class="n">movie</span><span class="o">.</span><span class="n">t_range</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                                                   <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lnunit</span><span class="o">.</span><span class="n">linear_filter</span><span class="p">,</span> <span class="n">SpectroTemporalFilter</span><span class="p">):</span>
+            <span class="n">kernel</span> <span class="o">=</span> <span class="n">lnunit</span><span class="o">.</span><span class="n">get_spectrotemporal_kernel</span><span class="p">(</span><span class="n">movie</span><span class="o">.</span><span class="n">row_range</span><span class="p">,</span> <span class="n">movie</span><span class="o">.</span><span class="n">t_range</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">movie</span><span class="o">.</span><span class="n">padding</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">movie</span><span class="o">.</span><span class="n">padding</span> <span class="o">==</span> <span class="s1">&#39;edge&#39;</span><span class="p">:</span>
+                    <span class="n">pre_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">t_inds</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">movie</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                                  <span class="n">movie</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">])</span>
+                    <span class="n">pre_pad</span> <span class="o">=</span> <span class="n">pre_pad</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+                    <span class="n">movie</span><span class="o">.</span><span class="n">data_orig</span> <span class="o">=</span> <span class="n">movie</span><span class="o">.</span><span class="n">data</span>
+                    <span class="n">movie</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">pre_pad</span><span class="p">,</span> <span class="n">movie</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+                    <span class="n">lower_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">movie</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">row_inds</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                                        <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">movie</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+                    <span class="n">upper_pad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">movie</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">row_inds</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+                                        <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">movie</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+                    <span class="n">movie</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">lower_pad</span><span class="p">,</span> <span class="n">movie</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">upper_pad</span><span class="p">))</span>
+                    <span class="n">kernel</span><span class="o">.</span><span class="n">t_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">t_range</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">pre_pad</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1</span><span class="o">/</span><span class="n">movie</span><span class="o">.</span><span class="n">frame_rate</span><span class="p">,</span>
+                                                 <span class="mi">0</span><span class="p">,</span> <span class="n">movie</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="n">movie</span><span class="o">.</span><span class="n">t_range_orig</span> <span class="o">=</span> <span class="n">movie</span><span class="o">.</span><span class="n">t_range</span>
+                    <span class="n">movie</span><span class="o">.</span><span class="n">t_range</span> <span class="o">=</span> <span class="n">kernel</span><span class="o">.</span><span class="n">t_range</span> <span class="o">-</span> <span class="n">kernel</span><span class="o">.</span><span class="n">t_range</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="c1"># Treating it like an image, although technically strange to pad to negative frequencies</span>
+                    <span class="n">kernel</span><span class="o">.</span><span class="n">row_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">row_range</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span>
+                                                   <span class="n">lower_pad</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">row_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">kernel</span><span class="o">.</span><span class="n">row_range</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                                                   <span class="n">kernel</span><span class="o">.</span><span class="n">row_range</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span>
+                                                   <span class="n">upper_pad</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">row_range</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">kernel</span><span class="o">.</span><span class="n">row_range</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]),</span>
+                                                   <span class="n">movie</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                    <span class="n">movie</span><span class="o">.</span><span class="n">row_range_orig</span> <span class="o">=</span> <span class="n">movie</span><span class="o">.</span><span class="n">row_range</span>
+                    <span class="n">movie</span><span class="o">.</span><span class="n">row_range</span> <span class="o">=</span> <span class="n">kernel</span><span class="o">.</span><span class="n">row_range</span>
+                    <span class="n">kernel</span><span class="o">.</span><span class="n">row_inds</span> <span class="o">=</span> <span class="n">kernel</span><span class="o">.</span><span class="n">row_inds</span> <span class="o">+</span> <span class="n">lower_pad</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">pass</span>
         <span class="n">kernel</span><span class="o">.</span><span class="n">apply_threshold</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span>
              
         <span class="nb">super</span><span class="p">(</span><span class="n">LNUnitCursor</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span> <span class="n">movie</span><span class="p">)</span>
@@ -737,20 +821,29 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lnunit</span><span class="o">.</span><span class="n">transfer_function</span><span class="p">(</span><span class="nb">super</span><span class="p">(</span><span class="n">LNUnitCursor</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="n">t</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="MultiLNUnitCursor"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.MultiLNUnitCursor">[docs]</a><span class="k">class</span> <span class="nc">MultiLNUnitCursor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+<div class="viewcode-block" id="MultiLNUnitCursor">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.MultiLNUnitCursor">[docs]</a>
+<span class="k">class</span> <span class="nc">MultiLNUnitCursor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multi_lnunit</span><span class="p">,</span> <span class="n">movie</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">multi_lnunit</span> <span class="o">=</span> <span class="n">multi_lnunit</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lnunit_cursor_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">LNUnitCursor</span><span class="p">(</span><span class="n">lnunit</span><span class="p">,</span> <span class="n">movie</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">)</span>
                                    <span class="k">for</span> <span class="n">lnunit</span> <span class="ow">in</span> <span class="n">multi_lnunit</span><span class="o">.</span><span class="n">lnunit_list</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">movie</span> <span class="o">=</span> <span class="n">movie</span>
         
-<div class="viewcode-block" id="MultiLNUnitCursor.evaluate"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.MultiLNUnitCursor.evaluate">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="MultiLNUnitCursor.evaluate">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.MultiLNUnitCursor.evaluate">[docs]</a>
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">multi_e</span> <span class="o">=</span> <span class="p">[</span><span class="n">unit_cursor</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">for</span> <span class="n">unit_cursor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">lnunit_cursor_list</span><span class="p">]</span>
         <span class="n">t_list</span><span class="p">,</span> <span class="n">y_list</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">multi_e</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">t_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">multi_lnunit</span><span class="o">.</span><span class="n">transfer_function</span><span class="p">(</span><span class="o">*</span><span class="n">y_list</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">t_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">multi_lnunit</span><span class="o">.</span><span class="n">transfer_function</span><span class="p">(</span><span class="o">*</span><span class="n">y_list</span><span class="p">)</span></div>
+</div>
 
 
-<div class="viewcode-block" id="MultiLNUnitMultiMovieCursor"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.MultiLNUnitMultiMovieCursor">[docs]</a><span class="k">class</span> <span class="nc">MultiLNUnitMultiMovieCursor</span><span class="p">(</span><span class="n">MultiLNUnitCursor</span><span class="p">):</span>
+
+<div class="viewcode-block" id="MultiLNUnitMultiMovieCursor">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.MultiLNUnitMultiMovieCursor">[docs]</a>
+<span class="k">class</span> <span class="nc">MultiLNUnitMultiMovieCursor</span><span class="p">(</span><span class="n">MultiLNUnitCursor</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multi_lnunit</span><span class="p">,</span> <span class="n">movie_list</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">multi_lnunit</span><span class="o">.</span><span class="n">lnunit_list</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">movie_list</span><span class="p">)</span>
         
@@ -760,7 +853,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
                                    <span class="n">lnunit</span><span class="p">,</span> <span class="n">movie</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">multi_lnunit</span><span class="o">.</span><span class="n">lnunit_list</span><span class="p">,</span> <span class="n">movie_list</span><span class="p">)]</span></div>
 
 
-<div class="viewcode-block" id="SeparableKernelCursor"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.SeparableKernelCursor">[docs]</a><span class="k">class</span> <span class="nc">SeparableKernelCursor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+<div class="viewcode-block" id="SeparableKernelCursor">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.SeparableKernelCursor">[docs]</a>
+<span class="k">class</span> <span class="nc">SeparableKernelCursor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A class for applying a spatial-temporal convolution to a movie. Unlike the KernelCursor the spatial-temporal</span>
 <span class="sd">    filter is broken up into its components, spatial filter is applied then followed by a temporal filter convolution.</span>
 
@@ -772,14 +868,19 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="bp">self</span><span class="o">.</span><span class="n">spatial_kernel</span> <span class="o">=</span> <span class="n">spatial_kernel</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">temporal_kernel</span> <span class="o">=</span> <span class="n">temporal_kernel</span>
 
-<div class="viewcode-block" id="SeparableKernelCursor.evaluate"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.SeparableKernelCursor.evaluate">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="SeparableKernelCursor.evaluate">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.SeparableKernelCursor.evaluate">[docs]</a>
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="n">full_spatial_kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">spatial_kernel</span><span class="o">.</span><span class="n">full</span><span class="p">()])</span>
         <span class="n">full_temporal_kernel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">temporal_kernel</span><span class="o">.</span><span class="n">full</span><span class="p">()</span>
 
         <span class="c1"># Convolve every frame in the movie with the spatial filter. First find the range of rows (range min and max)</span>
         <span class="c1">#  and columns in the filter that are above threshold, that way only portion of movie/filter are multiplied</span>
         <span class="c1"># together</span>
-        <span class="n">nonzero_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">full_spatial_kernel</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:])</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">)</span>
+        
+        <span class="c1"># Using &gt; instead of &gt;= makes the code faster if there are many zeros in the</span>
+        <span class="c1"># spatial kernel. This will not affect the results.</span>
+        <span class="n">nonzero_inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">full_spatial_kernel</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:])</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span>
         <span class="n">rm</span><span class="p">,</span> <span class="n">rM</span> <span class="o">=</span> <span class="n">nonzero_inds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">nonzero_inds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
         <span class="n">cm</span><span class="p">,</span> <span class="n">cM</span> <span class="o">=</span> <span class="n">nonzero_inds</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">nonzero_inds</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
         <span class="n">convolution_answer_sep_spatial</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">movie</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="n">rm</span><span class="p">:</span><span class="n">rM</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">cm</span><span class="p">:</span><span class="n">cM</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span>
@@ -791,10 +892,14 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="n">convolution_answer_sep</span> <span class="o">=</span> <span class="n">spsig</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">sig_tmp</span><span class="p">,</span> <span class="n">full_temporal_kernel</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">)</span>
         <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">convolution_answer_sep</span><span class="p">))</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">movie</span><span class="o">.</span><span class="n">frame_rate</span>
 
-        <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">convolution_answer_sep</span></div></div>
+        <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">convolution_answer_sep</span></div>
+</div>
 
 
-<div class="viewcode-block" id="SeparableSpatioTemporalFilterCursor"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.SeparableSpatioTemporalFilterCursor">[docs]</a><span class="k">class</span> <span class="nc">SeparableSpatioTemporalFilterCursor</span><span class="p">(</span><span class="n">SeparableKernelCursor</span><span class="p">):</span>
+
+<div class="viewcode-block" id="SeparableSpatioTemporalFilterCursor">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.SeparableSpatioTemporalFilterCursor">[docs]</a>
+<span class="k">class</span> <span class="nc">SeparableSpatioTemporalFilterCursor</span><span class="p">(</span><span class="n">SeparableKernelCursor</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spatiotemporal_filter</span><span class="p">,</span> <span class="n">movie</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">spatial_filter</span> <span class="o">=</span> <span class="n">spatiotemporal_filter</span><span class="o">.</span><span class="n">spatial_filter</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">temporal_filter</span> <span class="o">=</span> <span class="n">spatiotemporal_filter</span><span class="o">.</span><span class="n">temporal_filter</span>
@@ -806,32 +911,45 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="nb">super</span><span class="p">(</span><span class="n">SeparableSpatioTemporalFilterCursor</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">spatial_kernel</span><span class="p">,</span> <span class="n">temporal_kernel</span><span class="p">,</span> <span class="n">movie</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="SeparableLNUnitCursor"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.SeparableLNUnitCursor">[docs]</a><span class="k">class</span> <span class="nc">SeparableLNUnitCursor</span><span class="p">(</span><span class="n">SeparableSpatioTemporalFilterCursor</span><span class="p">):</span>
+
+<div class="viewcode-block" id="SeparableLNUnitCursor">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.SeparableLNUnitCursor">[docs]</a>
+<span class="k">class</span> <span class="nc">SeparableLNUnitCursor</span><span class="p">(</span><span class="n">SeparableSpatioTemporalFilterCursor</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lnunit</span><span class="p">,</span> <span class="n">movie</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lnunit</span> <span class="o">=</span> <span class="n">lnunit</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SeparableLNUnitCursor</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lnunit</span><span class="o">.</span><span class="n">linear_filter</span><span class="p">,</span> <span class="n">movie</span><span class="p">)</span>
 
-<div class="viewcode-block" id="SeparableLNUnitCursor.evaluate"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.SeparableLNUnitCursor.evaluate">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">downsample</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="SeparableLNUnitCursor.evaluate">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.SeparableLNUnitCursor.evaluate">[docs]</a>
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">downsample</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
         <span class="k">assert</span><span class="p">(</span><span class="n">downsample</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">SeparableLNUnitCursor</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">lnunit</span><span class="o">.</span><span class="n">transfer_function</span><span class="p">(</span><span class="n">yi</span><span class="p">)</span> <span class="k">for</span> <span class="n">yi</span> <span class="ow">in</span> <span class="n">y</span><span class="p">]</span></div></div>
+        <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">lnunit</span><span class="o">.</span><span class="n">transfer_function</span><span class="p">(</span><span class="n">yi</span><span class="p">)</span> <span class="k">for</span> <span class="n">yi</span> <span class="ow">in</span> <span class="n">y</span><span class="p">]</span></div>
+</div>
 
 
-<div class="viewcode-block" id="SeparableMultiLNUnitCursor"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.SeparableMultiLNUnitCursor">[docs]</a><span class="k">class</span> <span class="nc">SeparableMultiLNUnitCursor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+<div class="viewcode-block" id="SeparableMultiLNUnitCursor">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.SeparableMultiLNUnitCursor">[docs]</a>
+<span class="k">class</span> <span class="nc">SeparableMultiLNUnitCursor</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">multilnunit</span><span class="p">,</span> <span class="n">movie</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">multilnunit</span> <span class="o">=</span> <span class="n">multilnunit</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lnunit_cursor_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">lnunit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">multilnunit</span><span class="o">.</span><span class="n">lnunit_list</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">lnunit_cursor_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SeparableLNUnitCursor</span><span class="p">(</span><span class="n">lnunit</span><span class="p">,</span> <span class="n">movie</span><span class="p">))</span>
 
-<div class="viewcode-block" id="SeparableMultiLNUnitCursor.evaluate"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.SeparableMultiLNUnitCursor.evaluate">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="SeparableMultiLNUnitCursor.evaluate">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.cursor.SeparableMultiLNUnitCursor.evaluate">[docs]</a>
+    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">assert</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;downsample&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">y_list</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">cursor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">lnunit_cursor_list</span><span class="p">:</span>
             <span class="n">t</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
             <span class="n">y_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">multilnunit</span><span class="o">.</span><span class="n">transfer_function</span><span class="p">(</span><span class="o">*</span><span class="n">y_list</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">multilnunit</span><span class="o">.</span><span class="n">transfer_function</span><span class="p">(</span><span class="o">*</span><span class="n">y_list</span><span class="p">)</span></div>
+</div>
+
 </pre></div>
 
             <div class="clearer"></div>
@@ -886,7 +1004,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../../search.html" method="get">
@@ -894,7 +1012,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

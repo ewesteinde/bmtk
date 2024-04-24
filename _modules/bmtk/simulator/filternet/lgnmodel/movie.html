@@ -1,16 +1,15 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bmtk.simulator.filternet.lgnmodel.movie &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/aibs_sphinx.css" />
-    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../_static/doctools.js"></script>
-    <script src="../../../../../_static/sphinx_highlight.js"></script>
+    <title>bmtk.simulator.filternet.lgnmodel.movie &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="../../../../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" /> 
@@ -624,12 +623,15 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <span class="kn">from</span> <span class="nn">bmtk.simulator.filternet.io_tools</span> <span class="kn">import</span> <span class="n">io</span>
 
 
-<div class="viewcode-block" id="Movie"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.Movie">[docs]</a><span class="k">class</span> <span class="nc">Movie</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Movie">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.Movie">[docs]</a>
+<span class="k">class</span> <span class="nc">Movie</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">row_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">col_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">),</span>
-                 <span class="n">units</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;second&#39;</span><span class="p">,</span> <span class="s1">&#39;pixel&#39;</span><span class="p">,</span> <span class="s1">&#39;pixel&#39;</span><span class="p">),</span> <span class="n">frame_rate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">t_range</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+                 <span class="n">units</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;second&#39;</span><span class="p">,</span> <span class="s1">&#39;pixel&#39;</span><span class="p">,</span> <span class="s1">&#39;pixel&#39;</span><span class="p">),</span> <span class="n">frame_rate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">t_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="n">units</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">padding</span><span class="o">=</span><span class="n">padding</span>
         <span class="k">assert</span><span class="p">(</span><span class="n">units</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;second&#39;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">t_range</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -652,7 +654,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     <span class="k">def</span> <span class="nf">ranges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">t_range</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">row_range</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">col_range</span>
 
-<div class="viewcode-block" id="Movie.imshow_summary"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.Movie.imshow_summary">[docs]</a>    <span class="k">def</span> <span class="nf">imshow_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Movie.imshow_summary">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.Movie.imshow_summary">[docs]</a>
+    <span class="k">def</span> <span class="nf">imshow_summary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
         <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -672,8 +676,11 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
             <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
             
         <span class="k">return</span> <span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">t_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">)</span></div>
+
     
-<div class="viewcode-block" id="Movie.imshow"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.Movie.imshow">[docs]</a>    <span class="k">def</span> <span class="nf">imshow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Movie.imshow">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.Movie.imshow">[docs]</a>
+    <span class="k">def</span> <span class="nf">imshow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
         <span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span> <span class="ow">or</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span>
@@ -684,7 +691,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Movie.play"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.Movie.play">[docs]</a>    <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">playback_speed</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">save_as</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+
+<div class="viewcode-block" id="Movie.play">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.Movie.play">[docs]</a>
+    <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">skip</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">playback_speed</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">save_as</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
              <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 
@@ -733,6 +743,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="k">if</span> <span class="n">show</span><span class="p">:</span>
             <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
 
+
     <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">labels</span>
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">units</span>
@@ -750,7 +761,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="fm">__getitem__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Movie.normalize_matrix"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.Movie.normalize_matrix">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Movie.normalize_matrix">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.Movie.normalize_matrix">[docs]</a>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">normalize_matrix</span><span class="p">(</span><span class="n">m_data</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Attempts to take a numpy matrix &quot;movie&quot; and normalize the contrast values to range [-1.0, 1.0].</span>
 
@@ -799,12 +812,16 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
             <span class="p">)</span>
 
         <span class="n">io</span><span class="o">.</span><span class="n">log_debug</span><span class="p">(</span><span class="s1">&#39;Normalizing input movie from contrast range [</span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1">] --&gt; [-1.0, 1.0].&#39;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">m_data</span> <span class="o">-</span> <span class="n">c_min</span><span class="p">)</span><span class="o">*</span><span class="mf">2.0</span><span class="o">/</span><span class="p">(</span><span class="n">c_max</span> <span class="o">-</span> <span class="n">c_min</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.0</span></div></div>
+        <span class="k">return</span> <span class="p">(</span><span class="n">m_data</span> <span class="o">-</span> <span class="n">c_min</span><span class="p">)</span><span class="o">*</span><span class="mf">2.0</span><span class="o">/</span><span class="p">(</span><span class="n">c_max</span> <span class="o">-</span> <span class="n">c_min</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.0</span></div>
+</div>
+
 
 
 <span class="c1"># TODO: Instead of using subclasses, convert the following movie type to a Factory class/function that returns a Movie</span>
 <span class="c1">#   object</span>
-<div class="viewcode-block" id="FullFieldMovie"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.FullFieldMovie">[docs]</a><span class="k">class</span> <span class="nc">FullFieldMovie</span><span class="p">(</span><span class="n">Movie</span><span class="p">):</span>
+<div class="viewcode-block" id="FullFieldMovie">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.FullFieldMovie">[docs]</a>
+<span class="k">class</span> <span class="nc">FullFieldMovie</span><span class="p">(</span><span class="n">Movie</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mf">24.0</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
             <span class="n">rows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">rows</span><span class="p">)</span>
@@ -836,7 +853,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="c1"># Evaluate and return:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">t_vals</span><span class="p">)</span>
     
-<div class="viewcode-block" id="FullFieldMovie.full"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.FullFieldMovie.full">[docs]</a>    <span class="k">def</span> <span class="nf">full</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">t_max</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="FullFieldMovie.full">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.FullFieldMovie.full">[docs]</a>
+    <span class="k">def</span> <span class="nf">full</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">t_max</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="c1"># Compute t_range</span>
         <span class="n">t_range</span> <span class="o">=</span> <span class="n">convert_tmin_tmax_framerate_to_trange</span><span class="p">(</span><span class="n">t_min</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">frame_rate</span><span class="p">)</span>
          
@@ -851,11 +870,18 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="k">return</span> <span class="n">Movie</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">row_range</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">row_range</span><span class="p">,</span> <span class="n">col_range</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">col_range</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">),</span>
                      <span class="n">units</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;second&#39;</span><span class="p">,</span> <span class="s1">&#39;pixel&#39;</span><span class="p">,</span> <span class="s1">&#39;pixel&#39;</span><span class="p">),</span> <span class="n">frame_rate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_rate</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="FullFieldMovie.create_movie"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.FullFieldMovie.create_movie">[docs]</a>    <span class="k">def</span> <span class="nf">create_movie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="n">t_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">t_min</span><span class="o">=</span><span class="n">t_min</span><span class="p">,</span> <span class="n">t_max</span><span class="o">=</span><span class="n">t_max</span><span class="p">)</span></div></div>
+
+<div class="viewcode-block" id="FullFieldMovie.create_movie">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.FullFieldMovie.create_movie">[docs]</a>
+    <span class="k">def</span> <span class="nf">create_movie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_max</span><span class="p">,</span> <span class="n">t_min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">t_min</span><span class="o">=</span><span class="n">t_min</span><span class="p">,</span> <span class="n">t_max</span><span class="o">=</span><span class="n">t_max</span><span class="p">)</span></div>
+</div>
 
 
-<div class="viewcode-block" id="FullFieldFlashMovie"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.FullFieldFlashMovie">[docs]</a><span class="k">class</span> <span class="nc">FullFieldFlashMovie</span><span class="p">(</span><span class="n">FullFieldMovie</span><span class="p">):</span>
+
+<div class="viewcode-block" id="FullFieldFlashMovie">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.FullFieldFlashMovie">[docs]</a>
+<span class="k">class</span> <span class="nc">FullFieldFlashMovie</span><span class="p">(</span><span class="n">FullFieldMovie</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row_range</span><span class="p">,</span> <span class="n">col_range</span><span class="p">,</span> <span class="n">t_on</span><span class="p">,</span> <span class="n">t_off</span><span class="p">,</span> <span class="n">max_intensity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mi">24</span><span class="p">):</span>
         <span class="k">assert</span><span class="p">(</span><span class="n">t_on</span> <span class="o">&lt;</span> <span class="n">t_off</span><span class="p">)</span>
 
@@ -866,14 +892,19 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="nb">super</span><span class="p">(</span><span class="n">FullFieldFlashMovie</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">row_range</span><span class="p">,</span> <span class="n">col_range</span><span class="p">,</span> <span class="n">frame_rate</span><span class="o">=</span><span class="n">frame_rate</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="GratingMovie"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.GratingMovie">[docs]</a><span class="k">class</span> <span class="nc">GratingMovie</span><span class="p">(</span><span class="n">Movie</span><span class="p">):</span>
+
+<div class="viewcode-block" id="GratingMovie">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.GratingMovie">[docs]</a>
+<span class="k">class</span> <span class="nc">GratingMovie</span><span class="p">(</span><span class="n">Movie</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row_size</span><span class="p">,</span> <span class="n">col_size</span><span class="p">,</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">row_size</span> <span class="o">=</span> <span class="n">row_size</span>  <span class="c1"># in degrees</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">col_size</span> <span class="o">=</span> <span class="n">col_size</span>  <span class="c1"># in degrees</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">frame_rate</span><span class="p">)</span>  <span class="c1"># in Hz</span>
 
-<div class="viewcode-block" id="GratingMovie.create_movie"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.GratingMovie.create_movie">[docs]</a>    <span class="k">def</span> <span class="nf">create_movie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">gray_screen_dur</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cpd</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">temporal_f</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span>
-                     <span class="n">phase</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">contrast</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">row_size_new</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">col_size_new</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="GratingMovie.create_movie">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.GratingMovie.create_movie">[docs]</a>
+    <span class="k">def</span> <span class="nf">create_movie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">gray_screen_dur</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cpd</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">temporal_f</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span>
+                     <span class="n">phase</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">contrast</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">degrees_per_pixel</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">row_size_new</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">col_size_new</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create the grating movie with the desired parameters</span>
 
 <span class="sd">        :param t_min: start time in seconds</span>
@@ -884,6 +915,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <span class="sd">        :param theta: orientation angle, in degrees</span>
 <span class="sd">        :param phase: temporal phase, in degrees</span>
 <span class="sd">        :param contrast: the maximum constrast, must be between 0 and 1.0</span>
+<span class="sd">        :param degrees_per_pixel: pixel pitch of the movie in degrees (default (if None) is 1.0/(cpd*10))</span>
 <span class="sd">        :param row_size_new: Use to truncate screen, by default leaves original row dimension</span>
 <span class="sd">        :param col_size_new: Use to truncate screen, by default leaves original col dimension</span>
 <span class="sd">        :return: Movie object of grating with desired parameters</span>
@@ -891,9 +923,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="k">assert</span> <span class="n">contrast</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Contrast must be &lt;= 1&quot;</span>
         <span class="k">assert</span> <span class="n">contrast</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Contrast must be &gt; 0&quot;</span>
 
-        <span class="n">physical_spacing</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">cpd</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># To make sure no aliasing occurs</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">row_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">row_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">row_size</span><span class="o">/</span><span class="n">physical_spacing</span><span class="p">),</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">col_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">col_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">col_size</span><span class="o">/</span><span class="n">physical_spacing</span><span class="p">),</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">degrees_per_pixel</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># default behavior when not specified</span>
+            <span class="n">degrees_per_pixel</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">cpd</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># To make sure no aliasing occurs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">row_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">row_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">row_size</span><span class="o">/</span><span class="n">degrees_per_pixel</span><span class="p">),</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">col_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">col_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">col_size</span><span class="o">/</span><span class="n">degrees_per_pixel</span><span class="p">),</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">numberFramesNeeded</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_rate</span> <span class="o">*</span> <span class="p">(</span><span class="n">t_max</span> <span class="o">-</span> <span class="n">gray_screen_dur</span><span class="p">)))</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="n">time_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_max</span> <span class="o">-</span> <span class="n">gray_screen_dur</span><span class="p">,</span> <span class="n">numberFramesNeeded</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -921,24 +954,30 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
             <span class="n">mov</span> <span class="o">=</span> <span class="n">Movie</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">row_range</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">row_range</span><span class="p">,</span> <span class="n">col_range</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">col_range</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">),</span>
                         <span class="n">units</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;second&#39;</span><span class="p">,</span> <span class="s1">&#39;pixel&#39;</span><span class="p">,</span> <span class="s1">&#39;pixel&#39;</span><span class="p">),</span> <span class="n">frame_rate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_rate</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">mov</span></div></div>
+        <span class="k">return</span> <span class="n">mov</span></div>
+</div>
 
 
-<div class="viewcode-block" id="LoomingMovie"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.LoomingMovie">[docs]</a><span class="k">class</span> <span class="nc">LoomingMovie</span><span class="p">(</span><span class="n">Movie</span><span class="p">):</span>
+
+<div class="viewcode-block" id="LoomingMovie">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.LoomingMovie">[docs]</a>
+<span class="k">class</span> <span class="nc">LoomingMovie</span><span class="p">(</span><span class="n">Movie</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row_size</span><span class="p">,</span> <span class="n">col_size</span><span class="p">,</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mf">1000.</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">row_size</span> <span class="o">=</span> <span class="n">row_size</span>  <span class="c1"># in degrees</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">col_size</span> <span class="o">=</span> <span class="n">col_size</span>  <span class="c1"># in degrees</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">frame_rate</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">frame_rate</span><span class="p">)</span>  <span class="c1"># in Hz</span>
 
-<div class="viewcode-block" id="LoomingMovie.create_movie"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.LoomingMovie.create_movie">[docs]</a>    <span class="k">def</span> <span class="nf">create_movie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_looming</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">gray_screen_dur</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+<div class="viewcode-block" id="LoomingMovie.create_movie">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.movie.LoomingMovie.create_movie">[docs]</a>
+    <span class="k">def</span> <span class="nf">create_movie</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_looming</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">gray_screen_dur</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create the looming movie with the desired parameters</span>
 
 <span class="sd">        :param t_looming: duration of time looming</span>
 <span class="sd">        :param gray_screen_dur:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">physical_spacing</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># To make sure no aliasing occurs</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">row_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">row_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">row_size</span><span class="o">/</span><span class="n">physical_spacing</span><span class="p">),</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">col_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">col_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">col_size</span><span class="o">/</span><span class="n">physical_spacing</span><span class="p">),</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">degrees_per_pixel</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># To make sure no aliasing occurs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">row_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">row_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">row_size</span><span class="o">/</span><span class="n">degrees_per_pixel</span><span class="p">),</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">col_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">col_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">col_size</span><span class="o">/</span><span class="n">degrees_per_pixel</span><span class="p">),</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">loomingFramesNeeded</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_rate</span> <span class="o">*</span> <span class="n">t_looming</span><span class="p">))</span>
         <span class="n">grayScreenFrames</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_rate</span> <span class="o">*</span> <span class="n">gray_screen_dur</span><span class="p">))</span>
         <span class="n">time_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_looming</span><span class="p">,</span> <span class="n">loomingFramesNeeded</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -960,7 +999,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="n">mov</span> <span class="o">=</span> <span class="n">Movie</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">row_range</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">row_range</span><span class="p">,</span> <span class="n">col_range</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">col_range</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;x&#39;</span><span class="p">),</span>
                     <span class="n">units</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;second&#39;</span><span class="p">,</span> <span class="s1">&#39;pixel&#39;</span><span class="p">,</span> <span class="s1">&#39;pixel&#39;</span><span class="p">),</span> <span class="n">frame_rate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_rate</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">mov</span></div></div>
+        <span class="k">return</span> <span class="n">mov</span></div>
+</div>
+
 </pre></div>
 
             <div class="clearer"></div>
@@ -1015,7 +1056,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../../search.html" method="get">
@@ -1023,7 +1064,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

@@ -1,17 +1,15 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bmtk.simulator.core.simulation_config_validator &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
+    <title>bmtk.simulator.core.simulation_config_validator &#8212; Brain Modeling Toolkit 1.0.8 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/aibs_sphinx.css" />
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
@@ -649,7 +647,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 
 
 <div class="viewcode-block" id="SimulationConfigValidator"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.core.html#bmtk.simulator.core.simulation_config_validator.SimulationConfigValidator">[docs]</a><span class="k">class</span> <span class="nc">SimulationConfigValidator</span><span class="p">(</span><span class="n">Draft4Validator</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A JSON Schema validator class that will store a schema (passed into the constructor) and validate a json file.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A JSON Schema validator class that will store a schema (passed into the constructor) and validate a json file.</span>
 <span class="sd">    It has all the functionality of the JSONSchema format, plus includes special types and parameters like making</span>
 <span class="sd">    sure a value is a file or directory type, checking csv files, etc.</span>
 
@@ -681,7 +679,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
             <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">SimulationConfigValidator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">is_type</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_is_directory_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check if instance value is a valid directory file path name</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if instance value is a valid directory file path name</span>
 
 <span class="sd">        :param instance: string that represents a directory path</span>
 <span class="sd">        :return: True if instance is a valid dir path (even if it doesn&#39;t exists).</span>
@@ -691,7 +689,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="k">return</span> <span class="kc">True</span>
 
     <span class="k">def</span> <span class="nf">_is_file_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Check if instance value is a valid file path.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if instance value is a valid file path.</span>
 
 <span class="sd">        :param instance: string of file path</span>
 <span class="sd">        :return: True if instance is a valid file path (but doesn&#39;t necessary exists), false otherwise.</span>
@@ -709,7 +707,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_check_path</span><span class="p">(</span><span class="n">validator</span><span class="p">,</span> <span class="n">schema_bool</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">schema</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Makes sure a file/directory exists or doesn&#39;t based on the &quot;exists&quot; property in the schema</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Makes sure a file/directory exists or doesn&#39;t based on the &quot;exists&quot; property in the schema</span>
 
 <span class="sd">        :param validator:</span>
 <span class="sd">        :param schema_bool: True means file must exists, False means file should not exists</span>
@@ -807,7 +805,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>

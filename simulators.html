@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Simulation Engines &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
+    <title>Simulation Engines &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="_static/documentation_options.js?v=fc837d61"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -621,11 +620,12 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
           <div class="body" role="main">
             
   <section id="simulation-engines">
-<h1>Simulation Engines<a class="headerlink" href="#simulation-engines" title="Permalink to this heading">¶</a></h1>
+<h1>Simulation Engines<a class="headerlink" href="#simulation-engines" title="Link to this heading">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
 <figure class="align-default">
-<a class="reference internal image-reference" href="_images/bmtk_architecture_simulator_highlight.jpg"><img alt="_images/bmtk_architecture_simulator_highlight.jpg" src="_images/bmtk_architecture_simulator_highlight.jpg" style="width: 433.6px; height: 167.20000000000002px;" /></a>
+<a class="reference internal image-reference" href="_images/bmtk_architecture_simulator_highlight.jpg"><img alt="_images/bmtk_architecture_simulator_highlight.jpg" src="_images/bmtk_architecture_simulator_highlight.jpg" style="width: 433.6px; height: 167.20000000000002px;" />
+</a>
 </figure>
 <p>The <a class="reference internal" href="bmtk/bmtk.simulator.html#module-bmtk.simulator" title="bmtk.simulator"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bmtk.simulator</span></code></a> module contains classes for simulating a network under a variety of different simulators.
 BMTK doesn’t actually do the simulation itself, but processes the inputs and passes it off to an existing engine. At the
@@ -641,7 +641,8 @@ moment there are four different simulation engines for running a network at diff
 </li>
 </ul>
 <figure class="align-default">
-<a class="reference internal image-reference" href="_images/brunel_comparisons.jpg"><img alt="_images/brunel_comparisons.jpg" src="_images/brunel_comparisons.jpg" style="width: 590.0px; height: 345.20000000000005px;" /></a>
+<a class="reference internal image-reference" href="_images/brunel_comparisons.jpg"><img alt="_images/brunel_comparisons.jpg" src="_images/brunel_comparisons.jpg" style="width: 590.0px; height: 345.20000000000005px;" />
+</a>
 </figure>
 <p>usually capture a neuron’s membrane potential trace (when the model_template supports it) that doesn’t isn’t possible on
 a population or filter-based level of resolution. And specific dynamics may occur at one level and not another. Thus it
@@ -657,11 +658,12 @@ command-line script. The process for setting up and running a simulation usually
 <li><p>Executing the simulation</p></li>
 </ol>
 <section id="the-simulation-environment">
-<h2>The Simulation Environment<a class="headerlink" href="#the-simulation-environment" title="Permalink to this heading">¶</a></h2>
+<h2>The Simulation Environment<a class="headerlink" href="#the-simulation-environment" title="Link to this heading">¶</a></h2>
 <p>The standard BMTK directory structure for running one or more simulations will typically have all the necessary files
 contained within their own directory as such:</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="_images/bmtk_sim_env.png"><img alt="_images/bmtk_sim_env.png" src="_images/bmtk_sim_env.png" style="width: 289.2px; height: 282.0px;" /></a>
+<a class="reference internal image-reference" href="_images/bmtk_sim_env.png"><img alt="_images/bmtk_sim_env.png" src="_images/bmtk_sim_env.png" style="width: 289.2px; height: 282.0px;" />
+</a>
 </figure>
 <ul class="simple">
 <li><dl class="simple">
@@ -688,7 +690,7 @@ everything be contained within the same directory. For example different network
 component files, thus it would make sense to move the <em>components</em> directory to a location that can be accessed by
 all simulations. As described below the location of the directories and files are specified in the configuration files.</p>
 <section id="creating-the-environment">
-<h3>Creating the environment<a class="headerlink" href="#creating-the-environment" title="Permalink to this heading">¶</a></h3>
+<h3>Creating the environment<a class="headerlink" href="#creating-the-environment" title="Link to this heading">¶</a></h3>
 <p>A good way to create a working simulation directory is to copy an existing one and make modifications as needed. The
 <a class="reference external" href="https://github.com/AllenInstitute/bmtk">BMTK</a> and <a class="reference external" href="https://github.com/AllenInstitute/sonata">SONATA</a> github page
 contains multiple examples.</p>
@@ -708,7 +710,7 @@ modify the configuration, using a text editor, as required. And finally the netw
 </section>
 </section>
 <section id="configuration-files">
-<h2>Configuration Files<a class="headerlink" href="#configuration-files" title="Permalink to this heading">¶</a></h2>
+<h2>Configuration Files<a class="headerlink" href="#configuration-files" title="Link to this heading">¶</a></h2>
 <p>Under most circumstances setting up and/or modifying a simulation involves adding and altering values within the JSON
 configuration files. The SONATA standard specifies two configuration files; a circuit_config.json containing information
 about the network and component files. And a simulation_config.json used for actually running the full circuit. BMTK
@@ -717,7 +719,7 @@ allows modelers to combine the two configs into one (but other SONATA support so
 <a class="reference external" href="https://github.com/AllenInstitute/sonata/blob/master/docs/SONATA_DEVELOPER_GUIDE.md">SONATA documentation</a> for
 more details. Some simulation engines may allow for additional options that will be described in their respective docs.</p>
 <section id="manifest">
-<h3>manifest<a class="headerlink" href="#manifest" title="Permalink to this heading">¶</a></h3>
+<h3>manifest<a class="headerlink" href="#manifest" title="Link to this heading">¶</a></h3>
 <p>The “manifest” section is optional and allows modelers to define aliases within the config, which are signified by the
 dollar-sign like shell variables; eg <code class="docutils literal notranslate"><span class="pre">$VARNAME</span></code> or <code class="docutils literal notranslate"><span class="pre">${VARNAME}</span></code>. For example if the manifest contains the following:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -734,7 +736,7 @@ dollar-sign like shell variables; eg <code class="docutils literal notranslate">
 </div>
 </section>
 <section id="networks">
-<h3>networks<a class="headerlink" href="#networks" title="Permalink to this heading">¶</a></h3>
+<h3>networks<a class="headerlink" href="#networks" title="Link to this heading">¶</a></h3>
 <p>contains locations of the node and edges files used to build the circuit, such that multiple node and edge files may be
 combined into one circuit. For example the following contains V1 network, with their recurrent connections
 (v1_v1_edges*) plus input from LGN nodes (lgn_v1_edges*)</p>
@@ -775,7 +777,7 @@ of SONATA)</p>
 </div>
 </section>
 <section id="components">
-<h3>components<a class="headerlink" href="#components" title="Permalink to this heading">¶</a></h3>
+<h3>components<a class="headerlink" href="#components" title="Link to this heading">¶</a></h3>
 <p>links to external directories and files required to fully instantiate all the models and parameters of the network,
 see <a class="reference external" href="https://github.com/AllenInstitute/sonata/blob/master/docs/SONATA_DEVELOPER_GUIDE.md#tying-it-all-together---the-networkcircuit-config-file">SONATA circuit config documentation</a>
 for a full description</p>
@@ -791,7 +793,7 @@ for a full description</p>
 </div>
 </section>
 <section id="run">
-<h3>run<a class="headerlink" href="#run" title="Permalink to this heading">¶</a></h3>
+<h3>run<a class="headerlink" href="#run" title="Link to this heading">¶</a></h3>
 <p>contains simulation parameters. most importantly are</p>
 <ul class="simple">
 <li><p>tstart: simulation start time in ms (default 0.0)</p></li>
@@ -810,7 +812,7 @@ for a full description</p>
 </div>
 </section>
 <section id="output">
-<h3>output<a class="headerlink" href="#output" title="Permalink to this heading">¶</a></h3>
+<h3>output<a class="headerlink" href="#output" title="Link to this heading">¶</a></h3>
 <p>Sections contain general information about where to output the results on the simulation. When the simulation starts
 the output_dir will be automatically created (and will overwrite existing output if overwrite_output_dir is true) as
 well as the log_file. By default BMTK will always record and save the spikes of all the nodes of the simulation
@@ -827,7 +829,7 @@ well as the log_file. By default BMTK will always record and save the spikes of 
 </div>
 </section>
 <section id="inputs">
-<h3>inputs<a class="headerlink" href="#inputs" title="Permalink to this heading">¶</a></h3>
+<h3>inputs<a class="headerlink" href="#inputs" title="Link to this heading">¶</a></h3>
 <p>Contains different inputs that will drive the simulation. In BioNet and PointNet usually the inputs involves either
 spike trains injected into the network using external <strong>virtual</strong> nodes, or the use of current clamps. The following
 example does both:</p>
@@ -856,7 +858,7 @@ described below, filters the cells for which the stimulus will be applied too. O
 only certain engines; like extracellular potentiation in BioNet or movies in FilterNet.</p>
 </section>
 <section id="reports">
-<h3>reports<a class="headerlink" href="#reports" title="Permalink to this heading">¶</a></h3>
+<h3>reports<a class="headerlink" href="#reports" title="Link to this heading">¶</a></h3>
 <p>Contains information about what variables will be recorded during the simulation. For example to record membrane
 potential in all the biophysically detailed cells in the V1 population:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -877,7 +879,7 @@ necessary to create a <code class="docutils literal notranslate"><span class="pr
 part of the full simulation time or record from a subset of all cells.</p>
 </section>
 <section id="node-sets">
-<h3>node_sets<a class="headerlink" href="#node-sets" title="Permalink to this heading">¶</a></h3>
+<h3>node_sets<a class="headerlink" href="#node-sets" title="Link to this heading">¶</a></h3>
 <p><a class="reference external" href="https://github.com/AllenInstitute/sonata/blob/master/docs/SONATA_DEVELOPER_GUIDE.md#node-sets-file">node_sets</a>
 are filters for specific nodes within the circuit, mainly used to determine which cells to apply an “input” or a
 “report”. For example say we want to split the spike-train output of V1’s pvalb and pyramidal cells into different
@@ -917,7 +919,7 @@ population. You may also reference individual nodes by their “node_id” - <co
 </section>
 </section>
 <section id="running-a-simulation">
-<h2>Running a Simulation<a class="headerlink" href="#running-a-simulation" title="Permalink to this heading">¶</a></h2>
+<h2>Running a Simulation<a class="headerlink" href="#running-a-simulation" title="Link to this heading">¶</a></h2>
 <p>To run a simulation, open a command line and execute the run_&lt;simulation&gt;.py script:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>run_simulation.py<span class="w"> </span>simulation_config.json
 </pre></div>
@@ -987,7 +989,7 @@ population. You may also reference individual nodes by their “node_id” - <co
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -995,7 +997,7 @@ population. You may also reference individual nodes by their “node_id” - <co
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

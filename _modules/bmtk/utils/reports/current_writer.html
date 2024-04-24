@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bmtk.utils.reports.current_writer &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
+    <title>bmtk.utils.reports.current_writer &#8212; Brain Modeling Toolkit 1.0.8 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/aibs_sphinx.css" />
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
@@ -737,10 +736,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer_data</span><span class="p">:</span>
             <span class="c1"># Set up in-memory block to buffer recorded variables before writing to the dataset.</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_data_block</span><span class="o">.</span><span class="n">buffer_block</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_currents</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_data_block</span><span class="o">.</span><span class="n">buffer_block</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_currents</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">_data_block</span><span class="o">.</span><span class="n">data_block</span> <span class="o">=</span> <span class="n">base_grp</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_currents</span><span class="p">),</span>
-                                                                  <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                                                                  <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_units</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_data_block</span><span class="o">.</span><span class="n">data_block</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_units</span>
@@ -748,7 +747,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># Since we are not buffering data, we just write directly to the on-disk dataset.</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_data_block</span><span class="o">.</span><span class="n">buffer_block</span> <span class="o">=</span> <span class="n">base_grp</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_steps</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_n_segments_all</span><span class="p">),</span>
-                                                               <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                                                               <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">chunks</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_units</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_data_block</span><span class="o">.</span><span class="n">buffer_block</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_units</span>

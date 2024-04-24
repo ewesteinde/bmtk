@@ -156,6 +156,14 @@ bmtk.simulator.filternet.lgnmodel.utilities module
    :undoc-members:
    :show-inheritance:
 
+bmtk.simulator.filternet.lgnmodel.waveletfilter module
+------------------------------------------------------
+
+.. automodule:: bmtk.simulator.filternet.lgnmodel.waveletfilter
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>FilterNet &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
+    <title>FilterNet &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="_static/documentation_options.js?v=fc837d61"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -621,9 +620,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
           <div class="body" role="main">
             
   <section id="filternet">
-<h1>FilterNet<a class="headerlink" href="#filternet" title="Permalink to this heading">¶</a></h1>
+<h1>FilterNet<a class="headerlink" href="#filternet" title="Link to this heading">¶</a></h1>
 <figure class="align-default">
-<a class="reference internal image-reference" href="_images/bmtk_architecture_filternet_highlight.jpg"><img alt="_images/bmtk_architecture_filternet_highlight.jpg" src="_images/bmtk_architecture_filternet_highlight.jpg" style="width: 433.6px; height: 167.20000000000002px;" /></a>
+<a class="reference internal image-reference" href="_images/bmtk_architecture_filternet_highlight.jpg"><img alt="_images/bmtk_architecture_filternet_highlight.jpg" src="_images/bmtk_architecture_filternet_highlight.jpg" style="width: 433.6px; height: 167.20000000000002px;" />
+</a>
 </figure>
 <p>FilterNet will simulate the effects of visual stimuli onto a receptive field. It uses LGNModel simulator as a backend, which
 uses neural filters to simulate firing rates and spike trains over a given time course and stimuli. It is based on a
@@ -631,7 +631,8 @@ uses neural filters to simulate firing rates and spike trains over a given time 
 with options for choosing different types of spatial, temporal, or spatio-temporal units that have already been
 optimized to closely mimic mammalian thalamic cells:</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="_images/lnp_model.jpg"><img alt="_images/lnp_model.jpg" src="_images/lnp_model.jpg" style="width: 768.6px; height: 204.6px;" /></a>
+<a class="reference internal image-reference" href="_images/lnp_model.jpg"><img alt="_images/lnp_model.jpg" src="_images/lnp_model.jpg" style="width: 768.6px; height: 204.6px;" />
+</a>
 </figure>
 <p>FilterNet is very useful for generating spike-trains that will be used as the inputs for simulations running in BioNet,
 PointNet, or PopNet. The procedure is as follows:</p>
@@ -642,11 +643,11 @@ PointNet, or PopNet. The procedure is as follows:</p>
 <li><p>Use the spike trains generated in Step #2 to see how the high-level cortical circuit would respond to different stimuli.</p></li>
 </ol>
 <section id="inputs">
-<h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this heading">¶</a></h2>
+<h2>Inputs<a class="headerlink" href="#inputs" title="Link to this heading">¶</a></h2>
 <p>Currently, FilterNet allows for a number of different types of custom and pre-aligned types of stimuli. To change the
 type of stimuli requires updating the inputs section in the simulation_config.json file like above.</p>
 <section id="movie">
-<h3>Movie<a class="headerlink" href="#movie" title="Permalink to this heading">¶</a></h3>
+<h3>Movie<a class="headerlink" href="#movie" title="Link to this heading">¶</a></h3>
 <p>Allows playing a custom movie file in the form of a three-dimension matrix saved in a npy file.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;movie_input&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -668,7 +669,7 @@ type of stimuli requires updating the inputs section in the simulation_config.js
 </ul>
 </section>
 <section id="grating">
-<h3>Grating<a class="headerlink" href="#grating" title="Permalink to this heading">¶</a></h3>
+<h3>Grating<a class="headerlink" href="#grating" title="Link to this heading">¶</a></h3>
 <p>Plays a drifting grating across the screen</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;gratings_input&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -681,7 +682,8 @@ type of stimuli requires updating the inputs section in the simulation_config.js
 <span class="w">      </span><span class="nt">&quot;temporal_f&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.0</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;contrast&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;theta&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">45.0</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;phase&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span>
+<span class="w">      </span><span class="nt">&quot;phase&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;degrees_per_pixel&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span>
 <span class="w">   </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -694,10 +696,11 @@ type of stimuli requires updating the inputs section in the simulation_config.js
 <li><p>theta: orientation angle, in degrees (default: 45.0)</p></li>
 <li><p>phase: temporal phase, in degrees (default: 0.0)</p></li>
 <li><p>contrast: the maximum constrast, must be between 0 and 1.0 (default: 1.0)</p></li>
+<li><p>degrees_per_pixel: sampling pitch of the movie in degrees per pixel (default: 1 / (cpd * 10))</p></li>
 </ul>
 </section>
 <section id="full-field-flash">
-<h3>Full Field Flash<a class="headerlink" href="#full-field-flash" title="Permalink to this heading">¶</a></h3>
+<h3>Full Field Flash<a class="headerlink" href="#full-field-flash" title="Link to this heading">¶</a></h3>
 <p>Creates a bright (or dark) flash on a gray screen for a limited number of seconds</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;full_field_flash&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -720,7 +723,7 @@ type of stimuli requires updating the inputs section in the simulation_config.js
 </ul>
 </section>
 <section id="looming">
-<h3>Looming<a class="headerlink" href="#looming" title="Permalink to this heading">¶</a></h3>
+<h3>Looming<a class="headerlink" href="#looming" title="Link to this heading">¶</a></h3>
 <p>Creates a spreading black field originating from the center.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">   </span><span class="nt">&quot;looming_input&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -741,6 +744,36 @@ type of stimuli requires updating the inputs section in the simulation_config.js
 <li><p>gray_screen_dur: duration of the initial grey screen (seconds)</p></li>
 <li><p>t_looming: time of the looming movie (seconds).</p></li>
 </ul>
+</section>
+</section>
+<section id="optimizations-techniques">
+<h2>Optimizations Techniques<a class="headerlink" href="#optimizations-techniques" title="Link to this heading">¶</a></h2>
+<p>The time required to generate spikes will depending on the number of cells in the network, the stimulus type, complexity of the cell-models; among
+other factors. The full simulation time can take a few seconds to a few hours. The following options may sometimes be utilized in order to
+significantly speed up the process.</p>
+<section id="parallelization-with-mpi">
+<h3>Parallelization with MPI<a class="headerlink" href="#parallelization-with-mpi" title="Link to this heading">¶</a></h3>
+<p>The <a class="reference external" href="https://www.mpi-forum.org/docs/">MPI</a> library allows the simulation to be parallelized across multiple processors and machines for use in an
+HPC cluster or even on a single machine with multiple cores. FilterNet can take advantage of using MPI automatically. Modelers will need the following
+installed on their machine:
+* Either <a class="reference external" href="https://www.open-mpi.org/">OpenMPI</a> or <a class="reference external" href="https://www.mpich.org/">MPICH2</a>
+* <a class="reference external" href="https://mpi4py.readthedocs.io/en/stable/">mpi4py</a></p>
+<p>On most HPC clusters these will be already installed. For personal machines you can often install using either <cite>pip install mpi4py</cite> or
+<cite>conda install -c conda-forge mpi4py</cite>. Then to run across &lt;N&gt; different cores execute your run_filternet.py script using</p>
+<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">$</span> <span class="pre">mpirun</span> <span class="pre">-n</span> <span class="pre">&lt;N&gt;</span> <span class="pre">python</span> <span class="pre">run_filternet.py</span> <span class="pre">config.json</span>
+<span class="pre">`</span></code></p>
+<p>Or if using a scheduler like slurm you can often use the <cite>srun</cite> command instead (instructions for scheduling parallel jobs on an HPC will vary depending
+on the institute).</p>
+<p>The results will be the same as if running FilterNet on a single core, the results stored in the same directory as specified in the config file.</p>
+</section>
+<section id="numba">
+<h3>Numba<a class="headerlink" href="#numba" title="Link to this heading">¶</a></h3>
+<p>You can also optimize FilterNet run-time using the <a class="reference external" href="https://numba.pydata.org/">Numba</a> python libary (with and without MPI). To install numba in your python
+environment:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`bash</span>
+<span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">numba</span>
+<span class="pre">`</span></code></p>
 </section>
 </section>
 </section>
@@ -798,7 +831,7 @@ type of stimuli requires updating the inputs section in the simulation_config.js
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -806,7 +839,7 @@ type of stimuli requires updating the inputs section in the simulation_config.js
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

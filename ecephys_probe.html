@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Spikes Stimulus with (NWB) Extracellular Electrophysiology Probes &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
+    <title>Spikes Stimulus with (NWB) Extracellular Electrophysiology Probes &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="_static/documentation_options.js?v=fc837d61"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -619,7 +618,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
           <div class="body" role="main">
             
   <section id="spikes-stimulus-with-nwb-extracellular-electrophysiology-probes">
-<h1>Spikes Stimulus with (NWB) Extracellular Electrophysiology Probes<a class="headerlink" href="#spikes-stimulus-with-nwb-extracellular-electrophysiology-probes" title="Permalink to this heading">¶</a></h1>
+<h1>Spikes Stimulus with (NWB) Extracellular Electrophysiology Probes<a class="headerlink" href="#spikes-stimulus-with-nwb-extracellular-electrophysiology-probes" title="Link to this heading">¶</a></h1>
 <p>The goal of the <cite>ecephys_probe</cite> inputs module is to drive a network simulation using experimental data
 recorded using extracellular electrophysiology (ecephys) multi-channel probes. Typically, BMTK and SONATA
 uses either SONATA Spike-Train files or csv files to create virtual cells to provide synaptic inputs to
@@ -632,7 +631,7 @@ fetch unit spike-times data and convert them into synaptic stimuli. It was mainl
 But can be used with external public ecephys session data, like many of those found on
 <a class="reference external" href="https://dandiarchive.org/">DANDI</a> provided they have units with spike-times.</p>
 <section id="quick-start-guide">
-<h2>Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Permalink to this heading">¶</a></h2>
+<h2>Quick Start Guide<a class="headerlink" href="#quick-start-guide" title="Link to this heading">¶</a></h2>
 <p>For pre-built examples of network simulations that use in-vivo ecephys probe data there are a number of
 examples in the BTMK <strong>examples/</strong> folder; including ones for <a class="reference external" href="https://github.com/AllenInstitute/bmtk/tree/develop/examples/bio_neuropixels">BioNet (NEURON)</a> and
 <a class="reference external" href="https://github.com/AllenInstitute/bmtk/tree/develop/examples/point_neuropixels">PointNet (NEST)</a>. Once BMTK is installed on your system just run a simulation using one
@@ -725,7 +724,7 @@ trains using NWB ECEPhys Probe data. This value cannot be changed</p></li>
 </div>
 </section>
 <section id="parameters">
-<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><strong>input_file:</strong> - <em>string</em> or <em>list[String]</em> - A path or list of paths to NWB file(s) contain ECEPhys units spike-time recordings.</p></li>
 <li><p><strong>node_set</strong> - <em>string</em> or <em>dict</em> - A filter for node (sub)population to use when assing NWB units to spikes.</p></li>
@@ -738,13 +737,13 @@ trains using NWB ECEPhys Probe data. This value cannot be changed</p></li>
 </ul>
 </section>
 <section id="advanced-features">
-<h2>Advanced Features<a class="headerlink" href="#advanced-features" title="Permalink to this heading">¶</a></h2>
+<h2>Advanced Features<a class="headerlink" href="#advanced-features" title="Link to this heading">¶</a></h2>
 <section id="mapping-and-filtering-nwb-units">
-<h3>Mapping and Filtering NWB units<a class="headerlink" href="#mapping-and-filtering-nwb-units" title="Permalink to this heading">¶</a></h3>
+<h3>Mapping and Filtering NWB units<a class="headerlink" href="#mapping-and-filtering-nwb-units" title="Link to this heading">¶</a></h3>
 <p>In the simulation each <strong>unit</strong> in NWB must be mapped onto a SONATA <strong>node</strong> for it’s spike trains to be used. The <cite>mapping</cite> and <cite>units</cite> options
 work in conjunction to control how this is done.</p>
 <section id="sample-and-sample-with-replacement">
-<h4>sample and sample_with_replacement<a class="headerlink" href="#sample-and-sample-with-replacement" title="Permalink to this heading">¶</a></h4>
+<h4>sample and sample_with_replacement<a class="headerlink" href="#sample-and-sample-with-replacement" title="Link to this heading">¶</a></h4>
 <p>To randomly assign unit_ids to node_ids you can use values “sample” or “sample_with_replacement” in the <cite>mapping</cite> option. The former is the same
 as sample without replacement, which may cause issues if there are fewer units than nodes.</p>
 <p>By default all units in the NWB file will be used, but you can use the <cite>units</cite> option to filter out only those units which meet a certain critera.
@@ -774,7 +773,7 @@ For example to get only VISp units that having “firing_rate” between 5.0 and
 <p>Note: The options available for filter will vary from NWB file to NWB file.</p>
 </section>
 <section id="units-map">
-<h4>units_map<a class="headerlink" href="#units-map" title="Permalink to this heading">¶</a></h4>
+<h4>units_map<a class="headerlink" href="#units-map" title="Link to this heading">¶</a></h4>
 <p>If you know how each unit should be mapped to each node and stored in a csv file, then you can use the “units_map” value in the <cite>mapping</cite> option.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;mapping&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;units_map&quot;</span><span class="p">,</span>
@@ -785,7 +784,7 @@ For example to get only VISp units that having “firing_rate” between 5.0 and
 <p>The <em>units2nodes_map.csv</em> is a space-separated csv file where each row contains a SONATA node identifier (Population + node_id) and a corresponding
 units_id from a NWB file with manditory columns <strong>population</strong>, <strong>node_ids</strong>, <strong>unit_ids</strong></p>
 <table class="docutils align-default" id="id1">
-<caption><span class="caption-text">units2nodes_map.csv</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">units2nodes_map.csv</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 33.3%" />
 <col style="width: 33.3%" />
@@ -819,17 +818,18 @@ units_id from a NWB file with manditory columns <strong>population</strong>, <st
 </section>
 </section>
 <section id="filtering-spike-times-by-intervals-and-epochs">
-<h3>Filtering Spike Times by Intervals and Epochs<a class="headerlink" href="#filtering-spike-times-by-intervals-and-epochs" title="Permalink to this heading">¶</a></h3>
+<h3>Filtering Spike Times by Intervals and Epochs<a class="headerlink" href="#filtering-spike-times-by-intervals-and-epochs" title="Link to this heading">¶</a></h3>
 <p>In-vio Session data typically are much longer and contains much more stimuli/epochs than that which is of interest to our own simulations. To simulate
 we can use the <cite>interval</cite> option to only use spikes that occur during a period of interest.</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="_images/ecephys_probe_intervals.png"><img alt="_images/ecephys_probe_intervals.png" src="_images/ecephys_probe_intervals.png" style="width: 1163.0px; height: 295.0px;" /></a>
+<a class="reference internal image-reference" href="_images/ecephys_probe_intervals.png"><img alt="_images/ecephys_probe_intervals.png" src="_images/ecephys_probe_intervals.png" style="width: 1163.0px; height: 295.0px;" />
+</a>
 </figure>
 <p>By default the <cite>ecephys_probe</cite> module will shift it to start at zero. So for example if the time-window is set to between 10 and 20 seconds, then a
 spike that is recorded at 11.5 seconds in the NWB will now occur at time 1.5 seconds in the simulation. You can use the <cite>simulation_offset</cite> option
 to adjust where spikes starts in the simulation.</p>
 <section id="intervals-ranges">
-<h4>intervals ranges<a class="headerlink" href="#intervals-ranges" title="Permalink to this heading">¶</a></h4>
+<h4>intervals ranges<a class="headerlink" href="#intervals-ranges" title="Link to this heading">¶</a></h4>
 <p>The easies way to to specify a time-window is to specify a range [<em>start_time</em>, <em>stop_time</em>] in milliseconds. For example if you know the period of
 interest you are interested occurs in the probe data between minutes 30 to 32</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;interval&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">1800000.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1920000.0</span><span class="p">]</span>
@@ -844,7 +844,7 @@ interest you are interested occurs in the probe data between minutes 30 to 32</p
 </div>
 </section>
 <section id="intervals-and-epoch-tables-aka-stimulus-table">
-<h4>Intervals and Epoch Tables (aka Stimulus Table)<a class="headerlink" href="#intervals-and-epoch-tables-aka-stimulus-table" title="Permalink to this heading">¶</a></h4>
+<h4>Intervals and Epoch Tables (aka Stimulus Table)<a class="headerlink" href="#intervals-and-epoch-tables-aka-stimulus-table" title="Link to this heading">¶</a></h4>
 <p>NWB session files can contain intervals/epochs tables that can tell you the exact time during a session a stimulus or condition was being presented
 to the subject. If instead of passing an a time range to <cite>interval</cite>, you pass in a <cite>dictionary</cite>, the <cite>ecephys_probe</cite> module will automatically try
 to create a time-window filter using the columns from the intervals table.</p>
@@ -873,11 +873,11 @@ can use special option “interval_index” to get a specific one. For example t
 random), ‘first’, ‘last’, or ‘full_range’ (returns the minimum start-time and maximum stop-time over all intervals).</p>
 </section>
 <section id="individual-unit-interval">
-<h4>Individual unit interval<a class="headerlink" href="#individual-unit-interval" title="Permalink to this heading">¶</a></h4>
+<h4>Individual unit interval<a class="headerlink" href="#individual-unit-interval" title="Link to this heading">¶</a></h4>
 <p>It is also possible to assign each indivdiual unit_id a unique interval of interest when using the “units_maps” option for in the <cite>mapping</cite> attribute.
 To do so just update the units-to-nodes csv file to include columns <strong>start_times</strong> and <strong>stop_times</strong>, both in units of milliseconds:</p>
 <table class="docutils align-default" id="id2">
-<caption><span class="caption-text">units2nodes_map.csv</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">units2nodes_map.csv</span><a class="headerlink" href="#id2" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 20.0%" />
@@ -924,7 +924,7 @@ To do so just update the units-to-nodes csv file to include columns <strong>star
 </section>
 </section>
 <section id="using-the-allensdk-to-download-neuropixels-data">
-<h2>Using the AllenSDK to download Neuropixels data<a class="headerlink" href="#using-the-allensdk-to-download-neuropixels-data" title="Permalink to this heading">¶</a></h2>
+<h2>Using the AllenSDK to download Neuropixels data<a class="headerlink" href="#using-the-allensdk-to-download-neuropixels-data" title="Link to this heading">¶</a></h2>
 </section>
 </section>
 
@@ -981,7 +981,7 @@ To do so just update the units-to-nodes csv file to include columns <strong>star
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -989,7 +989,7 @@ To do so just update the units-to-nodes csv file to include columns <strong>star
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Current Clamp [IClamp] Stimulation &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
+    <title>Current Clamp [IClamp] Stimulation &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="_static/documentation_options.js?v=fc837d61"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -619,7 +618,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
           <div class="body" role="main">
             
   <section id="current-clamp-iclamp-stimulation">
-<h1>Current Clamp [IClamp] Stimulation<a class="headerlink" href="#current-clamp-iclamp-stimulation" title="Permalink to this heading">¶</a></h1>
+<h1>Current Clamp [IClamp] Stimulation<a class="headerlink" href="#current-clamp-iclamp-stimulation" title="Link to this heading">¶</a></h1>
 <p>One of the most common way to provide stimulus into a network of cells is to directly inject a current
 into all or a subset of cells. This can be easily done in bmtk using the “<strong>inputs</strong>” section of the
 <a class="reference external" href="https://alleninstitute.github.io/bmtk/simulators.html#creating-the-environment">SONATA simulation config</a>.
@@ -647,7 +646,8 @@ current clamp (see parameter options below).</p>
 <p>After saving the file and run the simulation we should see the effect of a direct current injection into the
 soma of our cell model.</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="_images/iclamp_stim_single.png"><img alt="_images/iclamp_stim_single.png" src="_images/iclamp_stim_single.png" style="width: 640.0px; height: 480.0px;" /></a>
+<a class="reference internal image-reference" href="_images/iclamp_stim_single.png"><img alt="_images/iclamp_stim_single.png" src="_images/iclamp_stim_single.png" style="width: 640.0px; height: 480.0px;" />
+</a>
 </figure>
 <p>We can also have the option of add multiple independent current clamps in the same simulation, where each one
 may have a different injection trace, different onset and offset, target different subset of cells or be placed
@@ -687,18 +687,19 @@ amplitude we can just update the json file accordingly</p>
 </pre></div>
 </div>
 <figure class="align-default">
-<a class="reference internal image-reference" href="_images/iclamp_stim_multiple.png"><img alt="_images/iclamp_stim_multiple.png" src="_images/iclamp_stim_multiple.png" style="width: 640.0px; height: 480.0px;" /></a>
+<a class="reference internal image-reference" href="_images/iclamp_stim_multiple.png"><img alt="_images/iclamp_stim_multiple.png" src="_images/iclamp_stim_multiple.png" style="width: 640.0px; height: 480.0px;" />
+</a>
 </figure>
 <p>The above is a sequence of different current clamps done in series, but it is possible to have multiple current
 clamps run in parallel too.</p>
 <section id="advanced-stimulus-inputs">
-<h2>Advanced Stimulus Inputs<a class="headerlink" href="#advanced-stimulus-inputs" title="Permalink to this heading">¶</a></h2>
+<h2>Advanced Stimulus Inputs<a class="headerlink" href="#advanced-stimulus-inputs" title="Link to this heading">¶</a></h2>
 <p>Where there are only a few step currents it is easy enough to use the above method of adding mutliple current
 clamps in series or in parallel. However for more advanced patterns of stimuli - like randomized noise, ramps,
 sine waves, etc. - the above method becomes impracticle. Instead of just passing in a single step-block, BMTK
 provides methods for modifying the <strong>input_type</strong> to pass in lists or even external files.</p>
 <section id="list-of-amplitudes">
-<h3>List of Amplitudes<a class="headerlink" href="#list-of-amplitudes" title="Permalink to this heading">¶</a></h3>
+<h3>List of Amplitudes<a class="headerlink" href="#list-of-amplitudes" title="Link to this heading">¶</a></h3>
 <p>In the above example, instead of using three separate current clamps, we can instead specify just a single one
 whose amplitudes change over time:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -729,13 +730,13 @@ just update the <strong>amp</strong> value of the current injection at the next 
 </dl>
 </section>
 <section id="storing-amplitude-traces-in-a-csv-file">
-<h3>Storing Amplitude Traces in a CSV file<a class="headerlink" href="#storing-amplitude-traces-in-a-csv-file" title="Permalink to this heading">¶</a></h3>
+<h3>Storing Amplitude Traces in a CSV file<a class="headerlink" href="#storing-amplitude-traces-in-a-csv-file" title="Link to this heading">¶</a></h3>
 <p>For even more complex current injection traces, users can create and pass in a csv file of the trace. The csv file
 should have two columns, one containing the changes in amplitudes and a corresponding one for the respective onsets, labeled
 <strong>amps</strong> and <strong>timestamps</strong> respectivly (although this headers can be changed, see options below) with a space delimiter
 (which can be changed using options below).</p>
 <table class="docutils align-default" id="id1">
-<caption><span class="caption-text">custom_current_traces.csv</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-text">custom_current_traces.csv</span><a class="headerlink" href="#id1" title="Link to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50.0%" />
 <col style="width: 50.0%" />
@@ -780,11 +781,12 @@ our csv:</p>
 </div>
 </section>
 <section id="using-allen-cell-types-database-sweeps">
-<h3>Using Allen Cell-Types Database Sweeps<a class="headerlink" href="#using-allen-cell-types-database-sweeps" title="Permalink to this heading">¶</a></h3>
+<h3>Using Allen Cell-Types Database Sweeps<a class="headerlink" href="#using-allen-cell-types-database-sweeps" title="Link to this heading">¶</a></h3>
 <p>In the <a class="reference external" href="https://celltypes.brain-map.org/data">Allen Cell-Types Database</a> there is the option to download the ephys
 nwb files which include “sweeps” of current injection used to classify various cells and optimize the model parameters.</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="_images/ctdb_sweep_selection.png"><img alt="_images/ctdb_sweep_selection.png" src="_images/ctdb_sweep_selection.png" style="width: 903.0px; height: 708.0px;" /></a>
+<a class="reference internal image-reference" href="_images/ctdb_sweep_selection.png"><img alt="_images/ctdb_sweep_selection.png" src="_images/ctdb_sweep_selection.png" style="width: 903.0px; height: 708.0px;" />
+</a>
 </figure>
 <p>Using the <cite>Download data</cite> button will download a nwb file containing various “sweeps” (as can be seen using the
 <cite>select stimulus type</cite> and <cite>Select sweep</cite> buttons). You can recreate these sweeps with BMTK using this downloaded file.
@@ -806,7 +808,7 @@ As before, we need to update the <em>json</em> simulation configuration file, th
 </section>
 </section>
 <section id="iclamp-parameters">
-<h2>IClamp parameters<a class="headerlink" href="#iclamp-parameters" title="Permalink to this heading">¶</a></h2>
+<h2>IClamp parameters<a class="headerlink" href="#iclamp-parameters" title="Link to this heading">¶</a></h2>
 <dl>
 <dt><strong>module : string</strong></dt><dd><p>Should always be set to a value <cite>IClamp</cite></p>
 </dd>
@@ -931,7 +933,7 @@ the sweep time from starting specifying a <cite>0 &lt;= start-time &lt; stop-tim
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -939,7 +941,7 @@ the sweep time from starting specifying a <cite>0 &lt;= start-time &lt; stop-tim
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

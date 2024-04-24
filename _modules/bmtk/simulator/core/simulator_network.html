@@ -1,17 +1,15 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bmtk.simulator.core.simulator_network &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
+    <title>bmtk.simulator.core.simulator_network &#8212; Brain Modeling Toolkit 1.0.8 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/aibs_sphinx.css" />
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
     <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
@@ -623,6 +621,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">h5py</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="kn">from</span> <span class="nn">bmtk.simulator.core.io_tools</span> <span class="kn">import</span> <span class="n">io</span>
 <span class="kn">from</span> <span class="nn">.simulation_config</span> <span class="kn">import</span> <span class="n">SimulationConfig</span>
@@ -740,7 +739,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
             <span class="k">if</span> <span class="n">all_nodes_df</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">all_nodes_df</span> <span class="o">=</span> <span class="n">node_pop_df</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">all_nodes_df</span> <span class="o">=</span> <span class="n">all_nodes_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node_pop_df</span><span class="p">)</span>
+                <span class="n">all_nodes_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">all_nodes_df</span><span class="p">,</span> <span class="n">node_pop_df</span><span class="p">])</span>
 
         <span class="k">return</span> <span class="n">all_nodes_df</span></div>
 
@@ -763,7 +762,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
             <span class="k">if</span> <span class="n">all_nodes_df</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">all_nodes_df</span> <span class="o">=</span> <span class="n">node_pop_df</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">all_nodes_df</span> <span class="o">=</span> <span class="n">all_nodes_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node_pop_df</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">all_nodes_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">all_nodes_df</span><span class="p">,</span> <span class="n">node_pop_df</span><span class="p">],</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">all_nodes_df</span></div>
 
@@ -826,7 +825,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 
 <div class="viewcode-block" id="SimNetwork.from_config"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.core.html#bmtk.simulator.core.simulator_network.SimNetwork.from_config">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">conf</span><span class="p">,</span> <span class="o">**</span><span class="n">properties</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Generates a graph structure from a json config file or dictionary.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generates a graph structure from a json config file or dictionary.</span>
 
 <span class="sd">        :param conf: name of json config file, or a dictionary with config parameters</span>
 <span class="sd">        :param properties: optional properties.</span>
@@ -959,7 +958,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>

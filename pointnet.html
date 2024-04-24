@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>PointNet &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
+    <title>PointNet &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="_static/documentation_options.js?v=fc837d61"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -621,9 +620,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
           <div class="body" role="main">
             
   <section id="pointnet">
-<h1>PointNet<a class="headerlink" href="#pointnet" title="Permalink to this heading">¶</a></h1>
+<h1>PointNet<a class="headerlink" href="#pointnet" title="Link to this heading">¶</a></h1>
 <figure class="align-default">
-<a class="reference internal image-reference" href="_images/bmtk_architecture_pointnet_highlight.jpg"><img alt="_images/bmtk_architecture_pointnet_highlight.jpg" src="_images/bmtk_architecture_pointnet_highlight.jpg" style="width: 433.6px; height: 167.20000000000002px;" /></a>
+<a class="reference internal image-reference" href="_images/bmtk_architecture_pointnet_highlight.jpg"><img alt="_images/bmtk_architecture_pointnet_highlight.jpg" src="_images/bmtk_architecture_pointnet_highlight.jpg" style="width: 433.6px; height: 167.20000000000002px;" />
+</a>
 </figure>
 <p>PointNet is a simulation engine that utilizes <a class="reference external" href="http://www.nest-simulator.org/">NEST</a> to run large-scale point
 neuron network models. Features including:</p>
@@ -633,12 +633,12 @@ neuron network models. Features including:</p>
 <li><p>Records neuron spiking, multi-meter recorded variables into the optimized SONATA data format.</p></li>
 </ul>
 <section id="inputs">
-<h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this heading">¶</a></h2>
+<h2>Inputs<a class="headerlink" href="#inputs" title="Link to this heading">¶</a></h2>
 <p>Inputs can be specified in the “inputs” sections of the <a class="reference external" href="simulators.html#configuration-files">simulation config</a>,
 following the rules specified in the
 <a class="reference external" href="https://github.com/AllenInstitute/sonata/blob/master/docs/SONATA_DEVELOPER_GUIDE.md#simulation-input---stimuli">SONATA Data format</a>.</p>
 <section id="spike-trains">
-<h3>Spike-Trains<a class="headerlink" href="#spike-trains" title="Permalink to this heading">¶</a></h3>
+<h3>Spike-Trains<a class="headerlink" href="#spike-trains" title="Link to this heading">¶</a></h3>
 <p>Cells with <code class="docutils literal notranslate"><span class="pre">model_type</span></code> value <code class="docutils literal notranslate"><span class="pre">virtual</span></code> are equivalent to NEST’s spike_generator models which will play a
 pre-recorded series of spikes throughout the simulation. You may use either a
 <a class="reference external" href="./analyzer.html#spike-trains">SONATA spike-train file</a>, an NWB file, or a space-separated csv file with columns
@@ -661,7 +661,7 @@ pre-recorded series of spikes throughout the simulation. You may use either a
 </ul>
 </section>
 <section id="id1">
-<h3><a class="reference external" href="ecephys_probe.html">Extracelluar ElectroPhysiology (ECEPhys) Probe Data (NWB 2.0) Spikes</a><a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<h3><a class="reference external" href="ecephys_probe.html">Extracelluar ElectroPhysiology (ECEPhys) Probe Data (NWB 2.0) Spikes</a><a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
 <p>An increasing number of ECEPhys electrode experimental data is being release to the public in NWB format, such as the
 <a class="reference external" href="https://allensdk.readthedocs.io/en/latest/visual_coding_neuropixels.html">Allen Visual Coding - Neuropixels</a> dataset or through
 <a class="reference external" href="https://dandiarchive.org/">DANDI</a>. While it is possible to manually convert this data into SONATA spike-trains to
@@ -689,7 +689,7 @@ and converting them to virtual cells for network input into your model.</p>
 <p>See the <a class="reference external" href="ecephys_probe.html">documentation</a> for more information and advanced features.</p>
 </section>
 <section id="id2">
-<h3><a class="reference external" href="current_clamps.html">Current Clamps</a><a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<h3><a class="reference external" href="current_clamps.html">Current Clamps</a><a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
 <p>May use one step current clamp on multiple nodes, or have one node receive multiple current injections.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;current_clamp_1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -707,13 +707,13 @@ and converting them to virtual cells for network input into your model.</p>
 </section>
 </section>
 <section id="outputs">
-<h2>Outputs<a class="headerlink" href="#outputs" title="Permalink to this heading">¶</a></h2>
+<h2>Outputs<a class="headerlink" href="#outputs" title="Link to this heading">¶</a></h2>
 <section id="spikes">
-<h3>Spikes<a class="headerlink" href="#spikes" title="Permalink to this heading">¶</a></h3>
+<h3>Spikes<a class="headerlink" href="#spikes" title="Link to this heading">¶</a></h3>
 <p>By default all non-virtual cells in the circuit will have all their spikes at the soma recorded.</p>
 </section>
 <section id="membrane-and-intracellular-variables">
-<h3>Membrane and Intracellular Variables<a class="headerlink" href="#membrane-and-intracellular-variables" title="Permalink to this heading">¶</a></h3>
+<h3>Membrane and Intracellular Variables<a class="headerlink" href="#membrane-and-intracellular-variables" title="Link to this heading">¶</a></h3>
 <p>Used to record the time trace of specific cell variables, usually the membrane potential (v). This is equivalent to NEST’s multimeter object.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;membrane_potential&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -735,6 +735,62 @@ and converting them to virtual cells for network input into your model.</p>
 </dl>
 </li>
 </ul>
+</section>
+<section id="recording-synaptic-weights">
+<h3>Recording Synaptic Weights<a class="headerlink" href="#recording-synaptic-weights" title="Link to this heading">¶</a></h3>
+<p>Used to record the changes to synaptic weight changes throughout the simulation lifetime. Useful for measuring changes plastic synapse models like
+“stdp_synapse” or “tsodyks_synapses” (can be used for static synapses though values will never change). To create a recorder add the following
+section to the “reports” section in the simulation config json:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;reports&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;&lt;name&gt;&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;module&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;weight_recorder&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;nest_model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;original-nest-model&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;model_template&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;recorder-name&gt;&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;file_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;file-name&gt;.csv&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Which will create a special synpase model called “&lt;recorder-name&gt;”, which is just a version of <em>&lt;original-nest-model&gt;</em> that will save a trace
+of synapic changes to the csv file <em>output/&lt;file-name&gt;.csv</em>. Just set <strong>model_template</strong> property value to “&lt;recorder-name&gt;” in the edge-types file.</p>
+<p>For example, to record the changes to a subset of the <em>stdp_synapse</em> type NEST models, add the following to the configuration:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;reports&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;weight_recorder_stdp_1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;module&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;weight_recorder&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;nest_model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stdp_synapse&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;model_template&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stdp_synapse_recorder&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;file_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stdp_weights.csv&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then make changes to <strong>edge_types.csv</strong> file</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>edge_type_id</p></th>
+<th class="head"><p>model_template</p></th>
+<th class="head"><p>dynamics_params</p></th>
+<th class="head"><p>…</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>stdp_synapse_recorder</p></td>
+<td><p>stdp_params.json</p></td>
+<td><p>…</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 </section>
@@ -792,7 +848,7 @@ and converting them to virtual cells for network input into your model.</p>
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -800,7 +856,7 @@ and converting them to virtual cells for network input into your model.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

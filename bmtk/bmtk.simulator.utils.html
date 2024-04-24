@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>bmtk.simulator.utils package &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/aibs_sphinx.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <title>bmtk.simulator.utils package &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -621,15 +620,15 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
           <div class="body" role="main">
             
   <section id="bmtk-simulator-utils-package">
-<h1>bmtk.simulator.utils package<a class="headerlink" href="#bmtk-simulator-utils-package" title="Permalink to this heading">¶</a></h1>
+<h1>bmtk.simulator.utils package<a class="headerlink" href="#bmtk-simulator-utils-package" title="Link to this heading">¶</a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
 <section id="module-bmtk.simulator.utils.simulation_inputs">
-<span id="bmtk-simulator-utils-simulation-inputs-module"></span><h2>bmtk.simulator.utils.simulation_inputs module<a class="headerlink" href="#module-bmtk.simulator.utils.simulation_inputs" title="Permalink to this heading">¶</a></h2>
+<span id="bmtk-simulator-utils-simulation-inputs-module"></span><h2>bmtk.simulator.utils.simulation_inputs module<a class="headerlink" href="#module-bmtk.simulator.utils.simulation_inputs" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_inputs.SimInput">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_inputs.</span></span><span class="sig-name descname"><span class="pre">SimInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_inputs.html#SimInput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_inputs.SimInput" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_inputs.</span></span><span class="sig-name descname"><span class="pre">SimInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_inputs.html#SimInput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_inputs.SimInput" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A helper class for parsing the “inputs” section of a SONATA config file. Separate the actual parameters needed
 to instantiate a module from the metadata parameters (eg, name, module, input_type)</p>
@@ -673,7 +672,7 @@ to the MyVClampInput class.</p>
 </div></blockquote>
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_inputs.SimInput.build">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_inputs.html#SimInput.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_inputs.SimInput.build" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_inputs.html#SimInput.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_inputs.SimInput.build" title="Link to this definition">¶</a></dt>
 <dd><p>Creates a SimInput object with parsed out parameters</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -690,29 +689,29 @@ to the MyVClampInput class.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_inputs.SimInput.node_set">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">node_set</span></span><a class="headerlink" href="#bmtk.simulator.utils.simulation_inputs.SimInput.node_set" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">node_set</span></span><a class="headerlink" href="#bmtk.simulator.utils.simulation_inputs.SimInput.node_set" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_inputs.SimInput.register_module">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">register_module</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subclass</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_inputs.html#SimInput.register_module"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_inputs.SimInput.register_module" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">register_module</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subclass</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_inputs.html#SimInput.register_module"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_inputs.SimInput.register_module" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>subclass</strong> – </p>
+<dd class="field-odd"><p><strong>subclass</strong></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_inputs.SimInput.registry">
-<span class="sig-name descname"><span class="pre">registry</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#bmtk.simulator.utils.simulation_inputs.SimInput.registry" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">registry</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#bmtk.simulator.utils.simulation_inputs.SimInput.registry" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_inputs.from_config">
-<span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_inputs.</span></span><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_inputs.html#from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_inputs.from_config" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_inputs.</span></span><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_inputs.html#from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_inputs.from_config" title="Link to this definition">¶</a></dt>
 <dd><p>Takes in a bmtk.utils.Config instance and will automatically parse each “input” in the config sections,
 returning a list of SimInput objects. If an input has “enabled” = False then it will automatically be excluded.</p>
 <dl class="field-list simple">
@@ -727,35 +726,35 @@ returning a list of SimInput objects. If an input has “enabled” = False then
 
 </section>
 <section id="module-bmtk.simulator.utils.simulation_reports">
-<span id="bmtk-simulator-utils-simulation-reports-module"></span><h2>bmtk.simulator.utils.simulation_reports module<a class="headerlink" href="#module-bmtk.simulator.utils.simulation_reports" title="Permalink to this heading">¶</a></h2>
+<span id="bmtk-simulator-utils-simulation-reports-module"></span><h2>bmtk.simulator.utils.simulation_reports module<a class="headerlink" href="#module-bmtk.simulator.utils.simulation_reports" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.ClampReport">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">ClampReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#ClampReport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.ClampReport" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">ClampReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#ClampReport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.ClampReport" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bmtk.simulator.utils.simulation_reports.SimReport" title="bmtk.simulator.utils.simulation_reports.SimReport"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimReport</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.ClampReport.avail_modules">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#ClampReport.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.ClampReport.avail_modules" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#ClampReport.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.ClampReport.avail_modules" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.ClampReport.node_set">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">node_set</span></span><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.ClampReport.node_set" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">node_set</span></span><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.ClampReport.node_set" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.ECPReport">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">ECPReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#ECPReport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.ECPReport" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">ECPReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#ECPReport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.ECPReport" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bmtk.simulator.utils.simulation_reports.SimReport" title="bmtk.simulator.utils.simulation_reports.SimReport"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimReport</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.ECPReport.avail_modules">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#ECPReport.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.ECPReport.avail_modules" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#ECPReport.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.ECPReport.avail_modules" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.ECPReport.build">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#ECPReport.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.ECPReport.build" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#ECPReport.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.ECPReport.build" title="Link to this definition">¶</a></dt>
 <dd><p>Factory method to get the module subclass, using the params (particularlly the ‘module’ value, which is
 required). If there is no registered subclass a generic SimReport object will be returned</p>
 <dl class="field-list simple">
@@ -775,21 +774,21 @@ required). If there is no registered subclass a generic SimReport object will be
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.MembraneReport">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">MembraneReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#MembraneReport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.MembraneReport" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">MembraneReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#MembraneReport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.MembraneReport" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bmtk.simulator.utils.simulation_reports.SimReport" title="bmtk.simulator.utils.simulation_reports.SimReport"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimReport</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.MembraneReport.add_variables">
-<span class="sig-name descname"><span class="pre">add_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#MembraneReport.add_variables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.MembraneReport.add_variables" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#MembraneReport.add_variables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.MembraneReport.add_variables" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.MembraneReport.avail_modules">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#MembraneReport.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.MembraneReport.avail_modules" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#MembraneReport.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.MembraneReport.avail_modules" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.MembraneReport.build">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#MembraneReport.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.MembraneReport.build" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#MembraneReport.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.MembraneReport.build" title="Link to this definition">¶</a></dt>
 <dd><p>Factory method to get the module subclass, using the params (particularlly the ‘module’ value, which is
 required). If there is no registered subclass a generic SimReport object will be returned</p>
 <dl class="field-list simple">
@@ -807,58 +806,58 @@ required). If there is no registered subclass a generic SimReport object will be
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.MembraneReport.can_combine">
-<span class="sig-name descname"><span class="pre">can_combine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#MembraneReport.can_combine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.MembraneReport.can_combine" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">can_combine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#MembraneReport.can_combine"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.MembraneReport.can_combine" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.MultimeterReport">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">MultimeterReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#MultimeterReport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.MultimeterReport" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">MultimeterReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#MultimeterReport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.MultimeterReport" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bmtk.simulator.utils.simulation_reports.MembraneReport" title="bmtk.simulator.utils.simulation_reports.MembraneReport"><code class="xref py py-class docutils literal notranslate"><span class="pre">MembraneReport</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.MultimeterReport.avail_modules">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#MultimeterReport.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.MultimeterReport.avail_modules" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#MultimeterReport.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.MultimeterReport.avail_modules" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.NetconReport">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">NetconReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#NetconReport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.NetconReport" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">NetconReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#NetconReport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.NetconReport" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bmtk.simulator.utils.simulation_reports.MembraneReport" title="bmtk.simulator.utils.simulation_reports.MembraneReport"><code class="xref py py-class docutils literal notranslate"><span class="pre">MembraneReport</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.NetconReport.avail_modules">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#NetconReport.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.NetconReport.avail_modules" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#NetconReport.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.NetconReport.avail_modules" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.SEClampReport">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">SEClampReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SEClampReport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SEClampReport" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">SEClampReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SEClampReport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SEClampReport" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bmtk.simulator.utils.simulation_reports.SimReport" title="bmtk.simulator.utils.simulation_reports.SimReport"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimReport</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.SEClampReport.avail_modules">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SEClampReport.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SEClampReport.avail_modules" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SEClampReport.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SEClampReport.avail_modules" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.SaveSynapses">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">SaveSynapses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SaveSynapses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SaveSynapses" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">SaveSynapses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SaveSynapses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SaveSynapses" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bmtk.simulator.utils.simulation_reports.SimReport" title="bmtk.simulator.utils.simulation_reports.SimReport"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimReport</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.SaveSynapses.avail_modules">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SaveSynapses.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SaveSynapses.avail_modules" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SaveSynapses.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SaveSynapses.avail_modules" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.SimReport">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">SimReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SimReport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SimReport" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">SimReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SimReport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SimReport" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Used for parsing reports section from a SONATA configuration file. It will take care of implicit and default
 values.</p>
@@ -873,12 +872,12 @@ properties that can be used to instantiate a simualtion report, particular prope
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.SimReport.avail_modules">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SimReport.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SimReport.avail_modules" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SimReport.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SimReport.avail_modules" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.SimReport.build">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SimReport.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SimReport.build" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SimReport.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SimReport.build" title="Link to this definition">¶</a></dt>
 <dd><p>Factory method to get the module subclass, using the params (particularlly the ‘module’ value, which is
 required). If there is no registered subclass a generic SimReport object will be returned</p>
 <dl class="field-list simple">
@@ -896,38 +895,38 @@ required). If there is no registered subclass a generic SimReport object will be
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.SimReport.default_dir">
-<span class="sig-name descname"><span class="pre">default_dir</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'.'</span></em><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SimReport.default_dir" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">default_dir</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'.'</span></em><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SimReport.default_dir" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.SimReport.node_set">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">node_set</span></span><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SimReport.node_set" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">node_set</span></span><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SimReport.node_set" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.SimReport.register_module">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">register_module</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subclass</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SimReport.register_module"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SimReport.register_module" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">register_module</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subclass</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SimReport.register_module"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SimReport.register_module" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.SimReport.registry">
-<span class="sig-name descname"><span class="pre">registry</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'SEClamp':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.SEClampReport'&gt;,</span> <span class="pre">'SaveSynapses':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.SaveSynapses'&gt;,</span> <span class="pre">'clamp_report':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.ClampReport'&gt;,</span> <span class="pre">'extracellular':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.ECPReport'&gt;,</span> <span class="pre">'membrane_report':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.MembraneReport'&gt;,</span> <span class="pre">'multimeter':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.MultimeterReport'&gt;,</span> <span class="pre">'multimeter_report':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.MultimeterReport'&gt;,</span> <span class="pre">'netcon_report':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.NetconReport'&gt;,</span> <span class="pre">'spikes_report':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.SpikesReport'&gt;}</span></em><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SimReport.registry" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">registry</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'SEClamp':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.SEClampReport'&gt;,</span> <span class="pre">'SaveSynapses':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.SaveSynapses'&gt;,</span> <span class="pre">'clamp_report':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.ClampReport'&gt;,</span> <span class="pre">'extracellular':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.ECPReport'&gt;,</span> <span class="pre">'membrane_report':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.MembraneReport'&gt;,</span> <span class="pre">'multimeter':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.MultimeterReport'&gt;,</span> <span class="pre">'multimeter_report':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.MultimeterReport'&gt;,</span> <span class="pre">'netcon_report':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.NetconReport'&gt;,</span> <span class="pre">'spikes_report':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.SpikesReport'&gt;,</span> <span class="pre">'weight_recorder':</span> <span class="pre">&lt;class</span> <span class="pre">'bmtk.simulator.utils.simulation_reports.WeightRecorder'&gt;}</span></em><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SimReport.registry" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.SpikesReport">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">SpikesReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SpikesReport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SpikesReport" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">SpikesReport</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">report_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SpikesReport"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SpikesReport" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#bmtk.simulator.utils.simulation_reports.SimReport" title="bmtk.simulator.utils.simulation_reports.SimReport"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimReport</span></code></a></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.SpikesReport.avail_modules">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SpikesReport.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SpikesReport.avail_modules" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SpikesReport.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SpikesReport.avail_modules" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.SpikesReport.build">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SpikesReport.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SpikesReport.build" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SpikesReport.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SpikesReport.build" title="Link to this definition">¶</a></dt>
 <dd><p>Factory method to get the module subclass, using the params (particularlly the ‘module’ value, which is
 required). If there is no registered subclass a generic SimReport object will be returned</p>
 <dl class="field-list simple">
@@ -945,19 +944,30 @@ required). If there is no registered subclass a generic SimReport object will be
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.SpikesReport.from_output_dict">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_output_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SpikesReport.from_output_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SpikesReport.from_output_dict" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_output_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#SpikesReport.from_output_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.SpikesReport.from_output_dict" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.WeightRecorder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">WeightRecorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#WeightRecorder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.WeightRecorder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#bmtk.simulator.utils.simulation_reports.SimReport" title="bmtk.simulator.utils.simulation_reports.SimReport"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimReport</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.WeightRecorder.avail_modules">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">avail_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#WeightRecorder.avail_modules"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.WeightRecorder.avail_modules" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="bmtk.simulator.utils.simulation_reports.from_config">
-<span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.from_config" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bmtk.simulator.utils.simulation_reports.</span></span><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/simulator/utils/simulation_reports.html#from_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.simulator.utils.simulation_reports.from_config" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
 <section id="module-bmtk.simulator.utils">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bmtk.simulator.utils" title="Permalink to this heading">¶</a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bmtk.simulator.utils" title="Link to this heading">¶</a></h2>
 </section>
 </section>
 
@@ -1014,7 +1024,7 @@ required). If there is no registered subclass a generic SimReport object will be
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -1022,7 +1032,7 @@ required). If there is no registered subclass a generic SimReport object will be
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

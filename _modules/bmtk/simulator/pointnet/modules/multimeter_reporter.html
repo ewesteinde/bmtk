@@ -1,16 +1,15 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bmtk.simulator.pointnet.modules.multimeter_reporter &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/aibs_sphinx.css" />
-    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../_static/doctools.js"></script>
-    <script src="../../../../../_static/sphinx_highlight.js"></script>
+    <title>bmtk.simulator.pointnet.modules.multimeter_reporter &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="../../../../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" /> 
@@ -624,6 +623,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <span class="kn">from</span> <span class="nn">bmtk.utils.reports</span> <span class="kn">import</span> <span class="n">CompartmentReport</span>
 <span class="kn">from</span> <span class="nn">bmtk.simulator.pointnet.io_tools</span> <span class="kn">import</span> <span class="n">io</span>
 <span class="kn">from</span> <span class="nn">bmtk.simulator.pointnet.nest_utils</span> <span class="kn">import</span> <span class="n">nest_version</span>
+<span class="kn">from</span> <span class="nn">bmtk.simulator.pointnet.modules.sim_module</span> <span class="kn">import</span> <span class="n">SimulatorMod</span>
 
 <span class="kn">import</span> <span class="nn">nest</span>
 
@@ -637,7 +637,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     <span class="n">N_HOSTS</span> <span class="o">=</span> <span class="mi">1</span>
 
 
-<div class="viewcode-block" id="create_multimeter_nest2"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.pointnet.modules.html#bmtk.simulator.pointnet.modules.multimeter_reporter.create_multimeter_nest2">[docs]</a><span class="k">def</span> <span class="nf">create_multimeter_nest2</span><span class="p">(</span><span class="n">tstart</span><span class="p">,</span> <span class="n">tstop</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+<div class="viewcode-block" id="create_multimeter_nest2">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.pointnet.modules.html#bmtk.simulator.pointnet.modules.multimeter_reporter.create_multimeter_nest2">[docs]</a>
+<span class="k">def</span> <span class="nf">create_multimeter_nest2</span><span class="p">(</span><span class="n">tstart</span><span class="p">,</span> <span class="n">tstop</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">nest</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span>
         <span class="s1">&#39;multimeter&#39;</span><span class="p">,</span>
         <span class="n">params</span><span class="o">=</span><span class="p">{</span>
@@ -652,7 +654,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="create_multimeter_nest3"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.pointnet.modules.html#bmtk.simulator.pointnet.modules.multimeter_reporter.create_multimeter_nest3">[docs]</a><span class="k">def</span> <span class="nf">create_multimeter_nest3</span><span class="p">(</span><span class="n">tstart</span><span class="p">,</span> <span class="n">tstop</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+
+<div class="viewcode-block" id="create_multimeter_nest3">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.pointnet.modules.html#bmtk.simulator.pointnet.modules.multimeter_reporter.create_multimeter_nest3">[docs]</a>
+<span class="k">def</span> <span class="nf">create_multimeter_nest3</span><span class="p">(</span><span class="n">tstart</span><span class="p">,</span> <span class="n">tstop</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">nest</span><span class="o">.</span><span class="n">Create</span><span class="p">(</span>
         <span class="s1">&#39;multimeter&#39;</span><span class="p">,</span>
         <span class="n">params</span><span class="o">=</span><span class="p">{</span>
@@ -665,14 +670,21 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="read_dat_nest2"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.pointnet.modules.html#bmtk.simulator.pointnet.modules.multimeter_reporter.read_dat_nest2">[docs]</a><span class="k">def</span> <span class="nf">read_dat_nest2</span><span class="p">(</span><span class="n">dat_file</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">):</span>
+
+<div class="viewcode-block" id="read_dat_nest2">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.pointnet.modules.html#bmtk.simulator.pointnet.modules.multimeter_reporter.read_dat_nest2">[docs]</a>
+<span class="k">def</span> <span class="nf">read_dat_nest2</span><span class="p">(</span><span class="n">dat_file</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">dat_file</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;nest_id&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">variable_name</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="read_dat_nest3"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.pointnet.modules.html#bmtk.simulator.pointnet.modules.multimeter_reporter.read_dat_nest3">[docs]</a><span class="k">def</span> <span class="nf">read_dat_nest3</span><span class="p">(</span><span class="n">dat_file</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">):</span>
+
+<div class="viewcode-block" id="read_dat_nest3">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.pointnet.modules.html#bmtk.simulator.pointnet.modules.multimeter_reporter.read_dat_nest3">[docs]</a>
+<span class="k">def</span> <span class="nf">read_dat_nest3</span><span class="p">(</span><span class="n">dat_file</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">):</span>
     <span class="n">report_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">dat_file</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
     <span class="n">report_df</span> <span class="o">=</span> <span class="n">report_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;sender&#39;</span><span class="p">:</span> <span class="s1">&#39;nest_id&#39;</span><span class="p">,</span> <span class="s1">&#39;time_ms&#39;</span><span class="p">:</span> <span class="s1">&#39;time&#39;</span><span class="p">})</span>
     <span class="k">return</span> <span class="n">report_df</span></div>
+
 
 
 
@@ -684,7 +696,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
     <span class="n">read_dat</span> <span class="o">=</span> <span class="n">read_dat_nest2</span>
 
 
-<div class="viewcode-block" id="MultimeterMod"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.pointnet.modules.html#bmtk.simulator.pointnet.modules.multimeter_reporter.MultimeterMod">[docs]</a><span class="k">class</span> <span class="nc">MultimeterMod</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="MultimeterMod">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.pointnet.modules.html#bmtk.simulator.pointnet.modules.multimeter_reporter.MultimeterMod">[docs]</a>
+<span class="k">class</span> <span class="nc">MultimeterMod</span><span class="p">(</span><span class="n">SimulatorMod</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tmp_dir</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> <span class="n">cells</span><span class="p">,</span> <span class="n">tstart</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tstop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">to_h5</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">delete_dat</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">opt_params</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;For recording neuron properties using a NEST multimeter object</span>
@@ -719,7 +733,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="bp">self</span><span class="o">.</span><span class="n">__output_label</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_dir</span><span class="p">,</span> <span class="s1">&#39;__bmtk_nest_</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_file_name</span><span class="p">)))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_var_recorder</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># CellVarRecorder(self._file_name, self._output_dir, self._variable_name, buffer_data=False)</span>
 
-<div class="viewcode-block" id="MultimeterMod.initialize"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.pointnet.modules.html#bmtk.simulator.pointnet.modules.multimeter_reporter.MultimeterMod.initialize">[docs]</a>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sim</span><span class="p">):</span>
+<div class="viewcode-block" id="MultimeterMod.initialize">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.pointnet.modules.html#bmtk.simulator.pointnet.modules.multimeter_reporter.MultimeterMod.initialize">[docs]</a>
+    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sim</span><span class="p">):</span>
         <span class="n">node_set</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">net</span><span class="o">.</span><span class="n">get_node_set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node_set</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_gids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">node_set</span><span class="o">.</span><span class="n">gids</span><span class="p">()))</span>
@@ -733,7 +749,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="n">nest</span><span class="o">.</span><span class="n">SetStatus</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_multimeter</span><span class="p">,</span> <span class="s1">&#39;interval&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_interval</span><span class="p">)</span>
         <span class="n">nest</span><span class="o">.</span><span class="n">Connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_multimeter</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gids</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MultimeterMod.finalize"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.pointnet.modules.html#bmtk.simulator.pointnet.modules.multimeter_reporter.MultimeterMod.finalize">[docs]</a>    <span class="k">def</span> <span class="nf">finalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sim</span><span class="p">):</span>
+
+<div class="viewcode-block" id="MultimeterMod.finalize">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.pointnet.modules.html#bmtk.simulator.pointnet.modules.multimeter_reporter.MultimeterMod.finalize">[docs]</a>
+    <span class="k">def</span> <span class="nf">finalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sim</span><span class="p">):</span>
         <span class="n">io</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span>  <span class="c1"># Makes sure all nodes finish, but not sure if actually required by nest</span>
 
         <span class="c1"># min_delay needs to be fetched after simulation otherwise the value will be off. There also seems to be some</span>
@@ -783,7 +802,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 
             <span class="bp">self</span><span class="o">.</span><span class="n">_var_recorder</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-        <span class="n">io</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span></div></div>
+        <span class="n">io</span><span class="o">.</span><span class="n">barrier</span><span class="p">()</span></div>
+</div>
+
 </pre></div>
 
             <div class="clearer"></div>
@@ -838,7 +859,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../../search.html" method="get">
@@ -846,7 +867,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

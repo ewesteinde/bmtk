@@ -1,18 +1,17 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Tutorial 4: Multi-population recurrent network (with BioNet) &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
+    <title>Tutorial 4: Multi-population recurrent network (with BioNet) &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css?v=1b18bd45" />
+    <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <script src="_static/documentation_options.js?v=fc837d61"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -624,15 +623,15 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
           <div class="body" role="main">
             
   <section id="Tutorial-4:-Multi-population-recurrent-network-(with-BioNet)">
-<h1>Tutorial 4: Multi-population recurrent network (with BioNet)<a class="headerlink" href="#Tutorial-4:-Multi-population-recurrent-network-(with-BioNet)" title="Permalink to this heading">¶</a></h1>
+<h1>Tutorial 4: Multi-population recurrent network (with BioNet)<a class="headerlink" href="#Tutorial-4:-Multi-population-recurrent-network-(with-BioNet)" title="Link to this heading">¶</a></h1>
 <p>Here we will create a heterogenous yet relatively small network consisting of hundreds of cells recurrently connected. All cells will belong to one of four “cell-types”. Two of these cell types will be biophysically detailed cells, i.e. containing a full morphology and somatic and dendritic channels and receptors. The other two will be point-neuron models, which lack a full morphology or channels but still act to provide inhibitory and excitory dynamics.</p>
 <p>As input to drive the simulation, we will also create an external network of “virtual cells” that synapse directly onto our internal cells and provide spike trains stimulus</p>
 <p><strong>Note</strong> - scripts and files for running this tutorial can be found in the directory <a class="reference external" href="https://github.com/AllenInstitute/bmtk/tree/develop/docs/tutorial/sources/chapter04">sources/chapter04/</a></p>
 <p>requirements: * bmtk * NEURON 7.4+</p>
 <section id="1.-Building-the-network">
-<h2>1. Building the network<a class="headerlink" href="#1.-Building-the-network" title="Permalink to this heading">¶</a></h2>
+<h2>1. Building the network<a class="headerlink" href="#1.-Building-the-network" title="Link to this heading">¶</a></h2>
 <section id="Cells">
-<h3>Cells<a class="headerlink" href="#Cells" title="Permalink to this heading">¶</a></h3>
+<h3>Cells<a class="headerlink" href="#Cells" title="Link to this heading">¶</a></h3>
 <p>This network will loosely resemble the mouse V1 cortical column. Along the center of the column will be a population of 50 biophysically detailed neurons: 40 excitatory Scnn1a cells and 10 inhibitory PV cells.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -708,7 +707,7 @@ properties for creating connections and running simulations.</p>
 </div>
 </section>
 <section id="Connections">
-<h3>Connections<a class="headerlink" href="#Connections" title="Permalink to this heading">¶</a></h3>
+<h3>Connections<a class="headerlink" href="#Connections" title="Link to this heading">¶</a></h3>
 <p>Now we want to create connections between the cells. Depending on the model type, and whether or not the presynpatic “source” cell is excitory or inhibitory, we will have different synpatic model and parameters. Using the source and target filter parameters, we can create different connection types.</p>
 <p>To determine excitory-to-excitory connection matrix we want to use distance and tuning_angle property. To do this we create a customized function “dist_tuning_connector”</p>
 <div class="nbinput nblast docutils container">
@@ -766,8 +765,8 @@ properties for creating connections and running simulations.</p>
 </div>
 <p>This first two parameters of this function is “source” and “target” and are required for all custom connector functions. These are node objects which gives a representation of a single source and target cell, with properties that can be accessed like a python dictionary. When The Network Builder is creating the connection matrix, it will call this function for all possible source-target pairs. The user doesn’t call this function directly.</p>
 <p>The remaining parameters are optional. Using these parameters, plus the distance and angles between source and target cells, this function determines the number of connections between each given source and target cell. If there are none you can return either None or 0.</p>
-<p>To create these connections we call add_edges method of the builder. We use the source and target parameter to filter out only excitory-to-excitory connections. We must also take into consideration the model type (biophysical or integrate-and-fire) of the target when setting parameters. We pass in the function throught the connection_rule parameter, and the function parameters (except source and target) through connection_params. (If our dist_tuning_connector function didn’t have any parameters
-other than source and target, we could just not set connection_params).</p>
+<p>To create these connections we call add_edges method of the builder. We use the source and target parameter to filter out only excitory-to-excitory connections. We must also take into consideration the model type (biophysical or integrate-and-fire) of the target when setting parameters. We pass in the function throught the connection_rule parameter, and the function parameters (except source and target) through connection_params. (If our dist_tuning_connector function didn’t have any
+parameters other than source and target, we could just not set connection_params).</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -916,7 +915,7 @@ other than source and target, we could just not set connection_params).</p>
 </div>
 </div>
 <section id="Building-external-network">
-<h4>Building external network<a class="headerlink" href="#Building-external-network" title="Permalink to this heading">¶</a></h4>
+<h4>Building external network<a class="headerlink" href="#Building-external-network" title="Link to this heading">¶</a></h4>
 <p>Next we want to create an external network consisting of virtual cells that form a feedforward network onto our V1, which will provide input during the simulation. We will call this LGN, since the LGN is the primary input the layer 4 cells of the V1 (if we wanted to we could also create multiple external networks and run simulations on any number of them).</p>
 <p>First we build our LGN nodes. Then we must import the V1 network nodes, and create connections between LGN –&gt; V1.</p>
 <div class="nbinput nblast docutils container">
@@ -1021,9 +1020,9 @@ sources and the target.</p>
 </section>
 </section>
 <section id="2.-Setting-up-BioNet">
-<h2>2. Setting up BioNet<a class="headerlink" href="#2.-Setting-up-BioNet" title="Permalink to this heading">¶</a></h2>
+<h2>2. Setting up BioNet<a class="headerlink" href="#2.-Setting-up-BioNet" title="Link to this heading">¶</a></h2>
 <section id="File-structure">
-<h3>File structure<a class="headerlink" href="#File-structure" title="Permalink to this heading">¶</a></h3>
+<h3>File structure<a class="headerlink" href="#File-structure" title="Link to this heading">¶</a></h3>
 <p>Before running a simulation, we will need to create the runtime environment, including parameter files, run-script and configuration files. You can copy the files from an existing simuatlion, execute the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>bmtk.utils.sim_setup<span class="w">  </span><span class="se">\</span>
 <span class="w">   </span>--report-vars<span class="w"> </span>v<span class="w">                </span><span class="se">\</span>
@@ -1175,7 +1174,7 @@ Successfully created x86_64/special
 </ul>
 </section>
 <section id="LGN-Input">
-<h3>LGN Input<a class="headerlink" href="#LGN-Input" title="Permalink to this heading">¶</a></h3>
+<h3>LGN Input<a class="headerlink" href="#LGN-Input" title="Link to this heading">¶</a></h3>
 <p>We need to provide our LGN external network cells with spike-trains so they can activate our recurrent network. Previously we showed how to do this by generating csv files. We can also use NWB files, which are a common format for saving electrophysiological data in neuroscience.</p>
 <p>We can use any NWB file generated experimentally or computationally, but for this example we will use a preexisting one. First download the file:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>wget<span class="w"> </span>https://github.com/AllenInstitute/bmtk/blob/develop/examples/spikes_inputs/lgn_spikes.h5?raw<span class="o">=</span><span class="nb">true</span><span class="w"> </span>-O<span class="w"> </span>lgn_spikes.h5
@@ -1198,7 +1197,7 @@ Successfully created x86_64/special
 </section>
 </section>
 <section id="3.-Running-the-simulation">
-<h2>3. Running the simulation<a class="headerlink" href="#3.-Running-the-simulation" title="Permalink to this heading">¶</a></h2>
+<h2>3. Running the simulation<a class="headerlink" href="#3.-Running-the-simulation" title="Link to this heading">¶</a></h2>
 <p>We are close to running our simulation, however unlike in previous chapters we need a little more programming before we can begin.</p>
 <p>For most of the connections we added the parameter weight_function=’wmax’. This is a built-in function that tells the simulator when creating a connection between two cells, just use the ‘weight_max’ value assigned to that given edge-type.</p>
 <p>However, when creating excitatory-to-excitatory connections we used weight_function=’gaussianLL’. This is because we want to use the tuning_angle parameter, when avaiable, to determine the synaptic strength between two connections. First we create the function which takes in target, source and connection properties (which are just the edge-type and properties set in the add_edges method). Then we must register the function with the BioNet simulator:</p>
@@ -1466,7 +1465,7 @@ INFO:NEURONIOUtils:Simulation completed in 4.0 minutes, 17.9 seconds
 </div>
 </section>
 <section id="4.-Analyzing-results">
-<h2>4. Analyzing results<a class="headerlink" href="#4.-Analyzing-results" title="Permalink to this heading">¶</a></h2>
+<h2>4. Analyzing results<a class="headerlink" href="#4.-Analyzing-results" title="Link to this heading">¶</a></h2>
 <p>Results of the simulation, as specified in the config, are saved into the output directory. Using the analyzer functions, we can do things like plot the raster plot</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
@@ -1572,8 +1571,9 @@ INFO:NEURONIOUtils:Simulation completed in 4.0 minutes, 17.9 seconds
 <li class="toctree-l2"><a class="reference internal" href="tutorial_single_pop.html">BioNet: Multiple Nodes with single cell-type</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">BioNet: Heterogeneous network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial_pointnet_modeling.html">PointNet: Point-neuron modeling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial_population_modeling.html">PopNet: Population-based firing rate models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial_filter_models.html">FilterNet: Full-field flashing movie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_auditory_filternet.html">Auditory FilterNet: Generating stimuli from auditory input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_population_modeling.html">PopNet: Population-based firing rate models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ad_tutorials.html">Additional Tutorials</a><ul>
@@ -1599,7 +1599,7 @@ INFO:NEURONIOUtils:Simulation completed in 4.0 minutes, 17.9 seconds
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -1607,7 +1607,7 @@ INFO:NEURONIOUtils:Simulation completed in 4.0 minutes, 17.9 seconds
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

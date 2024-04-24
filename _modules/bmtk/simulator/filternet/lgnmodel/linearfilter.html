@@ -1,17 +1,15 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bmtk.simulator.filternet.lgnmodel.linearfilter &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../../_static/aibs_sphinx.css" />
-    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
-    <script src="../../../../../_static/jquery.js"></script>
-    <script src="../../../../../_static/underscore.js"></script>
-    <script src="../../../../../_static/doctools.js"></script>
+    <title>bmtk.simulator.filternet.lgnmodel.linearfilter &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="../../../../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" /> 
@@ -624,13 +622,17 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <span class="kn">from</span> <span class="nn">.kernel</span> <span class="kn">import</span> <span class="n">Kernel3D</span>
 
 
-<div class="viewcode-block" id="SpatioTemporalFilter"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpatioTemporalFilter">[docs]</a><span class="k">class</span> <span class="nc">SpatioTemporalFilter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="SpatioTemporalFilter">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpatioTemporalFilter">[docs]</a>
+<span class="k">class</span> <span class="nc">SpatioTemporalFilter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spatial_filter</span><span class="p">,</span> <span class="n">temporal_filter</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mf">1.</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">spatial_filter</span> <span class="o">=</span> <span class="n">spatial_filter</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">temporal_filter</span> <span class="o">=</span> <span class="n">temporal_filter</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span> <span class="o">=</span> <span class="n">amplitude</span>
 
-<div class="viewcode-block" id="SpatioTemporalFilter.get_spatiotemporal_kernel"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpatioTemporalFilter.get_spatiotemporal_kernel">[docs]</a>    <span class="k">def</span> <span class="nf">get_spatiotemporal_kernel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row_range</span><span class="p">,</span> <span class="n">col_range</span><span class="p">,</span> <span class="n">t_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="SpatioTemporalFilter.get_spatiotemporal_kernel">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpatioTemporalFilter.get_spatiotemporal_kernel">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_spatiotemporal_kernel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row_range</span><span class="p">,</span> <span class="n">col_range</span><span class="p">,</span> <span class="n">t_range</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="c1"># TODO: Rename to get_kernel() to match with spatialfilter and temporalfilter</span>
         <span class="n">spatial_kernel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spatial_filter</span><span class="o">.</span><span class="n">get_kernel</span><span class="p">(</span><span class="n">row_range</span><span class="p">,</span> <span class="n">col_range</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">temporal_kernel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">temporal_filter</span><span class="o">.</span><span class="n">get_kernel</span><span class="p">(</span><span class="n">t_range</span><span class="o">=</span><span class="n">t_range</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
@@ -655,25 +657,99 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="n">kernel</span> <span class="o">=</span> <span class="n">Kernel3D</span><span class="p">(</span><span class="n">spatial_kernel</span><span class="o">.</span><span class="n">row_range</span><span class="p">,</span> <span class="n">spatial_kernel</span><span class="o">.</span><span class="n">col_range</span><span class="p">,</span> <span class="n">t_range</span><span class="p">,</span> <span class="n">row_inds</span><span class="p">,</span> <span class="n">col_inds</span><span class="p">,</span> <span class="n">t_inds</span><span class="p">,</span>
                           <span class="n">spatiotemporal_kernel</span><span class="p">)</span>
         <span class="n">kernel</span><span class="o">.</span><span class="n">apply_threshold</span><span class="p">(</span><span class="n">threshold</span><span class="p">)</span>
-
         <span class="n">kernel</span><span class="o">.</span><span class="n">kernel</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span>
         <span class="k">return</span> <span class="n">kernel</span></div>
+
     
-<div class="viewcode-block" id="SpatioTemporalFilter.t_slice"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpatioTemporalFilter.t_slice">[docs]</a>    <span class="k">def</span> <span class="nf">t_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="SpatioTemporalFilter.t_slice">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpatioTemporalFilter.t_slice">[docs]</a>
+    <span class="k">def</span> <span class="nf">t_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_spatiotemporal_kernel</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">k</span><span class="o">.</span><span class="n">t_slice</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></div>
+
     
-<div class="viewcode-block" id="SpatioTemporalFilter.show_temporal_filter"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpatioTemporalFilter.show_temporal_filter">[docs]</a>    <span class="k">def</span> <span class="nf">show_temporal_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="SpatioTemporalFilter.show_temporal_filter">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpatioTemporalFilter.show_temporal_filter">[docs]</a>
+    <span class="k">def</span> <span class="nf">show_temporal_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">temporal_filter</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
             
-<div class="viewcode-block" id="SpatioTemporalFilter.show_spatial_filter"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpatioTemporalFilter.show_spatial_filter">[docs]</a>    <span class="k">def</span> <span class="nf">show_spatial_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="SpatioTemporalFilter.show_spatial_filter">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpatioTemporalFilter.show_spatial_filter">[docs]</a>
+    <span class="k">def</span> <span class="nf">show_spatial_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">spatial_filter</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
     
-<div class="viewcode-block" id="SpatioTemporalFilter.to_dict"><a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpatioTemporalFilter.to_dict">[docs]</a>    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="SpatioTemporalFilter.to_dict">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpatioTemporalFilter.to_dict">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">),</span>
                 <span class="s1">&#39;spatial_filter&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">spatial_filter</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span>
                 <span class="s1">&#39;temporal_filter&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">temporal_filter</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span>
-                <span class="s1">&#39;amplitude&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span><span class="p">}</span></div></div>
+                <span class="s1">&#39;amplitude&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span><span class="p">}</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="SpectroTemporalFilter">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpectroTemporalFilter">[docs]</a>
+<span class="k">class</span> <span class="nc">SpectroTemporalFilter</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spectrotemporal_filter</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mf">1.</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spectrotemporal_filter</span> <span class="o">=</span> <span class="n">spectrotemporal_filter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span> <span class="o">=</span> <span class="n">amplitude</span>
+
+<div class="viewcode-block" id="SpectroTemporalFilter.get_spectrotemporal_kernel">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpectroTemporalFilter.get_spectrotemporal_kernel">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_spectrotemporal_kernel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">freq_range</span><span class="p">,</span> <span class="n">t_range</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">spectrotemporal_kernel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spectrotemporal_filter</span><span class="o">.</span><span class="n">get_kernel</span><span class="p">(</span><span class="n">freq_range</span><span class="p">,</span> <span class="n">t_range</span><span class="p">,</span> <span class="n">threshold_rel</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">reverse</span><span class="p">:</span>
+            <span class="n">t_range</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t_range</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">t_inds</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">spectrotemporal_kernel</span><span class="o">.</span><span class="n">col_inds</span> <span class="o">-</span> <span class="mi">1</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">t_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t_range</span><span class="p">)</span>
+            <span class="n">t_inds</span> <span class="o">=</span> <span class="n">spectrotemporal_kernel</span><span class="o">.</span><span class="n">col_inds</span>
+
+        <span class="c1"># Keep it 3D to keep downstream consistent</span>
+        <span class="c1"># spectrotemporal_kernel.col_range is put in t_range</span>
+        <span class="c1"># frequencies are put in row_range</span>
+        <span class="n">kernel</span> <span class="o">=</span> <span class="n">Kernel3D</span><span class="p">(</span><span class="n">spectrotemporal_kernel</span><span class="o">.</span><span class="n">row_range</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t_range</span><span class="p">,</span>
+                          <span class="n">spectrotemporal_kernel</span><span class="o">.</span><span class="n">row_inds</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">spectrotemporal_kernel</span><span class="o">.</span><span class="n">row_inds</span><span class="p">),</span>
+                          <span class="n">t_inds</span><span class="p">,</span> <span class="n">spectrotemporal_kernel</span><span class="o">.</span><span class="n">kernel</span><span class="p">)</span>
+        <span class="c1">#kernel.apply_threshold(threshold)</span>
+        <span class="c1">#kernel.kernel *= self.amplitude</span>
+        <span class="k">return</span> <span class="n">kernel</span></div>
+
+
+<div class="viewcode-block" id="SpectroTemporalFilter.t_slice">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpectroTemporalFilter.t_slice">[docs]</a>
+    <span class="k">def</span> <span class="nf">t_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_spatiotemporal_kernel</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">k</span><span class="o">.</span><span class="n">t_slice</span><span class="p">(</span><span class="n">t</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SpectroTemporalFilter.show_temporal_filter">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpectroTemporalFilter.show_temporal_filter">[docs]</a>
+    <span class="k">def</span> <span class="nf">show_temporal_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temporal_filter</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SpectroTemporalFilter.show_spatial_filter">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpectroTemporalFilter.show_spatial_filter">[docs]</a>
+    <span class="k">def</span> <span class="nf">show_spatial_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spatial_filter</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SpectroTemporalFilter.to_dict">
+<a class="viewcode-back" href="../../../../../bmtk/bmtk.simulator.filternet.lgnmodel.html#bmtk.simulator.filternet.lgnmodel.linearfilter.SpectroTemporalFilter.to_dict">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">),</span>
+                <span class="s1">&#39;spatial_filter&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">spatial_filter</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span>
+                <span class="s1">&#39;temporal_filter&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">temporal_filter</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span>
+                <span class="s1">&#39;amplitude&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span><span class="p">}</span></div>
+</div>
+
 </pre></div>
 
             <div class="clearer"></div>
@@ -728,7 +804,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../../search.html" method="get">
@@ -736,8 +812,8 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>

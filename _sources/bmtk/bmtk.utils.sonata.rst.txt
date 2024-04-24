@@ -28,6 +28,14 @@ bmtk.utils.sonata.edge module
    :undoc-members:
    :show-inheritance:
 
+bmtk.utils.sonata.edge\_stats module
+------------------------------------
+
+.. automodule:: bmtk.utils.sonata.edge_stats
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bmtk.utils.sonata.file module
 -----------------------------
 

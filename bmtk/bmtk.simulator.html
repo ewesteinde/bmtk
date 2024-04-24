@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>bmtk.simulator package &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/aibs_sphinx.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <title>bmtk.simulator package &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -621,9 +620,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
           <div class="body" role="main">
             
   <section id="bmtk-simulator-package">
-<h1>bmtk.simulator package<a class="headerlink" href="#bmtk-simulator-package" title="Permalink to this heading">¶</a></h1>
+<h1>bmtk.simulator package<a class="headerlink" href="#bmtk-simulator-package" title="Link to this heading">¶</a></h1>
 <section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">¶</a></h2>
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="bmtk.simulator.bionet.html">bmtk.simulator.bionet package</a><ul>
@@ -1103,6 +1102,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.core.html#bmtk.simulator.core.pyfunction_cache.add_weight_function"><code class="docutils literal notranslate"><span class="pre">add_weight_function()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.core.html#bmtk.simulator.core.pyfunction_cache.cell_model"><code class="docutils literal notranslate"><span class="pre">cell_model()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.core.html#bmtk.simulator.core.pyfunction_cache.load_py_modules"><code class="docutils literal notranslate"><span class="pre">load_py_modules()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.core.html#bmtk.simulator.core.pyfunction_cache.model_processing"><code class="docutils literal notranslate"><span class="pre">model_processing()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.core.html#bmtk.simulator.core.pyfunction_cache.synapse_model"><code class="docutils literal notranslate"><span class="pre">synapse_model()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.core.html#bmtk.simulator.core.pyfunction_cache.synaptic_weight"><code class="docutils literal notranslate"><span class="pre">synaptic_weight()</span></code></a></li>
 </ul>
@@ -1122,7 +1122,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </li>
 <li class="toctree-l2"><a class="reference internal" href="bmtk.simulator.core.html#module-bmtk.simulator.core.simulation_config_validator">bmtk.simulator.core.simulation_config_validator module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.core.html#bmtk.simulator.core.simulation_config_validator.SimulationConfigValidator"><code class="docutils literal notranslate"><span class="pre">SimulationConfigValidator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.core.html#bmtk.simulator.core.simulation_config_validator.SimulationConfigValidator.evolve"><code class="docutils literal notranslate"><span class="pre">SimulationConfigValidator.evolve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.core.html#bmtk.simulator.core.simulation_config_validator.SimulationConfigValidator.format_checker"><code class="docutils literal notranslate"><span class="pre">SimulationConfigValidator.format_checker</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.core.html#bmtk.simulator.core.simulation_config_validator.SimulationConfigValidator.is_type"><code class="docutils literal notranslate"><span class="pre">SimulationConfigValidator.is_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.core.html#bmtk.simulator.core.simulation_config_validator.SimulationConfigValidator.schema"><code class="docutils literal notranslate"><span class="pre">SimulationConfigValidator.schema</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1199,6 +1202,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.lgnmodel.html#module-bmtk.simulator.filternet.lgnmodel.transferfunction">bmtk.simulator.filternet.lgnmodel.transferfunction module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.lgnmodel.html#module-bmtk.simulator.filternet.lgnmodel.util_fns">bmtk.simulator.filternet.lgnmodel.util_fns module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.lgnmodel.html#module-bmtk.simulator.filternet.lgnmodel.utilities">bmtk.simulator.filternet.lgnmodel.utilities module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.lgnmodel.html#module-bmtk.simulator.filternet.lgnmodel.waveletfilter">bmtk.simulator.filternet.lgnmodel.waveletfilter module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.lgnmodel.html#module-bmtk.simulator.filternet.lgnmodel">Module contents</a></li>
 </ul>
 </li>
@@ -1213,6 +1217,13 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="bmtk.simulator.filternet.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bmtk.simulator.filternet.html#module-bmtk.simulator.filternet.auditory_processing">bmtk.simulator.filternet.auditory_processing module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.auditory_processing.AuditoryInput"><code class="docutils literal notranslate"><span class="pre">AuditoryInput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.auditory_processing.AuditoryInput.get_cochleagram"><code class="docutils literal notranslate"><span class="pre">AuditoryInput.get_cochleagram()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="bmtk.simulator.filternet.html#module-bmtk.simulator.filternet.cell">bmtk.simulator.filternet.cell module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.cell.Cell"><code class="docutils literal notranslate"><span class="pre">Cell</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.cell.Cell.build"><code class="docutils literal notranslate"><span class="pre">Cell.build()</span></code></a></li>
@@ -1248,6 +1259,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <li class="toctree-l2"><a class="reference internal" href="bmtk.simulator.filternet.html#module-bmtk.simulator.filternet.filters">bmtk.simulator.filternet.filters module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bmtk.simulator.filternet.html#module-bmtk.simulator.filternet.filtersimulator">bmtk.simulator.filternet.filtersimulator module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.filtersimulator.FilterSimulator"><code class="docutils literal notranslate"><span class="pre">FilterSimulator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.filtersimulator.FilterSimulator.add_audio"><code class="docutils literal notranslate"><span class="pre">FilterSimulator.add_audio()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.filtersimulator.FilterSimulator.add_movie"><code class="docutils literal notranslate"><span class="pre">FilterSimulator.add_movie()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.filtersimulator.FilterSimulator.dt"><code class="docutils literal notranslate"><span class="pre">FilterSimulator.dt</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.filtersimulator.FilterSimulator.find_params"><code class="docutils literal notranslate"><span class="pre">FilterSimulator.find_params()</span></code></a></li>
@@ -1276,14 +1288,23 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </li>
 <li class="toctree-l2"><a class="reference internal" href="bmtk.simulator.filternet.html#module-bmtk.simulator.filternet.sonata_adaptors">bmtk.simulator.filternet.sonata_adaptors module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode"><code class="docutils literal notranslate"><span class="pre">FilterNode</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.amplitude"><code class="docutils literal notranslate"><span class="pre">FilterNode.amplitude</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.b_t"><code class="docutils literal notranslate"><span class="pre">FilterNode.b_t</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.delay"><code class="docutils literal notranslate"><span class="pre">FilterNode.delay</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.delays"><code class="docutils literal notranslate"><span class="pre">FilterNode.delays</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.delays_non_dom"><code class="docutils literal notranslate"><span class="pre">FilterNode.delays_non_dom</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.direction"><code class="docutils literal notranslate"><span class="pre">FilterNode.direction</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.jitter"><code class="docutils literal notranslate"><span class="pre">FilterNode.jitter</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.kpeaks"><code class="docutils literal notranslate"><span class="pre">FilterNode.kpeaks</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.kpeaks_non_dom"><code class="docutils literal notranslate"><span class="pre">FilterNode.kpeaks_non_dom</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.non_dom_params"><code class="docutils literal notranslate"><span class="pre">FilterNode.non_dom_params</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.order_t"><code class="docutils literal notranslate"><span class="pre">FilterNode.order_t</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.predefined_jitter"><code class="docutils literal notranslate"><span class="pre">FilterNode.predefined_jitter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.psi"><code class="docutils literal notranslate"><span class="pre">FilterNode.psi</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.sf_sep"><code class="docutils literal notranslate"><span class="pre">FilterNode.sf_sep</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.sigma_f"><code class="docutils literal notranslate"><span class="pre">FilterNode.sigma_f</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.sp_mod_freq"><code class="docutils literal notranslate"><span class="pre">FilterNode.sp_mod_freq</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.t_mod_freq"><code class="docutils literal notranslate"><span class="pre">FilterNode.t_mod_freq</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.tuning_angle"><code class="docutils literal notranslate"><span class="pre">FilterNode.tuning_angle</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.weights"><code class="docutils literal notranslate"><span class="pre">FilterNode.weights</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode.weights_non_dom"><code class="docutils literal notranslate"><span class="pre">FilterNode.weights_non_dom</span></code></a></li>
@@ -1300,6 +1321,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_nondom_delays_params"><code class="docutils literal notranslate"><span class="pre">find_nondom_delays_params()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_nondom_kpeaks_params"><code class="docutils literal notranslate"><span class="pre">find_nondom_kpeaks_params()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_nondom_weight_params"><code class="docutils literal notranslate"><span class="pre">find_nondom_weight_params()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_spectrotemporal_params"><code class="docutils literal notranslate"><span class="pre">find_spectrotemporal_params()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_weight_params"><code class="docutils literal notranslate"><span class="pre">find_weight_params()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.non_dom_params"><code class="docutils literal notranslate"><span class="pre">non_dom_params()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.return_none"><code class="docutils literal notranslate"><span class="pre">return_none()</span></code></a></li>
@@ -1328,6 +1350,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.pointnet.modules.html#module-bmtk.simulator.pointnet.modules.iclamp">bmtk.simulator.pointnet.modules.iclamp module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.pointnet.modules.html#module-bmtk.simulator.pointnet.modules.multimeter_reporter">bmtk.simulator.pointnet.modules.multimeter_reporter module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.pointnet.modules.html#module-bmtk.simulator.pointnet.modules.record_spikes">bmtk.simulator.pointnet.modules.record_spikes module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.pointnet.modules.html#module-bmtk.simulator.pointnet.modules.sim_module">bmtk.simulator.pointnet.modules.sim_module module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.pointnet.modules.html#module-bmtk.simulator.pointnet.modules.spikes_inputs">bmtk.simulator.pointnet.modules.spikes_inputs module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.pointnet.modules.html#module-bmtk.simulator.pointnet.modules.weight_recorder">bmtk.simulator.pointnet.modules.weight_recorder module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.pointnet.modules.html#module-bmtk.simulator.pointnet.modules">Module contents</a></li>
 </ul>
 </li>
@@ -1352,8 +1377,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.gids.GidPool.get_gid"><code class="docutils literal notranslate"><span class="pre">GidPool.get_gid()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.gids.GidPool.get_gids"><code class="docutils literal notranslate"><span class="pre">GidPool.get_gids()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.gids.GidPool.get_nestids"><code class="docutils literal notranslate"><span class="pre">GidPool.get_nestids()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.gids.GidPool.get_node_ids"><code class="docutils literal notranslate"><span class="pre">GidPool.get_node_ids()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.gids.GidPool.get_pool_id"><code class="docutils literal notranslate"><span class="pre">GidPool.get_pool_id()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.gids.GidPool.gids"><code class="docutils literal notranslate"><span class="pre">GidPool.gids</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.gids.GidPool.nestid2nodeid_df"><code class="docutils literal notranslate"><span class="pre">GidPool.nestid2nodeid_df</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.pointnet.html#bmtk.simulator.pointnet.gids.GidPool.populations"><code class="docutils literal notranslate"><span class="pre">GidPool.populations</span></code></a></li>
 </ul>
 </li>
@@ -1746,6 +1773,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.SpikesReport.from_output_dict"><code class="docutils literal notranslate"><span class="pre">SpikesReport.from_output_dict()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.WeightRecorder"><code class="docutils literal notranslate"><span class="pre">WeightRecorder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.WeightRecorder.avail_modules"><code class="docutils literal notranslate"><span class="pre">WeightRecorder.avail_modules()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.simulator.utils.html#bmtk.simulator.utils.simulation_reports.from_config"><code class="docutils literal notranslate"><span class="pre">from_config()</span></code></a></li>
 </ul>
 </li>
@@ -1756,7 +1787,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </div>
 </section>
 <section id="module-bmtk.simulator">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bmtk.simulator" title="Permalink to this heading">¶</a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bmtk.simulator" title="Link to this heading">¶</a></h2>
 </section>
 </section>
 
@@ -1786,8 +1817,8 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <li class="toctree-l2"><a class="reference internal" href="../tutorial_single_pop.html">BioNet: Multiple Nodes with single cell-type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorial_multi_pop.html">BioNet: Heterogeneous network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorial_pointnet_modeling.html">PointNet: Point-neuron modeling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tutorial_population_modeling.html">PopNet: Population-based firing rate models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorial_filter_models.html">FilterNet: Full-field flashing movie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial_population_modeling.html">PopNet: Population-based firing rate models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ad_tutorials.html">Additional Tutorials</a><ul>
@@ -1813,7 +1844,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -1821,7 +1852,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

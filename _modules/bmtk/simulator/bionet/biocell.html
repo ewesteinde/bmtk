@@ -1,16 +1,15 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bmtk.simulator.bionet.biocell &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/aibs_sphinx.css" />
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/doctools.js"></script>
-    <script src="../../../../_static/sphinx_highlight.js"></script>
+    <title>bmtk.simulator.bionet.biocell &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="../../../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
@@ -651,7 +650,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 
 <span class="n">pc</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">ParallelContext</span><span class="p">()</span>    <span class="c1"># object to access MPI methods</span>
 
-<div class="viewcode-block" id="ConnectionStruct"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.ConnectionStruct">[docs]</a><span class="k">class</span> <span class="nc">ConnectionStruct</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="ConnectionStruct">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.ConnectionStruct">[docs]</a>
+<span class="k">class</span> <span class="nc">ConnectionStruct</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge_prop</span><span class="p">,</span> <span class="n">src_node</span><span class="p">,</span> <span class="n">syn</span><span class="p">,</span> <span class="n">connector</span><span class="p">,</span> <span class="n">is_virtual</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">is_gap_junc</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_src_node</span> <span class="o">=</span> <span class="n">src_node</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_edge_prop</span> <span class="o">=</span> <span class="n">edge_prop</span>
@@ -687,7 +688,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
             <span class="bp">self</span><span class="o">.</span><span class="n">_connector</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span></div>
 
 
-<div class="viewcode-block" id="BioCell"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell">[docs]</a><span class="k">class</span> <span class="nc">BioCell</span><span class="p">(</span><span class="n">Cell</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BioCell">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell">[docs]</a>
+<span class="k">class</span> <span class="nc">BioCell</span><span class="p">(</span><span class="n">Cell</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Implemntation of a morphologically and biophysically detailed type cell.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -725,7 +729,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="bp">self</span><span class="o">.</span><span class="n">_seg_coords</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">build_morphology</span><span class="p">()</span>
 
-<div class="viewcode-block" id="BioCell.build_morphology"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.build_morphology">[docs]</a>    <span class="k">def</span> <span class="nf">build_morphology</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BioCell.build_morphology">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.build_morphology">[docs]</a>
+    <span class="k">def</span> <span class="nf">build_morphology</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">morph_base</span> <span class="o">=</span> <span class="n">Morphology</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">hobj</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hobj</span><span class="p">,</span> <span class="n">morphology_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">morphology_file</span><span class="p">,</span> <span class="n">cache_seg_props</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_network</span><span class="o">.</span><span class="n">dL</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -735,6 +741,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="c1">#  etc require it). Only performe a move_and_rotate() function on cell if or when cell.seg_coords is called.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_morphology</span> <span class="o">=</span> <span class="n">morph_base</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">set_sec_array</span><span class="p">()</span></div>
+
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">morphology_file</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -763,21 +770,35 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">morphology</span><span class="o">.</span><span class="n">seg_coords</span>
 
-<div class="viewcode-block" id="BioCell.set_spike_detector"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.set_spike_detector">[docs]</a>    <span class="k">def</span> <span class="nf">set_spike_detector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spike_threshold</span><span class="p">):</span>
+<div class="viewcode-block" id="BioCell.set_spike_detector">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.set_spike_detector">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_spike_detector</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spike_threshold</span><span class="p">):</span>
         <span class="n">nc</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">NetCon</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hobj</span><span class="o">.</span><span class="n">soma</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">_ref_v</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">sec</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hobj</span><span class="o">.</span><span class="n">soma</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># attach spike detector to cell</span>
         <span class="n">nc</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">spike_threshold</span>
         <span class="n">pc</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gid</span><span class="p">,</span> <span class="n">nc</span><span class="p">)</span>  <span class="c1"># associate gid with spike detector</span></div>
 
-<div class="viewcode-block" id="BioCell.get_sections"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.get_sections">[docs]</a>    <span class="k">def</span> <span class="nf">get_sections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BioCell.get_sections">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.get_sections">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_sections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_secs_by_id</span></div>
 
-<div class="viewcode-block" id="BioCell.get_sections_id"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.get_sections_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_sections_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BioCell.get_sections_id">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.get_sections_id">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_sections_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_secs_by_id</span></div>
 
-<div class="viewcode-block" id="BioCell.get_section"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.get_section">[docs]</a>    <span class="k">def</span> <span class="nf">get_section</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sec_id</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BioCell.get_section">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.get_section">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_section</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sec_id</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_secs</span><span class="p">[</span><span class="n">sec_id</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="BioCell.set_sec_array"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.set_sec_array">[docs]</a>    <span class="k">def</span> <span class="nf">set_sec_array</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BioCell.set_sec_array">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.set_sec_array">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_sec_array</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Arrange sections in an array to be access by index&quot;&quot;&quot;</span>
         <span class="c1"># TODO: This should be accessabile in Morphology object</span>
         <span class="n">secs</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># build ref to sections</span>
@@ -789,7 +810,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_secs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">secs</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="BioCell.set_syn_connection"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.set_syn_connection">[docs]</a>    <span class="k">def</span> <span class="nf">set_syn_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge_prop</span><span class="p">,</span> <span class="n">src_node</span><span class="p">,</span> <span class="n">stim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">gj_ids</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BioCell.set_syn_connection">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.set_syn_connection">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_syn_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge_prop</span><span class="p">,</span> <span class="n">src_node</span><span class="p">,</span> <span class="n">stim</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">gj_ids</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">syn_weight</span> <span class="o">=</span> <span class="n">edge_prop</span><span class="o">.</span><span class="n">syn_weight</span><span class="p">(</span><span class="n">src_node</span><span class="o">=</span><span class="n">src_node</span><span class="p">,</span> <span class="n">trg_node</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">edge_prop</span><span class="o">.</span><span class="n">is_gap_junction</span><span class="p">:</span>
@@ -812,6 +836,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
                 <span class="bp">self</span><span class="o">.</span><span class="n">_edge_props</span> <span class="o">+=</span> <span class="p">[</span><span class="n">edge_prop</span><span class="p">]</span><span class="o">*</span><span class="n">edge_prop</span><span class="o">.</span><span class="n">nsyns</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_src_gids</span> <span class="o">+=</span> <span class="p">[</span><span class="n">src_node</span><span class="o">.</span><span class="n">node_id</span><span class="p">]</span><span class="o">*</span><span class="n">edge_prop</span><span class="o">.</span><span class="n">nsyns</span>
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_connections</span><span class="p">(</span><span class="n">edge_prop</span><span class="p">,</span> <span class="n">src_node</span><span class="p">,</span> <span class="n">syn_weight</span><span class="p">,</span> <span class="n">stim</span><span class="p">)</span></div>
+
 
     <span class="k">def</span> <span class="nf">_set_gap_junc_preselected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edge_prop</span><span class="p">,</span> <span class="n">src_node</span><span class="p">,</span> <span class="n">syn_weight</span><span class="p">,</span> <span class="n">gj_ids</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">edge_prop</span><span class="o">.</span><span class="n">nsyns</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
@@ -961,8 +986,11 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 
         <span class="k">return</span> <span class="n">nsyns</span>
 
-<div class="viewcode-block" id="BioCell.connections"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.connections">[docs]</a>    <span class="k">def</span> <span class="nf">connections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BioCell.connections">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.connections">[docs]</a>
+    <span class="k">def</span> <span class="nf">connections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connections</span></div>
+
 
     <span class="k">def</span> <span class="nf">_save_connection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src_gid</span><span class="p">,</span> <span class="n">src_net</span><span class="p">,</span> <span class="n">sec_x</span><span class="p">,</span> <span class="n">seg_ix</span><span class="p">,</span> <span class="n">edge_type_id</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_src_gids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">src_gid</span><span class="p">)</span>
@@ -971,18 +999,24 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="bp">self</span><span class="o">.</span><span class="n">_syn_seg_ix</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">seg_ix</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_edge_type_id</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edge_type_id</span><span class="p">)</span>
 
-<div class="viewcode-block" id="BioCell.get_connection_info"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.get_connection_info">[docs]</a>    <span class="k">def</span> <span class="nf">get_connection_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BioCell.get_connection_info">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.get_connection_info">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_connection_info</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># TODO: There should be a more effecient and robust way to return synapse information.</span>
         <span class="k">return</span> <span class="p">[[</span><span class="bp">self</span><span class="o">.</span><span class="n">gid</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_syn_src_gid</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">network_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_syn_src_net</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_syn_seg_ix</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
                  <span class="bp">self</span><span class="o">.</span><span class="n">_syn_sec_x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">netcons</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">netcons</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">delay</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_edge_type_id</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">0</span><span class="p">]</span>
                 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_synapses</span><span class="p">))]</span></div>
 
-<div class="viewcode-block" id="BioCell.init_connections"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.init_connections">[docs]</a>    <span class="k">def</span> <span class="nf">init_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BioCell.init_connections">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.init_connections">[docs]</a>
+    <span class="k">def</span> <span class="nf">init_connections</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">BioCell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">init_connections</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_synapses</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_syn_src_gid</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_syn_seg_ix</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_syn_sec_x</span> <span class="o">=</span> <span class="p">[]</span></div>
+
 
     <span class="k">def</span> <span class="nf">__set_extracell_mechanism</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__extracellular_mech</span><span class="p">:</span>
@@ -990,27 +1024,35 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
                 <span class="n">sec</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s1">&#39;extracellular&#39;</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__extracellular_mech</span> <span class="o">=</span> <span class="kc">True</span>
 
-<div class="viewcode-block" id="BioCell.setup_ecp"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.setup_ecp">[docs]</a>    <span class="k">def</span> <span class="nf">setup_ecp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BioCell.setup_ecp">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.setup_ecp">[docs]</a>
+    <span class="k">def</span> <span class="nf">setup_ecp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">im_ptr</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">PtrVector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">morphology</span><span class="o">.</span><span class="n">nseg</span><span class="p">)</span>  <span class="c1"># pointer vector</span>
         <span class="c1"># used for gathering an array of  i_membrane values from the pointer vector</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">im_ptr</span><span class="o">.</span><span class="n">ptr_update_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">set_im_ptr</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">imVec</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">morphology</span><span class="o">.</span><span class="n">nseg</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__set_extracell_mechanism</span><span class="p">()</span></div>
+
         <span class="c1"># for sec in self.hobj.all:</span>
         <span class="c1">#     sec.insert(&#39;extracellular&#39;)</span>
 
-<div class="viewcode-block" id="BioCell.setup_xstim"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.setup_xstim">[docs]</a>    <span class="k">def</span> <span class="nf">setup_xstim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">set_nrn_mechanism</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="BioCell.setup_xstim">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.setup_xstim">[docs]</a>
+    <span class="k">def</span> <span class="nf">setup_xstim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">set_nrn_mechanism</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ptr2e_extracellular</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">PtrVector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">morphology</span><span class="o">.</span><span class="n">nseg</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ptr2e_extracellular</span><span class="o">.</span><span class="n">ptr_update_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">set_ptr2e_extracellular</span><span class="p">)</span>
 
         <span class="c1"># Set the e_extracellular mechanism for all sections on this hoc object</span>
         <span class="k">if</span> <span class="n">set_nrn_mechanism</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">__set_extracell_mechanism</span><span class="p">()</span></div>
+
             <span class="c1"># for sec in self.hobj.all:</span>
             <span class="c1">#     sec.insert(&#39;extracellular&#39;)</span>
 
-<div class="viewcode-block" id="BioCell.set_im_ptr"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.set_im_ptr">[docs]</a>    <span class="k">def</span> <span class="nf">set_im_ptr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="BioCell.set_im_ptr">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.set_im_ptr">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_im_ptr</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set PtrVector to point to the _ref_i_membrane_ parameter&quot;&quot;&quot;</span>
         <span class="n">jseg</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">sec</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hobj</span><span class="o">.</span><span class="n">all</span><span class="p">:</span>  
@@ -1018,33 +1060,49 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
                 <span class="bp">self</span><span class="o">.</span><span class="n">im_ptr</span><span class="o">.</span><span class="n">pset</span><span class="p">(</span><span class="n">jseg</span><span class="p">,</span> <span class="n">seg</span><span class="o">.</span><span class="n">_ref_i_membrane_</span><span class="p">)</span>  <span class="c1"># notice the underscore at the end</span>
                 <span class="n">jseg</span> <span class="o">+=</span> <span class="mi">1</span></div>
 
-<div class="viewcode-block" id="BioCell.get_im"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.get_im">[docs]</a>    <span class="k">def</span> <span class="nf">get_im</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BioCell.get_im">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.get_im">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_im</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Gather membrane currents from PtrVector into imVec (does not need a loop!)&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">im_ptr</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">imVec</span><span class="p">)</span>
         <span class="c1"># Warning: as_numpy() seems to fail with in neuron 7.4 for python 3</span>
         <span class="c1"># return self.imVec.as_numpy()  # (nA)</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">imVec</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="BioCell.set_ptr2e_extracellular"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.set_ptr2e_extracellular">[docs]</a>    <span class="k">def</span> <span class="nf">set_ptr2e_extracellular</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BioCell.set_ptr2e_extracellular">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.set_ptr2e_extracellular">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_ptr2e_extracellular</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">jseg</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">sec</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">hobj</span><span class="o">.</span><span class="n">all</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">seg</span> <span class="ow">in</span> <span class="n">sec</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">ptr2e_extracellular</span><span class="o">.</span><span class="n">pset</span><span class="p">(</span><span class="n">jseg</span><span class="p">,</span> <span class="n">seg</span><span class="o">.</span><span class="n">_ref_e_extracellular</span><span class="p">)</span>
                 <span class="n">jseg</span> <span class="o">+=</span> <span class="mi">1</span></div>
 
-<div class="viewcode-block" id="BioCell.set_e_extracellular"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.set_e_extracellular">[docs]</a>    <span class="k">def</span> <span class="nf">set_e_extracellular</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vext</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BioCell.set_e_extracellular">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.set_e_extracellular">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_e_extracellular</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vext</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ptr2e_extracellular</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">vext</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="BioCell.print_synapses"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.print_synapses">[docs]</a>    <span class="k">def</span> <span class="nf">print_synapses</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BioCell.print_synapses">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCell.print_synapses">[docs]</a>
+    <span class="k">def</span> <span class="nf">print_synapses</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">rstr</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">six</span><span class="o">.</span><span class="n">moves</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_syn_src_gid</span><span class="p">)):</span>
             <span class="n">rstr</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">&gt; &lt;-- </span><span class="si">{}</span><span class="s1"> (</span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1">)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_syn_src_gid</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">netcons</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                                                            <span class="bp">self</span><span class="o">.</span><span class="n">netcons</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">delay</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_syn_seg_ix</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
                                                            <span class="bp">self</span><span class="o">.</span><span class="n">_syn_sec_x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-        <span class="k">return</span> <span class="n">rstr</span></div></div>
+        <span class="k">return</span> <span class="n">rstr</span></div>
+</div>
 
 
-<div class="viewcode-block" id="BioCellSpontSyn"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCellSpontSyn">[docs]</a><span class="k">class</span> <span class="nc">BioCellSpontSyn</span><span class="p">(</span><span class="n">BioCell</span><span class="p">):</span>
+
+<div class="viewcode-block" id="BioCellSpontSyn">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.bionet.html#bmtk.simulator.bionet.biocell.BioCellSpontSyn">[docs]</a>
+<span class="k">class</span> <span class="nc">BioCellSpontSyn</span><span class="p">(</span><span class="n">BioCell</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Special class that allows certain synapses to spontaneously fire (without spiking) at a specific time.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">population_name</span><span class="p">,</span> <span class="n">bionetwork</span><span class="p">):</span>
@@ -1141,6 +1199,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
                                   <span class="n">edge_type_id</span><span class="o">=</span><span class="n">edge_prop</span><span class="o">.</span><span class="n">edge_type_id</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="mi">1</span></div>
+
 </pre></div>
 
             <div class="clearer"></div>
@@ -1195,7 +1254,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../search.html" method="get">
@@ -1203,7 +1262,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

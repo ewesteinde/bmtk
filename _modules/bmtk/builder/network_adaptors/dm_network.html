@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bmtk.builder.network_adaptors.dm_network &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
+    <title>bmtk.builder.network_adaptors.dm_network &#8212; Brain Modeling Toolkit 1.0.8 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../../../_static/aibs_sphinx.css" />
     <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
@@ -850,21 +849,19 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 
         <span class="k">for</span> <span class="n">et</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">__edges_tables</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">is_gap</span> <span class="o">=</span> <span class="n">et</span><span class="p">[</span><span class="s1">&#39;edge_types&#39;</span><span class="p">][</span><span class="s1">&#39;is_gap_junction&#39;</span><span class="p">]</span>
+                <span class="n">is_gap</span> <span class="o">=</span> <span class="n">et</span><span class="o">.</span><span class="n">edge_type_properties</span><span class="p">[</span><span class="s1">&#39;is_gap_junction&#39;</span><span class="p">]</span>
             <span class="k">except</span><span class="p">:</span>
                 <span class="k">continue</span>
             <span class="k">if</span> <span class="n">is_gap</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">et</span><span class="p">[</span><span class="s1">&#39;source_network&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">et</span><span class="p">[</span><span class="s1">&#39;target_network&#39;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">et</span><span class="o">.</span><span class="n">source_network</span> <span class="o">!=</span> <span class="n">et</span><span class="o">.</span><span class="n">target_network</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;All gap junctions must be two cells in the same network builder.&quot;</span><span class="p">)</span>
-
-                <span class="n">table</span> <span class="o">=</span> <span class="n">et</span><span class="p">[</span><span class="s1">&#39;syn_table&#39;</span><span class="p">]</span>
-                <span class="n">junc_table</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">nsyn_table</span>
-                <span class="n">locs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">junc_table</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">locs</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
-                    <span class="n">source_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">source_ids</span><span class="p">[</span><span class="n">locs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]])</span>
-                    <span class="n">target_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">target_ids</span><span class="p">[</span><span class="n">locs</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">]])</span>
-                    <span class="n">src_gap_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gj_id_gen</span><span class="o">.</span><span class="n">next</span><span class="p">())</span>
-                    <span class="n">trg_gap_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gj_id_gen</span><span class="o">.</span><span class="n">next</span><span class="p">())</span>
+                <span class="n">table</span> <span class="o">=</span> <span class="n">et</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+                    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;nsyns&quot;</span><span class="p">]):</span>
+                        <span class="n">source_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;source_node_id&quot;</span><span class="p">])</span>
+                        <span class="n">target_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;target_node_id&quot;</span><span class="p">])</span>
+                        <span class="n">src_gap_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gj_id_gen</span><span class="o">.</span><span class="n">next</span><span class="p">())</span>
+                        <span class="n">trg_gap_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gj_id_gen</span><span class="o">.</span><span class="n">next</span><span class="p">())</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">continue</span>
 

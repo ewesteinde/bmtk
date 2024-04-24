@@ -1,17 +1,15 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../../../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bmtk.simulator.filternet.sonata_adaptors &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../../_static/aibs_sphinx.css" />
-    <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
-    <script src="../../../../_static/jquery.js"></script>
-    <script src="../../../../_static/underscore.js"></script>
-    <script src="../../../../_static/doctools.js"></script>
+    <title>bmtk.simulator.filternet.sonata_adaptors &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="../../../../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
@@ -623,11 +621,14 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">types</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">six</span> <span class="kn">import</span> <span class="n">string_types</span>
 
 <span class="kn">from</span> <span class="nn">bmtk.simulator.core.sonata_reader</span> <span class="kn">import</span> <span class="n">NodeAdaptor</span><span class="p">,</span> <span class="n">SonataBaseNode</span><span class="p">,</span> <span class="n">EdgeAdaptor</span><span class="p">,</span> <span class="n">SonataBaseEdge</span>
 
 
-<div class="viewcode-block" id="FilterNode"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode">[docs]</a><span class="k">class</span> <span class="nc">FilterNode</span><span class="p">(</span><span class="n">SonataBaseNode</span><span class="p">):</span>
+<div class="viewcode-block" id="FilterNode">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNode">[docs]</a>
+<span class="k">class</span> <span class="nc">FilterNode</span><span class="p">(</span><span class="n">SonataBaseNode</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">prop_adaptor</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">FilterNode</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">prop_adaptor</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_jitter</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
@@ -681,14 +682,55 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">delays_non_dom</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prop_adaptor</span><span class="o">.</span><span class="n">delays_non_dom</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prop_adaptor</span><span class="o">.</span><span class="n">delays_non_dom</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sigma_f</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prop_adaptor</span><span class="o">.</span><span class="n">sigma_f</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span>
 
-<div class="viewcode-block" id="FilterNodeAdaptor"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNodeAdaptor">[docs]</a><span class="k">class</span> <span class="nc">FilterNodeAdaptor</span><span class="p">(</span><span class="n">NodeAdaptor</span><span class="p">):</span>
-<div class="viewcode-block" id="FilterNodeAdaptor.get_node"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNodeAdaptor.get_node">[docs]</a>    <span class="k">def</span> <span class="nf">get_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sonata_node</span><span class="p">):</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">b_t</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prop_adaptor</span><span class="o">.</span><span class="n">b_t</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">order_t</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prop_adaptor</span><span class="o">.</span><span class="n">order_t</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">t_mod_freq</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prop_adaptor</span><span class="o">.</span><span class="n">t_mod_freq</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sp_mod_freq</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prop_adaptor</span><span class="o">.</span><span class="n">sp_mod_freq</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">psi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prop_adaptor</span><span class="o">.</span><span class="n">psi</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">delay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prop_adaptor</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">amplitude</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prop_adaptor</span><span class="o">.</span><span class="n">amplitude</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">direction</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prop_adaptor</span><span class="o">.</span><span class="n">direction</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilterNodeAdaptor">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNodeAdaptor">[docs]</a>
+<span class="k">class</span> <span class="nc">FilterNodeAdaptor</span><span class="p">(</span><span class="n">NodeAdaptor</span><span class="p">):</span>
+<div class="viewcode-block" id="FilterNodeAdaptor.get_node">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNodeAdaptor.get_node">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sonata_node</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">FilterNode</span><span class="p">(</span><span class="n">sonata_node</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="FilterNodeAdaptor.preprocess_node_types"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNodeAdaptor.preprocess_node_types">[docs]</a>    <span class="nd">@staticmethod</span>
+
+<div class="viewcode-block" id="FilterNodeAdaptor.preprocess_node_types">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNodeAdaptor.preprocess_node_types">[docs]</a>
+    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">preprocess_node_types</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">node_population</span><span class="p">):</span>
         <span class="n">NodeAdaptor</span><span class="o">.</span><span class="n">preprocess_node_types</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">node_population</span><span class="p">)</span>
 
@@ -713,7 +755,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
                     <span class="c1"># TODO: Check dynamics_params before</span>
                     <span class="n">network</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">log_exception</span><span class="p">(</span><span class="s1">&#39;Could not find node dynamics_params file </span><span class="si">{}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">params_path</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="FilterNodeAdaptor.patch_adaptor"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNodeAdaptor.patch_adaptor">[docs]</a>    <span class="nd">@classmethod</span>
+
+<div class="viewcode-block" id="FilterNodeAdaptor.patch_adaptor">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.FilterNodeAdaptor.patch_adaptor">[docs]</a>
+    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">patch_adaptor</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">adaptor</span><span class="p">,</span> <span class="n">node_group</span><span class="p">,</span> <span class="n">network</span><span class="p">):</span>
         <span class="n">node_adaptor</span> <span class="o">=</span> <span class="n">NodeAdaptor</span><span class="o">.</span><span class="n">patch_adaptor</span><span class="p">(</span><span class="n">adaptor</span><span class="p">,</span> <span class="n">node_group</span><span class="p">,</span> <span class="n">network</span><span class="p">)</span>
 
@@ -744,28 +789,49 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="n">find_nondom_kpeaks_params</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span>
         <span class="n">find_nondom_delays_params</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">node_adaptor</span></div></div>
+        <span class="n">find_spectrotemporal_params</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span>
 
-<div class="viewcode-block" id="non_dom_params"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.non_dom_params">[docs]</a><span class="k">def</span> <span class="nf">non_dom_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">node_adaptor</span></div>
+</div>
+
+
+<div class="viewcode-block" id="non_dom_params">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.non_dom_params">[docs]</a>
+<span class="k">def</span> <span class="nf">non_dom_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;non_dom_params&#39;</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="return_none"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.return_none">[docs]</a><span class="k">def</span> <span class="nf">return_none</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+
+<div class="viewcode-block" id="return_none">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.return_none">[docs]</a>
+<span class="k">def</span> <span class="nf">return_none</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
     <span class="k">return</span> <span class="kc">None</span></div>
 
 
-<div class="viewcode-block" id="tuning_angle_preset"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.tuning_angle_preset">[docs]</a><span class="k">def</span> <span class="nf">tuning_angle_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+
+<div class="viewcode-block" id="tuning_angle_preset">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.tuning_angle_preset">[docs]</a>
+<span class="k">def</span> <span class="nf">tuning_angle_preset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;tuning_angle&#39;</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="tuning_angle_rand"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.tuning_angle_rand">[docs]</a><span class="k">def</span> <span class="nf">tuning_angle_rand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+
+<div class="viewcode-block" id="tuning_angle_rand">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.tuning_angle_rand">[docs]</a>
+<span class="k">def</span> <span class="nf">tuning_angle_rand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">360.0</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="weights"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.weights">[docs]</a><span class="k">def</span> <span class="nf">weights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+
+<div class="viewcode-block" id="weights">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.weights">[docs]</a>
+<span class="k">def</span> <span class="nf">weights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;weights&#39;</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="find_weight_params"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_weight_params">[docs]</a><span class="k">def</span> <span class="nf">find_weight_params</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">):</span>
+
+<div class="viewcode-block" id="find_weight_params">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_weight_params">[docs]</a>
+<span class="k">def</span> <span class="nf">find_weight_params</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">):</span>
     <span class="k">if</span> <span class="s1">&#39;weights&#39;</span> <span class="ow">in</span> <span class="n">node_group</span><span class="o">.</span><span class="n">all_columns</span><span class="p">:</span>
         <span class="n">node_adaptor</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;weights&#39;</span><span class="p">],</span> <span class="n">node_adaptor</span><span class="p">)</span>
 
@@ -782,7 +848,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="n">node_adaptor</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">return_none</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="find_kpeaks_params"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_kpeaks_params">[docs]</a><span class="k">def</span> <span class="nf">find_kpeaks_params</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">):</span>
+
+<div class="viewcode-block" id="find_kpeaks_params">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_kpeaks_params">[docs]</a>
+<span class="k">def</span> <span class="nf">find_kpeaks_params</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">):</span>
     <span class="k">if</span> <span class="s1">&#39;kpeaks&#39;</span> <span class="ow">in</span> <span class="n">node_group</span><span class="o">.</span><span class="n">all_columns</span><span class="p">:</span>
         <span class="n">node_adaptor</span><span class="o">.</span><span class="n">kpeaks</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;kpeaks&#39;</span><span class="p">],</span> <span class="n">node_adaptor</span><span class="p">)</span>
 
@@ -799,7 +868,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="n">node_adaptor</span><span class="o">.</span><span class="n">kpeaks</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">return_none</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="find_delays_params"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_delays_params">[docs]</a><span class="k">def</span> <span class="nf">find_delays_params</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">):</span>
+
+<div class="viewcode-block" id="find_delays_params">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_delays_params">[docs]</a>
+<span class="k">def</span> <span class="nf">find_delays_params</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">):</span>
     <span class="k">if</span> <span class="s1">&#39;delays&#39;</span> <span class="ow">in</span> <span class="n">node_group</span><span class="o">.</span><span class="n">all_columns</span><span class="p">:</span>
         <span class="n">node_adaptor</span><span class="o">.</span><span class="n">delays</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;delays&#39;</span><span class="p">],</span> <span class="n">node_adaptor</span><span class="p">)</span>
 
@@ -821,7 +893,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="n">node_adaptor</span><span class="o">.</span><span class="n">delays</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">return_none</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="find_nondom_weight_params"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_nondom_weight_params">[docs]</a><span class="k">def</span> <span class="nf">find_nondom_weight_params</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">):</span>
+
+<div class="viewcode-block" id="find_nondom_weight_params">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_nondom_weight_params">[docs]</a>
+<span class="k">def</span> <span class="nf">find_nondom_weight_params</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">):</span>
     <span class="k">if</span> <span class="s1">&#39;weights_non_dom&#39;</span> <span class="ow">in</span> <span class="n">node_group</span><span class="o">.</span><span class="n">all_columns</span><span class="p">:</span>
         <span class="n">node_adaptor</span><span class="o">.</span><span class="n">weights_non_dom</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;weights_non_dom&#39;</span><span class="p">],</span> <span class="n">node_adaptor</span><span class="p">)</span>
 
@@ -833,7 +908,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="n">node_adaptor</span><span class="o">.</span><span class="n">weights_non_dom</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">return_none</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="find_nondom_kpeaks_params"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_nondom_kpeaks_params">[docs]</a><span class="k">def</span> <span class="nf">find_nondom_kpeaks_params</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">):</span>
+
+<div class="viewcode-block" id="find_nondom_kpeaks_params">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_nondom_kpeaks_params">[docs]</a>
+<span class="k">def</span> <span class="nf">find_nondom_kpeaks_params</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">):</span>
     <span class="k">if</span> <span class="s1">&#39;kpeaks_non_dom&#39;</span> <span class="ow">in</span> <span class="n">node_group</span><span class="o">.</span><span class="n">all_columns</span><span class="p">:</span>
         <span class="n">node_adaptor</span><span class="o">.</span><span class="n">kpeaks_non_dom</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;kpeaks_non_dom&#39;</span><span class="p">],</span> <span class="n">node_adaptor</span><span class="p">)</span>
 
@@ -845,7 +923,10 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="n">node_adaptor</span><span class="o">.</span><span class="n">kpeaks_non_dom</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">return_none</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="find_nondom_delays_params"><a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_nondom_delays_params">[docs]</a><span class="k">def</span> <span class="nf">find_nondom_delays_params</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">):</span>
+
+<div class="viewcode-block" id="find_nondom_delays_params">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_nondom_delays_params">[docs]</a>
+<span class="k">def</span> <span class="nf">find_nondom_delays_params</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">):</span>
     <span class="k">if</span> <span class="s1">&#39;delays_non_dom&#39;</span> <span class="ow">in</span> <span class="n">node_group</span><span class="o">.</span><span class="n">all_columns</span><span class="p">:</span>
         <span class="n">node_adaptor</span><span class="o">.</span><span class="n">delays_non_dom</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;delays_non_dom&#39;</span><span class="p">],</span> <span class="n">node_adaptor</span><span class="p">)</span>
 
@@ -855,6 +936,59 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
         <span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">node_adaptor</span><span class="o">.</span><span class="n">delays_non_dom</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">return_none</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="find_spectrotemporal_params">
+<a class="viewcode-back" href="../../../../bmtk/bmtk.simulator.filternet.html#bmtk.simulator.filternet.sonata_adaptors.find_spectrotemporal_params">[docs]</a>
+<span class="k">def</span> <span class="nf">find_spectrotemporal_params</span><span class="p">(</span><span class="n">node_group</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;sigma_f&#39;</span> <span class="ow">in</span> <span class="n">node_group</span><span class="o">.</span><span class="n">all_columns</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">sigma_f</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;sigma_f&#39;</span><span class="p">],</span> <span class="n">node_adaptor</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">sigma_f</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">return_none</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s1">&#39;b_t&#39;</span> <span class="ow">in</span> <span class="n">node_group</span><span class="o">.</span><span class="n">all_columns</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">b_t</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;b_t&#39;</span><span class="p">],</span> <span class="n">node_adaptor</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">b_t</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">return_none</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s1">&#39;order_t&#39;</span> <span class="ow">in</span> <span class="n">node_group</span><span class="o">.</span><span class="n">all_columns</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">order_t</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;order_t&#39;</span><span class="p">],</span> <span class="n">node_adaptor</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">order_t</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">return_none</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s1">&#39;t_mod_freq&#39;</span> <span class="ow">in</span> <span class="n">node_group</span><span class="o">.</span><span class="n">all_columns</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">t_mod_freq</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;t_mod_freq&#39;</span><span class="p">],</span> <span class="n">node_adaptor</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">t_mod_freq</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">return_none</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s1">&#39;sp_mod_freq&#39;</span> <span class="ow">in</span> <span class="n">node_group</span><span class="o">.</span><span class="n">all_columns</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">sp_mod_freq</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;sp_mod_freq&#39;</span><span class="p">],</span> <span class="n">node_adaptor</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">sp_mod_freq</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">return_none</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s1">&#39;psi&#39;</span> <span class="ow">in</span> <span class="n">node_group</span><span class="o">.</span><span class="n">all_columns</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">psi</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;psi&#39;</span><span class="p">],</span> <span class="n">node_adaptor</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node_adaptor</span><span class="o">.</span><span class="n">psi</span><span class="p">,</span> <span class="n">string_types</span><span class="p">):</span>
+            <span class="n">node_adaptor</span><span class="o">.</span><span class="n">psi</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">node_adaptor</span><span class="o">.</span><span class="n">psi</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;pi&#39;</span><span class="p">,</span> <span class="s1">&#39;np.pi&#39;</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">psi</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">return_none</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s1">&#39;delay&#39;</span> <span class="ow">in</span> <span class="n">node_group</span><span class="o">.</span><span class="n">all_columns</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">delay</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;delay&#39;</span><span class="p">],</span> <span class="n">node_adaptor</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">delay</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">return_none</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s1">&#39;amplitude&#39;</span> <span class="ow">in</span> <span class="n">node_group</span><span class="o">.</span><span class="n">all_columns</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">amplitude</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;amplitude&#39;</span><span class="p">],</span> <span class="n">node_adaptor</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">amplitude</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">return_none</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s1">&#39;direction&#39;</span> <span class="ow">in</span> <span class="n">node_group</span><span class="o">.</span><span class="n">all_columns</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">direction</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">node</span><span class="p">[</span><span class="s1">&#39;direction&#39;</span><span class="p">],</span> <span class="n">node_adaptor</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_adaptor</span><span class="o">.</span><span class="n">direction</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">MethodType</span><span class="p">(</span><span class="n">return_none</span><span class="p">,</span> <span class="n">node_adaptor</span><span class="p">)</span></div>
+
 </pre></div>
 
             <div class="clearer"></div>
@@ -909,7 +1043,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../../search.html" method="get">
@@ -917,8 +1051,8 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>

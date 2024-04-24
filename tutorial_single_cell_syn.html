@@ -1,18 +1,17 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Tutorial 2: Single cell simulation with external feedfoward input (with BioNet) &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
+    <title>Tutorial 2: Single cell simulation with external feedfoward input (with BioNet) &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/aibs_sphinx.css?v=1b18bd45" />
+    <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <script src="_static/documentation_options.js?v=fc837d61"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -624,12 +623,12 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
           <div class="body" role="main">
             
   <section id="Tutorial-2:-Single-cell-simulation-with-external-feedfoward-input-(with-BioNet)">
-<h1>Tutorial 2: Single cell simulation with external feedfoward input (with BioNet)<a class="headerlink" href="#Tutorial-2:-Single-cell-simulation-with-external-feedfoward-input-(with-BioNet)" title="Permalink to this heading">¶</a></h1>
+<h1>Tutorial 2: Single cell simulation with external feedfoward input (with BioNet)<a class="headerlink" href="#Tutorial-2:-Single-cell-simulation-with-external-feedfoward-input-(with-BioNet)" title="Link to this heading">¶</a></h1>
 <p>In the previous tutorial we built a single cell and stimulated it with a current injection. In this example we will keep our single-cell network, but instead of stimulation by a step current, we’ll set-up an external network that synapses onto our cell.</p>
 <p><strong>Note</strong> - scripts and files for running this tutorial can be found in the directory <a class="reference external" href="https://github.com/AllenInstitute/bmtk/tree/develop/docs/tutorial/sources/chapter02">sources/chapter02/</a></p>
 <p><strong>Requirements:</strong> * Python 2.7 or 3.6+ * bmtk * NEURON 7.4+</p>
 <section id="Step-1:-Building-the-network.">
-<h2>Step 1: Building the network.<a class="headerlink" href="#Step-1:-Building-the-network." title="Permalink to this heading">¶</a></h2>
+<h2>Step 1: Building the network.<a class="headerlink" href="#Step-1:-Building-the-network." title="Link to this heading">¶</a></h2>
 <p>Similar to the previous tutorial, we want to build and save a network consisting of a single biophysically detailed cell.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -728,14 +727,13 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <span class="n">distance_range</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">150.0</span><span class="p">],</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>This is used by BioNet to determine where on the post-synaptic cell to place the synapse. By default placement is random within the given section and range.</p></li>
-</ul>
+<ul>
+<li><p>This is used by BioNet to determine where on the post-synaptic cell to place the synapse. By default placement is random within the given section and range.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dynamics_params</span><span class="o">=</span><span class="s1">&#39;AMPA_ExcToExc.json&#39;</span><span class="p">,</span>
 <span class="n">model_template</span><span class="o">=</span><span class="s1">&#39;exp2syn&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<ul class="simple">
+</li>
 <li><p>The params_file give the parameters of the synpase, including the time constant and potential. Here we are using an AMPA type synaptic model with an Excitatory connection. The set_params_function is used by BioNet to convert the model into a valid NEURON synaptic object.</p></li>
 </ul>
 <p>Finally we are ready to build the model and save the thalamic nodes and edges.</p>
@@ -751,7 +749,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </div>
 <p>The network/ directory will contain multiple nodes and edges files. It should have nodes (and node-types) files for both the thalamus and cortex network. And edges (and edge-types) files for the thalamus –&gt; cortex connections. Nodes and edges for different networks and their connections are spread out across different files which allows us in the future to rebuild, edit or replace part of setup in a piecemeal and efficent manner.</p>
 <section id="Spike-Trains">
-<h3>Spike Trains<a class="headerlink" href="#Spike-Trains" title="Permalink to this heading">¶</a></h3>
+<h3>Spike Trains<a class="headerlink" href="#Spike-Trains" title="Link to this heading">¶</a></h3>
 <p>We need to give our 10 thalamic cells spike trains. There are multiple ways to do this, but an easy way to use a sonata hdf5 file. The following function will create a file to provide the spikes for our 10 cells.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -856,9 +854,9 @@ Units: ms
 </section>
 </section>
 <section id="Step-2:-Setting-up-BioNet-environment.">
-<h2>Step 2: Setting up BioNet environment.<a class="headerlink" href="#Step-2:-Setting-up-BioNet-environment." title="Permalink to this heading">¶</a></h2>
+<h2>Step 2: Setting up BioNet environment.<a class="headerlink" href="#Step-2:-Setting-up-BioNet-environment." title="Link to this heading">¶</a></h2>
 <section id="file-structure.">
-<h3>file structure.<a class="headerlink" href="#file-structure." title="Permalink to this heading">¶</a></h3>
+<h3>file structure.<a class="headerlink" href="#file-structure." title="Link to this heading">¶</a></h3>
 <p>Before running a simulation, we will need to create the runtime environment, including parameter files, run-script and configuration files. If using the tutorial these files will already be in place, however you should run the following anyway in a command-line:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>bmtk.utils.sim_setup<span class="w">  </span><span class="se">\</span>
 <span class="w">   </span>--report-vars<span class="w"> </span>v,cai<span class="w">            </span><span class="se">\</span>
@@ -1015,7 +1013,7 @@ Successfully created x86_64/special
 </section>
 </section>
 <section id="3.-Running-the-simulation">
-<h2>3. Running the simulation<a class="headerlink" href="#3.-Running-the-simulation" title="Permalink to this heading">¶</a></h2>
+<h2>3. Running the simulation<a class="headerlink" href="#3.-Running-the-simulation" title="Link to this heading">¶</a></h2>
 <p>Once our config file is setup we can run a simulation either through the command line:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>sim_ch02/
 $<span class="w"> </span>python<span class="w"> </span>run_bionet.py<span class="w"> </span>config.json
@@ -1264,7 +1262,7 @@ INFO:NEURONIOUtils:Simulation completed in 1.853 seconds
 </div>
 </section>
 <section id="4.-Analyzing-the-run">
-<h2>4. Analyzing the run<a class="headerlink" href="#4.-Analyzing-the-run" title="Permalink to this heading">¶</a></h2>
+<h2>4. Analyzing the run<a class="headerlink" href="#4.-Analyzing-the-run" title="Link to this heading">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
@@ -1375,9 +1373,9 @@ Number of Spikes: 57
 </div>
 </section>
 <section id="5.-Additional-things-to-do:">
-<h2>5. Additional things to do:<a class="headerlink" href="#5.-Additional-things-to-do:" title="Permalink to this heading">¶</a></h2>
+<h2>5. Additional things to do:<a class="headerlink" href="#5.-Additional-things-to-do:" title="Link to this heading">¶</a></h2>
 <section id="Changing-edge-properties">
-<h3>Changing edge properties<a class="headerlink" href="#Changing-edge-properties" title="Permalink to this heading">¶</a></h3>
+<h3>Changing edge properties<a class="headerlink" href="#Changing-edge-properties" title="Link to this heading">¶</a></h3>
 <p>When using the Network Builder add_edges method, we gave all the edges the same parameter values (delay, weight, target_section, etc.). All connection created by this method call constitute an single edge-type that share the same parameters, and are specified in the mthalamic_edge_type.csv file</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
@@ -1445,7 +1443,7 @@ Number of Spikes: 57
 <p>Using a simple text-editor we can modify this file directly, change parameters before a simulation run without having to rebuild the entire network (although for a network this small it may not be beneficial).</p>
 </section>
 <section id="weight_function">
-<h3>weight_function<a class="headerlink" href="#weight_function" title="Permalink to this heading">¶</a></h3>
+<h3>weight_function<a class="headerlink" href="#weight_function" title="Link to this heading">¶</a></h3>
 <p>By default BioNet uses the value in syn_weight to set a synaptic weight, which is a constant stored in the network files. Often we will want to adjust the synaptic weight between simulations, but don’t want to have to regenerate the network. BioNet allows us to specify custom synaptic weight functions that will calculate synaptic weight before each simulation.</p>
 <p>To do so first we must set the value of ‘weight_function’ column. Either we can open up the file mthalamus_mcortex_edge_types.csv with a text-editor and change the column.</p>
 <table class="docutils align-default">
@@ -1498,7 +1496,7 @@ Number of Spikes: 57
 </pre></div>
 </div>
 <section id="Using-NWB-for-spike-trains">
-<h4>Using NWB for spike trains<a class="headerlink" href="#Using-NWB-for-spike-trains" title="Permalink to this heading">¶</a></h4>
+<h4>Using NWB for spike trains<a class="headerlink" href="#Using-NWB-for-spike-trains" title="Link to this heading">¶</a></h4>
 <p>Instead of using csv files to set the spike trains of our external network, we can also use nwb files. The typical setup would look like the following in the config file:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;inputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1552,8 +1550,9 @@ Number of Spikes: 57
 <li class="toctree-l2"><a class="reference internal" href="tutorial_single_pop.html">BioNet: Multiple Nodes with single cell-type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial_multi_pop.html">BioNet: Heterogeneous network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial_pointnet_modeling.html">PointNet: Point-neuron modeling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial_population_modeling.html">PopNet: Population-based firing rate models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial_filter_models.html">FilterNet: Full-field flashing movie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_auditory_filternet.html">Auditory FilterNet: Generating stimuli from auditory input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial_population_modeling.html">PopNet: Population-based firing rate models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ad_tutorials.html">Additional Tutorials</a><ul>
@@ -1579,7 +1578,7 @@ Number of Spikes: 57
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -1587,7 +1586,7 @@ Number of Spikes: 57
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

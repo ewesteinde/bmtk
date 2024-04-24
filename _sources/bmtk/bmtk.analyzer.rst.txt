@@ -28,6 +28,14 @@ bmtk.analyzer.ecp module
    :undoc-members:
    :show-inheritance:
 
+bmtk.analyzer.edges module
+--------------------------
+
+.. automodule:: bmtk.analyzer.edges
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bmtk.analyzer.firing\_rates module
 ----------------------------------
 

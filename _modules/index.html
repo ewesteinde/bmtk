@@ -1,16 +1,15 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Overview: module code &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/aibs_sphinx.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <title>Overview: module code &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -701,6 +700,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <li><a href="bmtk/simulator/core/sonata_reader/edge_adaptor.html">bmtk.simulator.core.sonata_reader.edge_adaptor</a></li>
 <li><a href="bmtk/simulator/core/sonata_reader/network_reader.html">bmtk.simulator.core.sonata_reader.network_reader</a></li>
 <li><a href="bmtk/simulator/core/sonata_reader/node_adaptor.html">bmtk.simulator.core.sonata_reader.node_adaptor</a></li>
+<li><a href="bmtk/simulator/filternet/auditory_processing.html">bmtk.simulator.filternet.auditory_processing</a></li>
 <li><a href="bmtk/simulator/filternet/cell.html">bmtk.simulator.filternet.cell</a></li>
 <li><a href="bmtk/simulator/filternet/config.html">bmtk.simulator.filternet.config</a></li>
 <li><a href="bmtk/simulator/filternet/default_setters/cell_loaders.html">bmtk.simulator.filternet.default_setters.cell_loaders</a></li>
@@ -725,6 +725,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <li><a href="bmtk/simulator/filternet/lgnmodel/transferfunction.html">bmtk.simulator.filternet.lgnmodel.transferfunction</a></li>
 <li><a href="bmtk/simulator/filternet/lgnmodel/util_fns.html">bmtk.simulator.filternet.lgnmodel.util_fns</a></li>
 <li><a href="bmtk/simulator/filternet/lgnmodel/utilities.html">bmtk.simulator.filternet.lgnmodel.utilities</a></li>
+<li><a href="bmtk/simulator/filternet/lgnmodel/waveletfilter.html">bmtk.simulator.filternet.lgnmodel.waveletfilter</a></li>
 <li><a href="bmtk/simulator/filternet/modules/base.html">bmtk.simulator.filternet.modules.base</a></li>
 <li><a href="bmtk/simulator/filternet/modules/create_spikes.html">bmtk.simulator.filternet.modules.create_spikes</a></li>
 <li><a href="bmtk/simulator/filternet/modules/record_rates.html">bmtk.simulator.filternet.modules.record_rates</a></li>
@@ -740,6 +741,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <li><a href="bmtk/simulator/pointnet/modules/iclamp.html">bmtk.simulator.pointnet.modules.iclamp</a></li>
 <li><a href="bmtk/simulator/pointnet/modules/multimeter_reporter.html">bmtk.simulator.pointnet.modules.multimeter_reporter</a></li>
 <li><a href="bmtk/simulator/pointnet/modules/record_spikes.html">bmtk.simulator.pointnet.modules.record_spikes</a></li>
+<li><a href="bmtk/simulator/pointnet/modules/sim_module.html">bmtk.simulator.pointnet.modules.sim_module</a></li>
+<li><a href="bmtk/simulator/pointnet/modules/spikes_inputs.html">bmtk.simulator.pointnet.modules.spikes_inputs</a></li>
+<li><a href="bmtk/simulator/pointnet/modules/weight_recorder.html">bmtk.simulator.pointnet.modules.weight_recorder</a></li>
 <li><a href="bmtk/simulator/pointnet/nest_utils.html">bmtk.simulator.pointnet.nest_utils</a></li>
 <li><a href="bmtk/simulator/pointnet/pointnetwork.html">bmtk.simulator.pointnet.pointnetwork</a></li>
 <li><a href="bmtk/simulator/pointnet/pointsimulator.html">bmtk.simulator.pointnet.pointsimulator</a></li>
@@ -755,12 +759,30 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <li><a href="bmtk/simulator/popnet/utils.html">bmtk.simulator.popnet.utils</a></li>
 <li><a href="bmtk/simulator/utils/simulation_inputs.html">bmtk.simulator.utils.simulation_inputs</a></li>
 <li><a href="bmtk/simulator/utils/simulation_reports.html">bmtk.simulator.utils.simulation_reports</a></li>
+<li><a href="bmtk/tests/builder/auxi/test_edge_connectors.html">bmtk.tests.builder.auxi.test_edge_connectors</a></li>
+<li><a href="bmtk/tests/builder/auxi/test_node_params.html">bmtk.tests.builder.auxi.test_node_params</a></li>
+<li><a href="bmtk/tests/builder/bionet/test_swc_reader.html">bmtk.tests.builder.bionet.test_swc_reader</a></li>
+<li><a href="bmtk/tests/builder/test_connection_map.html">bmtk.tests.builder.test_connection_map</a></li>
+<li><a href="bmtk/tests/builder/test_connector.html">bmtk.tests.builder.test_connector</a></li>
+<li><a href="bmtk/tests/builder/test_densenetwork.html">bmtk.tests.builder.test_densenetwork</a></li>
+<li><a href="bmtk/tests/builder/test_edge_iterator.html">bmtk.tests.builder.test_edge_iterator</a></li>
+<li><a href="bmtk/tests/builder/test_edges_sorter.html">bmtk.tests.builder.test_edges_sorter</a></li>
+<li><a href="bmtk/tests/builder/test_id_generator.html">bmtk.tests.builder.test_id_generator</a></li>
+<li><a href="bmtk/tests/builder/test_index_builders.html">bmtk.tests.builder.test_index_builders</a></li>
+<li><a href="bmtk/tests/builder/test_iterator.html">bmtk.tests.builder.test_iterator</a></li>
+<li><a href="bmtk/tests/builder/test_network.html">bmtk.tests.builder.test_network</a></li>
+<li><a href="bmtk/tests/builder/test_network_mpi.html">bmtk.tests.builder.test_network_mpi</a></li>
+<li><a href="bmtk/tests/builder/test_node_pool.html">bmtk.tests.builder.test_node_pool</a></li>
+<li><a href="bmtk/tests/builder/test_node_set.html">bmtk.tests.builder.test_node_set</a></li>
+<li><a href="bmtk/tests/builder/test_save_network.html">bmtk.tests.builder.test_save_network</a></li>
 <li><a href="bmtk/tests/simulator/bionet/bionet_virtual_files.html">bmtk.tests.simulator.bionet.bionet_virtual_files</a></li>
 <li><a href="bmtk/tests/simulator/bionet/set_cell_params.html">bmtk.tests.simulator.bionet.set_cell_params</a></li>
 <li><a href="bmtk/tests/simulator/bionet/set_syn_params.html">bmtk.tests.simulator.bionet.set_syn_params</a></li>
 <li><a href="bmtk/tests/simulator/bionet/set_weights.html">bmtk.tests.simulator.bionet.set_weights</a></li>
 <li><a href="bmtk/tests/simulator/bionet/test_biograph.html">bmtk.tests.simulator.bionet.test_biograph</a></li>
 <li><a href="bmtk/tests/simulator/bionet/test_gids.html">bmtk.tests.simulator.bionet.test_gids</a></li>
+<li><a href="bmtk/tests/simulator/bionet/test_iclamp.html">bmtk.tests.simulator.bionet.test_iclamp</a></li>
+<li><a href="bmtk/tests/simulator/bionet/test_morphology.html">bmtk.tests.simulator.bionet.test_morphology</a></li>
 <li><a href="bmtk/tests/simulator/bionet/test_nrn.html">bmtk.tests.simulator.bionet.test_nrn</a></li>
 <li><a href="bmtk/tests/simulator/bionet/test_virtualcell.html">bmtk.tests.simulator.bionet.test_virtualcell</a></li>
 <li><a href="bmtk/tests/simulator/pointnet/conftest.html">bmtk.tests.simulator.pointnet.conftest</a></li>
@@ -771,6 +793,20 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <li><a href="bmtk/tests/simulator/pointnet/test_pointnetwork.html">bmtk.tests.simulator.pointnet.test_pointnetwork</a></li>
 <li><a href="bmtk/tests/simulator/popnet/popnet_virtual_files.html">bmtk.tests.simulator.popnet.popnet_virtual_files</a></li>
 <li><a href="bmtk/tests/simulator/popnet/test_popgraph.html">bmtk.tests.simulator.popnet.test_popgraph</a></li>
+<li><a href="bmtk/tests/utils/reports/compartment/test_compartment_reader.html">bmtk.tests.utils.reports.compartment.test_compartment_reader</a></li>
+<li><a href="bmtk/tests/utils/reports/compartment/test_compartment_writer.html">bmtk.tests.utils.reports.compartment.test_compartment_writer</a></li>
+<li><a href="bmtk/tests/utils/reports/compartment/test_plotting.html">bmtk.tests.utils.reports.compartment.test_plotting</a></li>
+<li><a href="bmtk/tests/utils/reports/spike_trains/test_csv_adaptor.html">bmtk.tests.utils.reports.spike_trains.test_csv_adaptor</a></li>
+<li><a href="bmtk/tests/utils/reports/spike_trains/test_csv_adaptor_mpi.html">bmtk.tests.utils.reports.spike_trains.test_csv_adaptor_mpi</a></li>
+<li><a href="bmtk/tests/utils/reports/spike_trains/test_plotting.html">bmtk.tests.utils.reports.spike_trains.test_plotting</a></li>
+<li><a href="bmtk/tests/utils/reports/spike_trains/test_sonata_adaptor.html">bmtk.tests.utils.reports.spike_trains.test_sonata_adaptor</a></li>
+<li><a href="bmtk/tests/utils/reports/spike_trains/test_sonata_adaptor_mpi.html">bmtk.tests.utils.reports.spike_trains.test_sonata_adaptor_mpi</a></li>
+<li><a href="bmtk/tests/utils/reports/spike_trains/test_spikes_buffer.html">bmtk.tests.utils.reports.spike_trains.test_spikes_buffer</a></li>
+<li><a href="bmtk/tests/utils/reports/spike_trains/test_spikes_buffer_mpi.html">bmtk.tests.utils.reports.spike_trains.test_spikes_buffer_mpi</a></li>
+<li><a href="bmtk/tests/utils/reports/spike_trains/test_spikes_core.html">bmtk.tests.utils.reports.spike_trains.test_spikes_core</a></li>
+<li><a href="bmtk/tests/utils/sonata/test_config.html">bmtk.tests.utils.sonata.test_config</a></li>
+<li><a href="bmtk/tests/utils/sonata/test_config_validator.html">bmtk.tests.utils.sonata.test_config_validator</a></li>
+<li><a href="bmtk/tests/utils/sonata/test_edge_stats.html">bmtk.tests.utils.sonata.test_edge_stats</a></li>
 <li><a href="bmtk/utils/compile_mechanisms/compile_mechanisms.html">bmtk.utils.compile_mechanisms.compile_mechanisms</a></li>
 <li><a href="bmtk/utils/create_environment/create_environment.html">bmtk.utils.create_environment.create_environment</a></li>
 <li><a href="bmtk/utils/create_environment/env_builder.html">bmtk.utils.create_environment.env_builder</a></li>
@@ -799,6 +835,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <li><a href="bmtk/utils/sonata/column_property.html">bmtk.utils.sonata.column_property</a></li>
 <li><a href="bmtk/utils/sonata/config/sonata_config.html">bmtk.utils.sonata.config.sonata_config</a></li>
 <li><a href="bmtk/utils/sonata/edge.html">bmtk.utils.sonata.edge</a></li>
+<li><a href="bmtk/utils/sonata/edge_stats.html">bmtk.utils.sonata.edge_stats</a></li>
 <li><a href="bmtk/utils/sonata/file.html">bmtk.utils.sonata.file</a></li>
 <li><a href="bmtk/utils/sonata/file_root.html">bmtk.utils.sonata.file_root</a></li>
 <li><a href="bmtk/utils/sonata/group.html">bmtk.utils.sonata.group</a></li>
@@ -833,8 +870,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <li class="toctree-l2"><a class="reference internal" href="../tutorial_single_pop.html">BioNet: Multiple Nodes with single cell-type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorial_multi_pop.html">BioNet: Heterogeneous network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorial_pointnet_modeling.html">PointNet: Point-neuron modeling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tutorial_population_modeling.html">PopNet: Population-based firing rate models</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../tutorial_filter_models.html">FilterNet: Full-field flashing movie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial_auditory_filternet.html">Auditory FilterNet: Generating stimuli from auditory input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial_population_modeling.html">PopNet: Population-based firing rate models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../ad_tutorials.html">Additional Tutorials</a><ul>
@@ -860,7 +898,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -868,7 +906,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

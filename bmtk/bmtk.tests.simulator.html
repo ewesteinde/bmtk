@@ -1,22 +1,21 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>bmtk.tests.simulator package &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/aibs_sphinx.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <title>bmtk.tests.simulator package &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="bmtk.tests.simulator.bionet package" href="bmtk.tests.simulator.bionet.html" />
-    <link rel="prev" title="bmtk.tests package" href="bmtk.tests.html" /> 
+    <link rel="prev" title="bmtk.tests.builder.bionet package" href="bmtk.tests.builder.bionet.html" /> 
   </head><body>
 <script type="text/javascript" src="_static/external_assets/javascript/portal.js"></script>
 <style>
@@ -621,9 +620,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
           <div class="body" role="main">
             
   <section id="bmtk-tests-simulator-package">
-<h1>bmtk.tests.simulator package<a class="headerlink" href="#bmtk-tests-simulator-package" title="Permalink to this heading">¶</a></h1>
+<h1>bmtk.tests.simulator package<a class="headerlink" href="#bmtk-tests-simulator-package" title="Link to this heading">¶</a></h1>
 <section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">¶</a></h2>
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="bmtk.tests.simulator.bionet.html">bmtk.tests.simulator.bionet package</a><ul>
@@ -682,8 +681,46 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_gids.test_gid_pool"><code class="docutils literal notranslate"><span class="pre">test_gid_pool()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk-tests-simulator-bionet-test-iclamp-module">bmtk.tests.simulator.bionet.test_iclamp module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk-tests-simulator-bionet-test-morphology-module">bmtk.tests.simulator.bionet.test_morphology module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#module-bmtk.tests.simulator.bionet.test_iclamp">bmtk.tests.simulator.bionet.test_iclamp module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_iclamp.MockBioSimulator"><code class="docutils literal notranslate"><span class="pre">MockBioSimulator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_iclamp.MockBioSimulator.get_cell_gid"><code class="docutils literal notranslate"><span class="pre">MockBioSimulator.get_cell_gid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_iclamp.MockBioSimulator.get_node_set"><code class="docutils literal notranslate"><span class="pre">MockBioSimulator.get_node_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_iclamp.MockBioSimulator.gids"><code class="docutils literal notranslate"><span class="pre">MockBioSimulator.gids()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_iclamp.MockCell"><code class="docutils literal notranslate"><span class="pre">MockCell</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_iclamp.NRNPythonObj"><code class="docutils literal notranslate"><span class="pre">NRNPythonObj</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_iclamp.NRNPythonObj.post_fadvance"><code class="docutils literal notranslate"><span class="pre">NRNPythonObj.post_fadvance()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_iclamp.create_csv"><code class="docutils literal notranslate"><span class="pre">create_csv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_iclamp.run_sim"><code class="docutils literal notranslate"><span class="pre">run_sim()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_iclamp.test_bad_input"><code class="docutils literal notranslate"><span class="pre">test_bad_input()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_iclamp.test_iclamp_nwb"><code class="docutils literal notranslate"><span class="pre">test_iclamp_nwb()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_iclamp.test_invalid_csv"><code class="docutils literal notranslate"><span class="pre">test_invalid_csv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_iclamp.test_invalid_onset"><code class="docutils literal notranslate"><span class="pre">test_invalid_onset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_iclamp.test_recalc_timestamps"><code class="docutils literal notranslate"><span class="pre">test_recalc_timestamps()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_iclamp.test_sim_csv"><code class="docutils literal notranslate"><span class="pre">test_sim_csv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_iclamp.test_sim_list"><code class="docutils literal notranslate"><span class="pre">test_sim_list()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_iclamp.test_sim_scalar"><code class="docutils literal notranslate"><span class="pre">test_sim_scalar()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#module-bmtk.tests.simulator.bionet.test_morphology">bmtk.tests.simulator.bionet.test_morphology module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_morphology.check_lazy_loading"><code class="docutils literal notranslate"><span class="pre">check_lazy_loading()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_morphology.fix_axon_peri"><code class="docutils literal notranslate"><span class="pre">fix_axon_peri()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_morphology.load_hobj"><code class="docutils literal notranslate"><span class="pre">load_hobj()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_morphology.test_base"><code class="docutils literal notranslate"><span class="pre">test_base()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_morphology.test_find_sections"><code class="docutils literal notranslate"><span class="pre">test_find_sections()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_morphology.test_full"><code class="docutils literal notranslate"><span class="pre">test_full()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_morphology.test_get_swc_id"><code class="docutils literal notranslate"><span class="pre">test_get_swc_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_morphology.test_get_target_segments"><code class="docutils literal notranslate"><span class="pre">test_get_target_segments()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_morphology.test_move_and_rotate"><code class="docutils literal notranslate"><span class="pre">test_move_and_rotate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_morphology.test_move_and_rotate_cached"><code class="docutils literal notranslate"><span class="pre">test_move_and_rotate_cached()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_morphology.test_multicell"><code class="docutils literal notranslate"><span class="pre">test_multicell()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_morphology.test_remove_secs"><code class="docutils literal notranslate"><span class="pre">test_remove_secs()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_morphology.test_seg_props_cache"><code class="docutils literal notranslate"><span class="pre">test_seg_props_cache()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#module-bmtk.tests.simulator.bionet.test_nrn">bmtk.tests.simulator.bionet.test_nrn module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_nrn.test_cell_model"><code class="docutils literal notranslate"><span class="pre">test_cell_model()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.tests.simulator.bionet.html#bmtk.tests.simulator.bionet.test_nrn.test_cell_model_decorator"><code class="docutils literal notranslate"><span class="pre">test_cell_model_decorator()</span></code></a></li>
@@ -835,7 +872,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </div>
 </section>
 <section id="module-bmtk.tests.simulator">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bmtk.tests.simulator" title="Permalink to this heading">¶</a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bmtk.tests.simulator" title="Link to this heading">¶</a></h2>
 </section>
 </section>
 
@@ -892,7 +929,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -900,7 +937,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>

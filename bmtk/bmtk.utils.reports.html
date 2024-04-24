@@ -1,17 +1,16 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>bmtk.utils.reports package &#8212; Brain Modeling Toolkit 1.0.7 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/aibs_sphinx.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <title>bmtk.utils.reports package &#8212; Brain Modeling Toolkit 1.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/aibs_sphinx.css?v=1b18bd45" />
+    <script src="../_static/documentation_options.js?v=fc837d61"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -621,9 +620,9 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
           <div class="body" role="main">
             
   <section id="bmtk-utils-reports-package">
-<h1>bmtk.utils.reports package<a class="headerlink" href="#bmtk-utils-reports-package" title="Permalink to this heading">¶</a></h1>
+<h1>bmtk.utils.reports package<a class="headerlink" href="#bmtk-utils-reports-package" title="Link to this heading">¶</a></h1>
 <section id="subpackages">
-<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">¶</a></h2>
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="bmtk.utils.reports.compartment.html">bmtk.utils.reports.compartment package</a><ul>
@@ -952,6 +951,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 <li class="toctree-l2"><a class="reference internal" href="bmtk.utils.reports.spike_trains.html#module-bmtk.utils.reports.spike_trains.spikes_file_writers">bmtk.utils.reports.spike_trains.spikes_file_writers module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.utils.reports.spike_trains.html#bmtk.utils.reports.spike_trains.spikes_file_writers.write_csv"><code class="docutils literal notranslate"><span class="pre">write_csv()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.utils.reports.spike_trains.html#bmtk.utils.reports.spike_trains.spikes_file_writers.write_csv_itr"><code class="docutils literal notranslate"><span class="pre">write_csv_itr()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmtk.utils.reports.spike_trains.html#bmtk.utils.reports.spike_trains.spikes_file_writers.write_nwb"><code class="docutils literal notranslate"><span class="pre">write_nwb()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.utils.reports.spike_trains.html#bmtk.utils.reports.spike_trains.spikes_file_writers.write_sonata"><code class="docutils literal notranslate"><span class="pre">write_sonata()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="bmtk.utils.reports.spike_trains.html#bmtk.utils.reports.spike_trains.spikes_file_writers.write_sonata_itr"><code class="docutils literal notranslate"><span class="pre">write_sonata_itr()</span></code></a></li>
 </ul>
@@ -967,56 +967,56 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </div>
 </section>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
 </section>
 <section id="module-bmtk.utils.reports.current_writer">
-<span id="bmtk-utils-reports-current-writer-module"></span><h2>bmtk.utils.reports.current_writer module<a class="headerlink" href="#module-bmtk.utils.reports.current_writer" title="Permalink to this heading">¶</a></h2>
+<span id="bmtk-utils-reports-current-writer-module"></span><h2>bmtk.utils.reports.current_writer module<a class="headerlink" href="#module-bmtk.utils.reports.current_writer" title="Link to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="bmtk.utils.reports.current_writer.CurrentWriterv01">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.utils.reports.current_writer.</span></span><span class="sig-name descname"><span class="pre">CurrentWriterv01</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_currents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tstart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tstop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bmtk.utils.reports.current_writer.</span></span><span class="sig-name descname"><span class="pre">CurrentWriterv01</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_currents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tstart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tstop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Used to save current currents to the described hdf5 format.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="bmtk.utils.reports.current_writer.CurrentWriterv01.DataTable">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DataTable</span></span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.DataTable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.DataTable" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DataTable</span></span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.DataTable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.DataTable" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>A small struct to keep track of different data (and buffer) tables</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.utils.reports.current_writer.CurrentWriterv01.close">
-<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.close" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.close" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.utils.reports.current_writer.CurrentWriterv01.dt">
-<span class="sig-name descname"><span class="pre">dt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.dt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.dt" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">dt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.dt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.dt" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.utils.reports.current_writer.CurrentWriterv01.flush">
-<span class="sig-name descname"><span class="pre">flush</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.flush"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.flush" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">flush</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.flush"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.flush" title="Link to this definition">¶</a></dt>
 <dd><p>Move data from memory to dataset</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.utils.reports.current_writer.CurrentWriterv01.initialize">
-<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.initialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.initialize" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.initialize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.initialize" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.utils.reports.current_writer.CurrentWriterv01.merge">
-<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.merge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.merge" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">merge</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.merge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.merge" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.utils.reports.current_writer.CurrentWriterv01.n_steps">
-<span class="sig-name descname"><span class="pre">n_steps</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.n_steps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.n_steps" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">n_steps</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.n_steps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.n_steps" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.utils.reports.current_writer.CurrentWriterv01.record_clamps">
-<span class="sig-name descname"><span class="pre">record_clamps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tstep</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.record_clamps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.record_clamps" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">record_clamps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tstep</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.record_clamps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.record_clamps" title="Link to this definition">¶</a></dt>
 <dd><p>Record clamp currents.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1030,44 +1030,44 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.utils.reports.current_writer.CurrentWriterv01.set_dt">
-<span class="sig-name descname"><span class="pre">set_dt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.set_dt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.set_dt" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_dt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.set_dt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.set_dt" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.utils.reports.current_writer.CurrentWriterv01.set_tstart">
-<span class="sig-name descname"><span class="pre">set_tstart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.set_tstart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.set_tstart" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_tstart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.set_tstart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.set_tstart" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.utils.reports.current_writer.CurrentWriterv01.set_tstop">
-<span class="sig-name descname"><span class="pre">set_tstop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.set_tstop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.set_tstop" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_tstop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.set_tstop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.set_tstop" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.utils.reports.current_writer.CurrentWriterv01.set_units">
-<span class="sig-name descname"><span class="pre">set_units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.set_units"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.set_units" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_units</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.set_units"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.set_units" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.utils.reports.current_writer.CurrentWriterv01.tstart">
-<span class="sig-name descname"><span class="pre">tstart</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.tstart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.tstart" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">tstart</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.tstart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.tstart" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.utils.reports.current_writer.CurrentWriterv01.tstop">
-<span class="sig-name descname"><span class="pre">tstop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.tstop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.tstop" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">tstop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.tstop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.tstop" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bmtk.utils.reports.current_writer.CurrentWriterv01.units">
-<span class="sig-name descname"><span class="pre">units</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.units"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.units" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">units</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bmtk/utils/reports/current_writer.html#CurrentWriterv01.units"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bmtk.utils.reports.current_writer.CurrentWriterv01.units" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </section>
 <section id="module-bmtk.utils.reports">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bmtk.utils.reports" title="Permalink to this heading">¶</a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bmtk.utils.reports" title="Link to this heading">¶</a></h2>
 </section>
 </section>
 
@@ -1124,7 +1124,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
 </li>
 </ul>
 
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
@@ -1132,7 +1132,7 @@ jQuery('#portal_tab_menu').bind('touchstart', function() {
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
