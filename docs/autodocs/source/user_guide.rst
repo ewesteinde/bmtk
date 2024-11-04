@@ -1,20 +1,21 @@
 .. toctree::
     :hidden:
-    :maxdepth: 2
-    :caption: User Guide
+    :maxdepth: 3
+    :caption: Tutorials
 
-    self
-    user_guide
-    builder
-    simulators_guide
-    analyzer
+    tutorials
+
 
 .. toctree::
     :hidden:
     :maxdepth: 2
-    :caption: Tutorials
+    :caption: User Guide
 
-    tutorials
+    installation
+    user_guide
+    builder
+    simulators_guide
+    analyzer
 
 
 ##########
@@ -44,7 +45,7 @@ Getting Started
     :gutter: 1
 
     .. grid-item-card::  Building Networks
-        :link: builder_guide 
+        :link: builder.rst
         :img-bottom: _images/builder_complete_network.jpg
 
         *NetworkBuilder* 
@@ -58,7 +59,7 @@ Getting Started
 
        
     .. grid-item-card:: Analyzing Networks and Simulations
-        :link: analzer
+        :link: analyzer.rst
         :img-bottom: _images/raster_120cells_orig.png
 
         *Plotting simulation results and statistics*      

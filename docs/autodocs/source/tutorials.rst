@@ -2,6 +2,24 @@
 Tutorials and Examples
 ######################
 
+.. toctree::
+    :hidden:
+    :maxdepth: 1
+    
+    Builder: Using the Network Builder <tutorial_NetworkBuilder_Intro>
+    BioNet: Single cell with current injection <tutorial_single_cell_clamped>
+    BioNet: Single with with synaptic input <tutorial_single_cell_syn>
+    BioNet: Multiple Nodes with single cell-type <tutorial_single_pop>
+    BioNet: Heterogeneous network <tutorial_multi_pop>
+    PointNet: Point-neuron modeling <tutorial_pointnet_modeling>
+    FilterNet: Full-field flashing movie <tutorial_filter_models>
+    Auditory FilterNet: Generating stimuli from auditory input <tutorial_auditory_filternet>
+    PopNet: Population-based firing rate models <tutorial_population_modeling>
+
+
+    
+
+
 
 Basic Usage
 ===========
@@ -16,6 +34,7 @@ Basic Usage
 
 
     .. grid-item-card:: Building Networks models with the BMTK NetworkBuilder 
+        :link: tutorial_NetworkBuilder_Intro.html
 
         Using the BMTK NetworkBuilder to create SONATA based network models for use in simulation and analysis
 

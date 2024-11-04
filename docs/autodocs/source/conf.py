@@ -126,7 +126,8 @@ html_sidebars = {
     # '**': ['custom_sidebar.html', 'localtoc.html', 'searchbox.html'],
     # '**': ['user_guide'],
     # "simulators_guide": ["user_guide.html"],
-    # "news_and_events": []
+    "news_and_events": [],
+    "contact_us": [],
 }
 
 # html_sidebars = {
@@ -258,5 +259,5 @@ def autodoc_skip_member(app, what, name, obj, skip, options):
 
 
 def setup(app):
-    # copy_tutorials()
+    copy_tutorials()
     app.connect('autodoc-skip-member', autodoc_skip_member)
