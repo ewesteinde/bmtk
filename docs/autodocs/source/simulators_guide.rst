@@ -6,8 +6,9 @@ In this section we will show how to use BMTK and SONATA to run simulation(s) on 
 
 Unlike other neural simulation tools which will create and simulate a network in one script, BMTK workflow design is to
 to split up these two parts of the process. So before we can run a simulation we must first procure a network model 
-(typically store using `SONATA circuit format`_). We can either download an existing model, or alternatively use a tool
-like the BMTK Network Builder to create one from scratch.
+(typically store using `SONATA circuit format <https://github.com/AllenInstitute/sonata/blob/master/docs/SONATA_DEVELOPER_GUIDE.md#representing-circuits>`_). 
+We can either download an existing model, or alternatively use a tool like the BMTK Network Builder to create one from 
+scratch.
 
 Once we have our network to run simulations on, we typically need to complete the following steps:
 
@@ -38,8 +39,12 @@ The rest of this guide will go through each of the above steps in detail.
 .. card:: example network
   :class-card: .user-guide-example sd-border-2
 
-  To help make the concepts for concrete we will also be referencing the **example** network simulation found here. This 
-  is a biophysically detailed network containing a 400 cells with feedforward synaptic stimuli.
+  To help make the concepts for concrete we will also be referencing the **example** network simulation found 
+  `here <https://github.com/kaeldai/bmtk/tree/refactor/documentation/docs/autodocs/source/example_bionetwork>`_. 
+  This is a biophysically detailed network containing a 450 cells with a mixture of both multicompartment biophysically 
+  detailed cells with parameters and morphologies download form the Allen Cell Database, surrounded by a ring of 
+  point integrate and fire neuron. For the main configuration will feedforward synaptic stimuli emerging from virtual 
+  cells firing at a randomized rate.
 
 
 1. Setting up the Environment
@@ -62,9 +67,9 @@ practices is to put them inside a single directory with the following structure.
     :scale: 40%
 
 
-BMTK includes the `create_environment <SIMSETUP>`_ tool that can help new users generate an environmental directory from scratch.
-Another option we recommend, especially if running simulations on an already existing model, is to download an existing
-simulation environment and make changes as necessary.
+BMTK includes the `create_environment <SIMSETUP>`_ tool that can help new users generate an environmental directory from 
+scratch. Another option we recommend, especially if running simulations on an already existing model, is to download an 
+existing simulation environment and make changes as necessary.
 
 
 
@@ -96,8 +101,8 @@ simulation environment and make changes as necessary.
   SWC morphology and dynamics parameters files that can be downloaded from the Allen Cell Types Database, renamed and 
   placed into their corresponding folders.
 
-  .. figure:: _static/images/ctdb_screenshot.ephys_page.highlighted.png
-    :scale: 40%
+  .. figure:: _static/images/ctdb2bmtk_model_download.png
+    :scale: 80%
 
   For simulation input our network will be stimulated by feed-forwar pre-generated spike-trains that will save into 
   the **inputs/** folder using the `create_inputs.py` script
@@ -319,29 +324,38 @@ the different directories are defined using the format
 
 
 .. dropdown:: Recognized "components" directories
+  :open:
 
-    .. list-table::
-        :open:
+    .. list-table::        
         :header-rows: 1
 
         * - name
           - description
+          - utilized by
         * - biophysical_neuron_models_dir
-          - Directory containing files for instantiation of biophysically detailed models. Typically containing json cell model files downloaded 
-            from the Allen Cell-Types Database.
+          - Directory containing files for instantiation of biophysically detailed models. Typically containing json 
+            cell model files downloaded from the Allen Cell-Types Database.
+          - **dynamics_params**
         * - point_neuron_models_dir
-          - Directory containing files for instantiation of point-neuron models. Typically json parameter files, or with PointNet may be model
-            files downloaded from the Allen Cell-Types Database to instantiate optimized "glif" models.
+          - Directory containing files for instantiation of point-neuron models. Typically json parameter files, or with 
+            PointNet may be model files downloaded from the Allen Cell-Types Database to instantiate optimized "glif" 
+            models.
+          - **dynamics_params**
         * - filters_dir
-          - Directory containing parameters files for instiating models used by `FilterNet <LINK REQ>`_
+          - Directory containing parameters files for instiating models used by FilterNet.
+          - **dynamics_params**
         * - morphologies_dir
           - Directory containing any morphological reconstruction files (ex. swc, neuralucdia).
+          - **morphology**
         * - synpatic_models_dir
           - Directory containing files for specific synaptic parameters.
+          - **dynamics_params**
         * - mechanisms_dir
           - Directory containing any morphological reconstruction files (ex. swc, neuralucdia)
+          - 
         * - templates_dir
           - Contains NEURON Hoc template files or NeuroML cell or synapse models.
+          - **model_template**
 
 
 .. card:: example network
@@ -1117,19 +1131,212 @@ Exectuion and Run Options
 The following guides and tutorials for setting up and running simulations across a wide variety of different 
 computing environments. 
 
+.. grid:: 1 1 4 5
+    :gutter: 1
+
+    .. grid-item-card:: Running BMTK on the on HPC.
+        :link: builder_guide 
+
+        Guides, tips and tricks for running bmtk using high-performance computing resources with Message Passing 
+        Interface (MPI). Including tips for installing MPI, running on slurm, and using singularity container.
+
+    .. grid-item-card:: Running BMTK on the Neuroscience Gateway (NSG) 
+        :link: builder_guide 
+
+        The Neuroscience Gateway is a tool for neuroscientists to access HPC resources for free. Guide shows how to 
+        use BMTK with the NSG web and API interface to build networks and run large simulations.
+
+    .. grid-item-card:: Cybershuttle
+        :link: builder_guide 
+
+        Comming Soon.
+
+    .. grid-item-card:: Using BMTK Images and Applications
+        :link: builder_guide 
+
+        How to setup and run BMTK using pre-built applications and images; including with Docker, AppImage, and Snap. 
+   
+    .. grid-item-card:: Parallel and Serial Simulations 
+        :link: builder_guide 
+
+        How to run multiple simulations in parallel and/or serial; including grid searching, evolutionary, and gradient
+        search methods for optimizing network and simulations. 
+
 
 Inputs
 ^^^^^^
+
+BMTK supports using a wide variety of inputs and stimulus when running a simulation. Please see the following guides 
+for built-in "inputs" types and how to use them in your simulations.
+
+.. grid:: 2 2 5 5
+    :gutter: 1
+
+    .. grid-item-card:: Spiking inputs
+        :link: builder_guide 
+
+        Demonstrates various ways which one can drive network using synaptic spikes (eg. action potentials) including: 
+
+        * Using PoissonSpikesGenerater to pre-generate spike trains for network stimulus.
+
+        * Dynamically insert custom spike train files and functions into a simulation.
+
+        * Inject in-vivo spike-train recordings into a simulation with Dandi and NWB 2.0.
+
+    .. grid-item-card:: Current clamp
+        :link: builder_guide 
+
+        Inject positve or negative current into one or more cells.
+
+        * Using simple block stimuli, or complex current wave-form injection from a list, file or function.
+
+        * Inject in-virtro current-clamp sweeps using Allen Cell-Types experiments.
+
+        * How to create optogenetic like polarization and depolarization of selected cells.
+
+    .. grid-item-card:: Voltage clamps
+        :link: builder_guide 
+
+        Insert single or mulitelectrode voltage clamping into one or more cells in a network.
+
+    .. grid-item-card:: extracellular stimulation
+        :link: builder_guide 
+
+        Simulate the placement of an extracellular electrode into a network that can change polarization of the 
+        cell membranes. Create custom wave forms, or use COMSOL to grainular alter extracellular field.
+
+    .. grid-item-card:: spontaneous activity
+        :link: builder_guide 
+
+        Allows you to selectively induce spontaneous synaptic activity between a subset of cells. Users can choose 
+        which synapses to target based on the synaptic, pre- or post-synaptic cell atrributes. The activity can be
+        random or predetermined from a list or function.
+
+    .. grid-item-card:: replaying previous simulation activity
+        :link: builder_guide 
+
+        Users can take a subset of the results from a previously generated network results and inject them into a 
+        current simulation. Can target specific subsets of cells or synapses to replay. Useful in isolating activity
+        of a subset or motif of cells within a much larger network.
+
+    .. grid-item-card:: Visual stimuli 
+        :link: builder_guide 
+
+        Play an image, movie, drifting-grating, or one of a number of visual stimuli onto a network to see how cells
+        encode sensory information into firing rates and spike trains. 
+
+    .. grid-item-card:: Auditory stimuli.
+        :link: builder_guide 
+
+        Convert auditory wave files into firing rates and spike trains.
 
 
 Reports
 ^^^^^^^
 
+Modelers can choose which variables and changes in a simulation to record using the "reports" section. See following 
+guides for further information how to implement such output.
+
+.. grid:: 2 2 5 5
+    :gutter: 1
+
+    .. grid-item-card:: Spike Train Recording
+        :link: builder_guide 
+
+        Advanced options for recording spikes (eg. action potential) events during the simulation.
+
+    .. grid-item-card:: Membrane and Ion Recording
+        :link: builder_guide 
+
+        Recording a contingous time-trace for one or more cell variable, such as membrane voltage, calcium
+        concentration, or any number of other ion or channel variables.
+
+    .. grid-item-card:: Synapse Recording
+        :link: builder_guide 
+
+        Allows users to gather changes in synaptic strength and other variables over the time course of a simualtion.
+
+    .. grid-item-card:: Firing Rates
+        :link: builder_guide 
+
+        Recording individual cell or even population level wide firing rate changes over teh course of a simulation.
+
+    .. grid-item-card:: Local Field Potentials (LFP)
+        :link: builder_guide 
+
+        Allows modelers to simulate the injection of multi-channel electrodes into a network to record dynamics of the
+        extraceullar electrical field. Allows modelers to see the full field, or even the contribution of single cells.
+        Also capable of generate curren source densities (CSD) maps to see the location of major sources and sinks 
+        within a network. 
+
 
 Useful Options and Scripts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. grid:: 2 2 5 5
+    :gutter: 1
+
+    .. grid-item-card:: environmental setup (create_environment) script.
+        :link: builder_guide 
+
+        A useful tool for generating simulation environments from the ground up.
+
+    .. grid-item-card:: Network and Simulation validation
+        :link: builder_guide 
+
+        Tools and recommendation for checking on a network and setup before running a simulation. Includes tools and 
+        guides for fetching network statistics and how one can compare multiple models.
+
+    .. grid-item-card:: Advanced Configuration options.
+        :link: builder_guide 
+
+        Advance options and directives for the SONATA simulation configuration file.
+
+    .. grid-item-card:: Advanced Population Querying and Filtering
+        :link: builder_guide 
+
+        Advance options and tricks for selecting sub populations (or "node_sets").
 
 
 Advanced Features
 ^^^^^^^^^^^^^^^^^
 
+.. grid:: 2 2 4 4
+    :gutter: 2
+
+    .. grid-item-card:: 
+        :link: builder_guide
+        :class-header: sd-d-flex-column sd-align-minor-center
+        :class-body: sd-card-body-custom
+        
+        Customized Modules for Simulation                                 
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        
+        Allows users to create modules to alter the setup, control flow, and output of a given simulation.
+
+    .. grid-item-card::
+        :link: builder_guide 
+        :class-header: sd-d-flex-column sd-align-minor-center
+       
+        Custom Cell Models and Instantiation.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+        How to create and alter cell models using Python, NEURON or NEST.
+
+    .. grid-item-card:: 
+        :link: builder_guide 
+        :class-header: sd-d-flex-row sd-align-minor-center
+
+        Adjust Synaptic Weights
+        ^^^^^^^^^^^^^^^^^^^^^^^
+
+        Update synaptic weights before a simulation.
+
+    .. grid-item-card:: 
+        :link: builder_guide 
+        :class-header: sd-d-flex-row sd-align-minor-center
+
+        Custom Synaptic Models
+        ^^^^^^^^^^^^^^^^^^^^^^
+
+        Update and alter synaptic models, their parameters and/or instantiation.

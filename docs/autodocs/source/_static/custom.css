@@ -19,3 +19,15 @@
     background-color: lightcyan;
     font-family: "Garamond", Georgia, 'Times New Roman', Times, serif;
 }
+
+.sd-card-header .sd-card-text {
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  align-items: center;
+}
+
+.sd-card-body-custom {
+      font-family: Georgia, serif;
+      line-height: 1.2;
+}

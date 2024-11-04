@@ -1,3 +1,22 @@
+.. toctree::
+    :hidden:
+    :maxdepth: 2
+    :caption: User Guide
+
+    self
+    user_guide
+    builder
+    simulators_guide
+    analyzer
+
+.. toctree::
+    :hidden:
+    :maxdepth: 2
+    :caption: Tutorials
+
+    tutorials
+
+
 ##########
 User Guide
 ##########

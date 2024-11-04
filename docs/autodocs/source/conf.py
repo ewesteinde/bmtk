@@ -115,19 +115,26 @@ html_logo = "_static/images/allen-logo.svg"
 html_theme_options = {
     "show_prev_next": False,             # Do not show the prev & next buttons at the bottom of the page
     "header_links_before_dropdown": 8,   # By default pyshinx will only show 5 items in navbar then a "more" dropdown. Increase num of items to show all top pages
+    "logo": {
+        "link": "https://alleninstitute.org/",
+    }
 }
 
-# html_theme_options = {
-#     # 'logo': '_static/images/allen-logo.svg',
-#     # "navbar_align": "left",
-#     # "secondary_sidebar_items": [],
-#     "show_prev_next": False,
-# }
+
+html_sidebars = {
+    # '**': ["sbt-sidebar-nav.html"]
+    # '**': ['custom_sidebar.html', 'localtoc.html', 'searchbox.html'],
+    # '**': ['user_guide'],
+    # "simulators_guide": ["user_guide.html"],
+    # "news_and_events": []
+}
 
 # html_sidebars = {
-#   "Running Network Simulations with BMTK": []
+#     '**': [
+#         'globaltoc.html',
+#         # 'searchbox.html'
+#     ],
 # }
-
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -159,12 +166,7 @@ html_extra_path = ['../.nojekyll']
 #     # "simulators_guide": []
 # }
 
-html_sidebars = {
-    '**': [
-        'globaltoc.html',
-        # 'searchbox.html'
-    ],
-}
+
 
 
 # -- Options for HTMLHelp output ------------------------------------------
