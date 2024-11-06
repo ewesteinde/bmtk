@@ -86,6 +86,8 @@ class PointNetwork(SimNetwork):
         self._nodes_table = {}
         self._gid2nestid = {}
 
+        self._nest_modules = []
+
         self._gid_map = GidPool()
         self._virtual_gids = GidPool()
 
@@ -130,6 +132,10 @@ class PointNetwork(SimNetwork):
     def add_weight_function(self, fnc, name=None, **kwargs):
         fnc_name = name if name is not None else function.__name__
         self.__weight_functions[fnc_name] = functools.partial(fnc)
+
+    def add_nest_module(self, module_path):
+        if module_path not in self._nest_modules:
+            self._nest_modules.append(module_path)
 
     def set_default_weight_function(self, fnc):
         self.add_weight_function(fnc, 'default_weight_fnc', overwrite=True)

@@ -56,7 +56,7 @@ class WaveformTypeSin(BaseWaveformType, BaseWaveform):
 class WaveformCustom(BaseWaveform):
     """Custom waveform defined by csv file"""
     def __init__(self, waveform_file):
-        self.definition = pd.read_csv(waveform_file, sep='\t')
+        self.definition = pd.read_csv(waveform_file, sep=' ')
 
     def calculate(self, t):
         return np.interp(t, self.definition["time"], self.definition["amplitude"])

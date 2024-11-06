@@ -48,6 +48,16 @@ class FilterSimulator(Simulator):
                 else:
                     raise Exception('Could not find movie "data_file" in config to use as input.')
 
+                # If file passed in is a npz compressed file then it is in a dictionary format and need to find
+                # the key-value pair containing the array
+                if isinstance(m_data, np.lib.npyio.NpzFile):
+                    try:
+                        for key in m_data:
+                            m_data = m_data[key]
+                            break
+                    except IndexError as ie:
+                        io.log_warning('Was unable to find array from compressed numpy matrix file.')
+
                 # contrast_min, contrast_max = m_data.min(), m_data.max()
                 normalize_data = params.get('normalize', False)
                 if normalize_data:
@@ -181,13 +191,13 @@ class FilterSimulator(Simulator):
         ten_percent = int(np.ceil(n_cells_on_rank*0.1))
         rank_msg = '' if bmtk_world_comm.MPI_size < 2 else ' (on rank {})'.format(bmtk_world_comm.MPI_rank)
 
-        max_fr = np.empty(len(cells_on_rank))
+        # max_fr = np.empty(len(cells_on_rank))
         for cell_num, cell in enumerate(cells_on_rank):
             for movie, options in zip(self._movies, self._eval_options):
                 if cell_num > 0 and cell_num % ten_percent == 0:
                     io.log_debug(' Processing cell {} of {}{}.'.format(cell_num, n_cells_on_rank, rank_msg))
                 ts, f_rates = cell.lgn_cell_obj.evaluate(movie, **options)
-                max_fr[cell_num] = np.max(f_rates)
+                # max_fr[cell_num] = np.max(f_rates)
                 if movie.padding:
                     f_rates = f_rates[int(movie.data.shape[0]-movie.data_orig.shape[0]):]
                     ts = ts[int(movie.data.shape[0]-movie.data_orig.shape[0]):]
@@ -195,7 +205,7 @@ class FilterSimulator(Simulator):
 
                 for mod in self._sim_mods:
                     mod.save(self, cell, ts, f_rates)
-        io.log_info('Max firing rate: {}'.format(np.max(max_fr)))
+        # io.log_info('Max firing rate: {}'.format(np.max(max_fr)))
         io.log_info('Done.')
         for mod in self._sim_mods:
             mod.finalize(self)

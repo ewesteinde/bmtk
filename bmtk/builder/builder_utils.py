@@ -87,6 +87,8 @@ def check_properties_across_ranks(properties, graph_type='node'):
                 phash = hashlib.md5(pval.encode('utf-8')).hexdigest()
 
             elif isinstance(pval, (int, float, bool)):
+                if np.isnan(pval):
+                    pval = 'NONE'
                 phash = pval
 
             elif isinstance(pval, (list, tuple)):

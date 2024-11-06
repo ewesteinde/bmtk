@@ -41,7 +41,7 @@ def create_environment(simulator,
                        se_voltage_clamp=None,
                        tstart=0.0,
                        tstop=1000.0,
-                       dt=0.001,
+                       dt=None,
                        dL=20.0,
                        spikes_threshold=-15.0,
                        nsteps_block=5000,
@@ -50,7 +50,7 @@ def create_environment(simulator,
                        compile_mechanisms=False,
                        use_relative_paths=True,
                        include_examples=False
-                       ):
+                      ):
     """
 
     :param simulator:

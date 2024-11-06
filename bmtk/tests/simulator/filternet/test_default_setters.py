@@ -55,6 +55,10 @@ dynamics_params = {
 
 np.set_printoptions(precision=4)
 
+# FilterNet now correctly normalize the rate other than 1000 Hz.
+# The tests below were made before the change, so we correctionso on the
+# firing rates.
+norm_factor = 1000.0 / 24.0
 
 @pytest.mark.parametrize("cell_type,expected_val", [
     ('tON_TF8', [2.6, 2.5502, 2.7221, 2.7718, 2.6497]),
@@ -77,7 +81,7 @@ def test_onunit(cell_type, expected_val):
     rates = np.array(results[0][1], dtype=np.float64)
 
     assert(np.allclose(times, [0.0, 0.2083, 0.4167, 0.6250, 0.8333], atol=1.0e-3))
-    assert(np.allclose(rates, expected_val, atol=1.0e-3))
+    assert(np.allclose(rates / norm_factor, expected_val, atol=1.0e-3))
 
 
 @pytest.mark.parametrize("cell_type,expected_val", [
@@ -105,12 +109,15 @@ def test_offunit(cell_type, expected_val):
     rates = np.array(results[0][1], dtype=np.float64)
 
     assert(np.allclose(times, [0.0, 0.2083, 0.4167, 0.6250, 0.8333], atol=1.0e-3))
-    assert(np.allclose(rates, expected_val, atol=1.0e-3))
+    assert(np.allclose(rates / norm_factor, expected_val, atol=1.0e-3))
 
 
 @pytest.mark.parametrize("cell_type,expected_val", [
     # ('sONsOFF_001', [4.0, 3.5654, 2.2956, 2.7437, 4.4480])
-    ('sONsOFF_001', [4.0, 3.0136, 3.335, 4.3349, 4.9999])  # updated value after OS bug fix. (issue, #339)
+    # ('sONsOFF_001', [4.0, 3.0136, 3.335, 4.3349, 4.9999])  # updated value after OS bug fix. (issue, #339)
+    # Again, due to the offset in the transfer function, the expected values
+    # won't nicely convert, so updating the values.
+    ('sONsOFF_001', [4.0, 20.1642, 0, 45.4373, 61.2649])  # updated value after OS bug fix. (issue, #339)
 ])
 def test_sONsOFF(cell_type, expected_val):
     gm = movie.GratingMovie(row_size=120, col_size=240, frame_rate=24.0)
@@ -130,7 +137,9 @@ def test_sONsOFF(cell_type, expected_val):
 
 @pytest.mark.parametrize("cell_type,expected_val", [
     # ('sONsOFF_001', [4.0, 3.5654, 2.2957, 2.7437, 4.4481])
-    ('sONsOFF_001', [4.0, 3.0136, 3.335, 4.3349, 4.9999])  # updated value after OS bug fix. (issue, #339)
+    # ('sONsOFF_001', [4.0, 3.0136, 3.335, 4.3349, 4.9999])  # updated value after OS bug fix. (issue, #339)
+    ('sONsOFF_001', [4.0, 20.1642, 0, 45.4373, 61.2649])  # updated value after OS bug fix. (issue, #339)
+
 ])
 def test_sONtOFF(cell_type, expected_val):
     gm = movie.GratingMovie(row_size=120, col_size=240, frame_rate=24.0)

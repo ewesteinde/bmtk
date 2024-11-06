@@ -52,7 +52,7 @@ if __name__ == '__main__':
     parser.add_option('-c', '--components-dir', dest='components_dir', default=None,
                       help="Directory to use for parameter files, morphology, and other used components.")
     parser.add_option('--tstop', type='float', dest='tstop', default=1000.0)
-    parser.add_option('--dt', type=float, dest='dt', help='simulation time step dt', default=0.001)
+    parser.add_option('--dt', type=float, dest='dt', help='simulation time step dt', default=None)
     parser.add_option('--report-vars', dest='report_vars', type='string', action='callback',
                       callback=__list_parser, default=[],
                       help='A list of membrane variables to record from; v, cai, etc.')

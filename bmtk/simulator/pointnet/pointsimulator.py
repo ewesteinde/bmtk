@@ -25,6 +25,8 @@ import glob
 import nest
 from six import string_types
 from six import moves
+from pathlib import Path
+import platform
 
 from bmtk.simulator.core.simulator import Simulator
 from bmtk.simulator.pointnet.config import Config
@@ -72,6 +74,7 @@ class PointSimulator(Simulator):
         # TODO: move this into it's own function and make sure it is called before network is built
         nest.ResetKernel()
         nest.SetKernelStatus({"resolution": self._dt, "overwrite_files": self._overwrite, "print_time": print_time, "local_num_threads": n_thread})
+        self._load_nest_modules()
 
     @property
     def tstart(self):
@@ -130,6 +133,54 @@ class PointSimulator(Simulator):
             res = -1
             data_res = -1
         return n, res, data_res
+
+    def _add_library_path(self, lib_path):
+        if isinstance(lib_path, Path):
+            lib_path = lib_path.as_posix()
+        system = platform.system()
+        env_var = "LD_LIBRARY_PATH" if system in ['Linux', 'Windows', 'Java'] else 'DYLD_LIBRARY_PATH'
+        env_val = os.environ.get(env_var, '')
+        
+        if lib_path not in env_val:
+            os.environ[env_var] = os.pathsep.join([lib_path, env_val])
+            
+
+    def _load_nest_modules(self):
+        # If there is a "nest_modules" entry in the configuration "components" then go through and add them to
+        # the network _nest_modules list. They will be processed the same as calling network.add_nest_module().
+        components_path = self.net._components.get('nest_modules', [])
+        if isinstance(components_path, str):
+            self.net.add_nest_module(components_path)
+        elif isinstance(components_path, list):
+            for cpath in components_path:
+                self.net.add_nest_module(cpath)
+        else:
+            raise ValueError('Unable to load components/nest_modules value.')
+
+        # Go through all added nest modules and try to call nest.Install() for them. 
+        for module in self.net._nest_modules:
+            if Path(module).is_dir():
+                # If module is a directory then add path to LD_LIBRARY_PATH then try to load all the .so/.a library binaries in directory
+                lib_dir = Path(module).resolve()
+                self._add_library_path(lib_dir)
+                so_search = Path(lib_dir) / '*.so'
+                a_search = Path(lib_dir) / '*.a'
+                
+                for lib_file in glob.glob(so_search.as_posix()) + glob.glob(a_search.as_posix()): # lib_path.parent.resolve()
+                    module_name = Path(lib_file).name
+                    nest.Install(module_name)
+
+            elif Path(module).is_file():
+                # If user tries to pass in a path to a library binary
+                lib_path = Path(module)
+                lib_dir = lib_path.parent.resolve()
+                lib_filename = lib_path.name
+                self._add_library_path(lib_dir)
+                nest.Install(lib_filename)               
+
+            else:
+                # If user just tries nest.Install('mymodule')
+                nest.Install(module)
 
     '''
     def set_spikes_recordings(self):

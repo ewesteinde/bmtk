@@ -10,9 +10,13 @@ from bmtk.simulator.filternet.lgnmodel.transferfunction import ScalarTransferFun
 from bmtk.simulator.filternet.lgnmodel.lgnmodel1 import LGNModel
 from bmtk.simulator.filternet.lgnmodel import movie
 
+# FilterNet now correctly normalize the rate other than 1000 Hz.
+# The tests below were made before the change, so we correctionso on the
+# firing rates.
+norm_factor = 1000.0 / 24.0
 
 def test_onunit():
-    ffm = movie.FullFieldFlashMovie(range(120), range(240), 0.3, 0.7)
+    ffm = movie.FullFieldFlashMovie(range(120), range(240), 0.3, 0.7, frame_rate=24.0)
     mv = ffm.full(t_max=2.0)
 
     spatial_filter = GaussianSpatialFilter(translate=(120.0, 60.0), sigma=(0.615, 0.615), origin=(0.0, 0.0))
@@ -29,11 +33,11 @@ def test_onunit():
     rates = np.array(results[0][1], dtype=np.float64)
 
     assert(np.allclose(times, [0.0, 0.41666, 0.83333, 1.250, 1.6666], atol=1.0e-4))
-    assert(np.allclose(rates, [1.05, 0.8635, 1.05, 1.05, 1.05], atol=1.0e-3))
+    assert(np.allclose(rates / norm_factor, [1.05, 0.8635, 1.05, 1.05, 1.05], atol=1.0e-3))
 
 
 def test_offunit():
-    ffm = movie.FullFieldFlashMovie(range(120), range(240), 0.3, 0.7)
+    ffm = movie.FullFieldFlashMovie(range(120), range(240), 0.3, 0.7, frame_rate=24.0)
     mv = ffm.full(t_max=2.0)
 
     spatial_filter = GaussianSpatialFilter(translate=(120.0, 60.0), sigma=(0.615, 0.615), origin=(0.0, 0.0))
@@ -50,11 +54,11 @@ def test_offunit():
     rates = np.array(results[0][1], dtype=np.float64)
 
     assert(np.allclose(times, [0.0, 0.41666, 0.83333, 1.250, 1.6666], atol=1.0e-4))
-    assert(np.allclose(rates, [1.05, 1.2364, 1.05, 1.05, 1.05], atol=1.0e-3))
+    assert(np.allclose(rates / norm_factor, [1.05, 1.2364, 1.05, 1.05, 1.05], atol=1.0e-3))
 
 
 def test_lgnonoffcell():
-    ffm = movie.FullFieldFlashMovie(range(120), range(240), 0.3, 0.7)
+    ffm = movie.FullFieldFlashMovie(range(120), range(240), 0.3, 0.7, frame_rate=24.0)
     mv = ffm.full(t_max=2.0)
 
     temporal_filter = TemporalFilterCosineBump(weights=[3.441, -2.115], kpeaks=[8.269, 19.991], delays=[0.0, 0.0])
@@ -74,11 +78,11 @@ def test_lgnonoffcell():
     rates = np.array(results[0][1], dtype=np.float64)
 
     assert(np.allclose(times, [0.0, 0.41666, 0.83333, 1.250, 1.6666], atol=1.0e-4))
-    assert(np.allclose(rates, [0.0, 3.7286, 0.0, 0.0, 0.0], atol=1.0e-3))
+    assert(np.allclose(rates / norm_factor, [0.0, 3.7286, 0.0, 0.0, 0.0], atol=1.0e-3))
 
 
 def test_twosubfieldlinearcell():
-    ffm = movie.FullFieldFlashMovie(range(120), range(240), 0.3, 0.7)
+    ffm = movie.FullFieldFlashMovie(range(120), range(240), 0.3, 0.7, frame_rate=24.0)
     mv = ffm.full(t_max=2.0)
 
     spatial_filter = GaussianSpatialFilter(translate=(120.0, 60.0), sigma=(0.615, 0.615), origin=(0.0, 0.0))
@@ -107,7 +111,10 @@ def test_twosubfieldlinearcell():
     rates = np.array(results[0][1], dtype=np.float64)
 
     assert(np.allclose(times, [0.0, 0.41666, 0.83333, 1.250, 1.6666], atol=1.0e-4))
-    assert(np.allclose(rates, [4.0, 3.26931, 3.885, 4.0, 4.0], atol=1.0e-3))
+    # for this example, the offset (2.0) of the transfer function breaks the
+    # compatibility. It makes sense to update the values.
+    # assert(np.allclose(rates, [4.0, 3.26931, 3.885, 4.0, 4.0], atol=1.0e-3))
+    assert(np.allclose(rates, [4.0, 18.929, 11.894, 4.0, 4.0], atol=1.0e-3))
 
 
 if __name__ == '__main__':

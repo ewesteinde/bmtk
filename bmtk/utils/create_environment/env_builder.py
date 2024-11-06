@@ -776,6 +776,15 @@ class FilterNetEnvBuilder(EnvBuilder):
     @property
     def bmtk_simulator(self):
         return 'filternet'
+    
+    def _add_run_params(self, tstart=0.0, tstop=1000.0, dt=None, **kwargs):
+        self._simulation_config['run'] = {
+            'tstart': tstart,
+            'tstop': tstop
+        }
+
+        if dt is not None:
+            self._simulation_config['run']['dt'] = dt
 
     def _add_output_section(self):
         super(FilterNetEnvBuilder, self)._add_output_section()

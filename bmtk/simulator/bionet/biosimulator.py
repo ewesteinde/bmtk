@@ -376,41 +376,8 @@ class BioSimulator(Simulator):
                 sim.add_mod(mods.IClampMod(input_type=sim_input.input_type, **sim_input.params))
 
             elif sim_input.module == "SEClamp":
-                node_set = network.get_node_set(sim_input.node_set)
-                try:
-                    len(sim_input.params['amps'])
-                except:
-                    sim_input.params['amps']=[float(sim_input.params['amps'])]
+                sim.add_mod(mods.SEClamp(input_type=sim_input.input_type, **sim_input.params))
                 
-                try: 
-                    len(sim_input.params['durations'])
-                except:
-                    sim_input.params['durations']=[float(sim_input.params['durations'])]
-                    
-                amplitudes = sim_input.params['amps']
-                durations = sim_input.params['durations']
-                rs = None
-
-                if "rs" in sim_input.params.keys():
-                    try: 
-                        len(sim_input.params['rs'])
-                    except:
-                        sim_input.params['rs']=[float(sim_input.params['rs'])]
-                    if len(sim_input.params['rs'])>1:
-                        sim_input.params['rs']=[float(i) for i in sim_input.params['rs']]
-                    rs = sim_input.params["rs"]
-                                   
-                try:
-                    sim_input.params['gids']
-                except:
-                    sim_input.params['gids'] = None
-                if sim_input.params['gids'] is not None:
-                    gids = sim_input.params['gids']
-                else:
-                    gids = list(node_set.gids())
-
-                sim.attach_se_voltage_clamp(amplitudes, durations, gids, rs)
-
             elif sim_input.module == 'xstim':
                 sim.add_mod(mods.XStimMod(**sim_input.params))
 

@@ -271,7 +271,7 @@ class GratingMovie(Movie):
         :return: Movie object of grating with desired parameters
         """
         assert contrast <= 1, "Contrast must be <= 1"
-        assert contrast > 0, "Contrast must be > 0"
+        assert contrast >= 0, "Contrast must be >= 0"
 
         if degrees_per_pixel is None:  # default behavior when not specified
             degrees_per_pixel = 1.0 / (float(cpd) * 10)  # To make sure no aliasing occurs

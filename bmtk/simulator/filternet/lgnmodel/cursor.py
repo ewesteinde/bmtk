@@ -76,6 +76,8 @@ class KernelCursor(object):
         
         t_range = convert_tmin_tmax_framerate_to_trange(t_min, t_max, self.movie.frame_rate)[::int(downsample)]
         y_vals = np.array([self(t) for t in t_range])
+        # normalize by the frame rate
+        y_vals = y_vals * 1000.0 / self.movie.frame_rate
 
         return t_range, y_vals  
     
@@ -225,14 +227,20 @@ class SeparableKernelCursor(object):
         full_temporal_kernel = self.temporal_kernel.full()
 
         # Convolve every frame in the movie with the spatial filter. First find the range of rows (range min and max)
-        #  and columns in the filter that are above threshold, that way only portion of movie/filter are multiplied
+        # and columns in the filter that are above threshold, that way only portion of movie/filter are multiplied
         # together
         
         # Using > instead of >= makes the code faster if there are many zeros in the
         # spatial kernel. This will not affect the results.
         nonzero_inds = np.where(np.abs(full_spatial_kernel[0, :, :]) > threshold)
-        rm, rM = nonzero_inds[0].min(), nonzero_inds[0].max()
-        cm, cM = nonzero_inds[1].min(), nonzero_inds[1].max()
+        if len(nonzero_inds[0]) == 0:
+            # If spatial kernel is all 0's then don't try to segment the receptive filed. Use full frame during convolve.
+            rm, rM = 0, 0
+            cm, cM = full_spatial_kernel.shape[1], full_spatial_kernel.shape[2]
+        else:
+            rm, rM = nonzero_inds[0].min(), nonzero_inds[0].max()
+            cm, cM = nonzero_inds[1].min(), nonzero_inds[1].max()
+        
         convolution_answer_sep_spatial = (self.movie.data[:, rm:rM+1, cm:cM+1] *
                                           full_spatial_kernel[:, rm:rM+1, cm:cM+1]).sum(axis=1).sum(axis=1)
 
@@ -240,6 +248,8 @@ class SeparableKernelCursor(object):
         sig_tmp = np.zeros(len(full_temporal_kernel) + len(convolution_answer_sep_spatial) - 1)
         sig_tmp[len(full_temporal_kernel)-1:] = convolution_answer_sep_spatial
         convolution_answer_sep = spsig.convolve(sig_tmp, full_temporal_kernel[::-1], mode='valid')
+        # normalize by the frame rate
+        convolution_answer_sep = convolution_answer_sep * 1000.0 / self.movie.frame_rate
         t = np.arange(len(convolution_answer_sep))/self.movie.frame_rate
 
         return t, convolution_answer_sep
