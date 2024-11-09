@@ -233,6 +233,14 @@ class ConnectionMap(object):
         return itr(self.source_nodes, self.target_nodes, conr)
 
 
+class MockConnectionMap(ConnectionMap):
+    def add_properties(self, names, rule=None, rule_params=None, values=None, dtypes=None):
+        pass
+
+    def connection_itr(self):
+        raise NotImplementedError
+
+
 class ListIterator(object):
     def __init__(self, my_list):
         self.my_list = my_list

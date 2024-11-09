@@ -1,5 +1,10 @@
-from .network_adaptors.dm_network import DenseNetwork
+import logging
 
+from .network_adaptors.dm_network import DenseNetwork
+from .network_adaptors.mpi_network import MPINetworkV01
+
+
+logger = logging.getLogger(__name__)
 
 """
 NetworkBuilder is just a slim container for the a NetworkAdaptor class object which does all the work of storing/saving
@@ -74,7 +79,20 @@ class NetworkBuilder(object):
         * **nedges** - number of edges. Will be zero if build() method hasn't been called
     """
 
+    ADAPTORS = {
+        'DENSE': DenseNetwork,
+        'V01': DenseNetwork,
+        'MPINetwork': MPINetworkV01,
+        'V02': MPINetworkV01,
+    }
+
     def __init__(self, name, adaptor_cls=DenseNetwork, **network_props):
+        if adaptor_cls is None:
+            adaptor_cls = DenseNetwork
+        elif isinstance(adaptor_cls, str):
+            adaptor_cls = NetworkBuilder.ADAPTORS[adaptor_cls.upper()]
+        
+        logger.debug(f'Initializing NetworkBuilder adaptor {adaptor_cls}')
         self.adaptor = adaptor_cls(name, **network_props)
 
     @property
