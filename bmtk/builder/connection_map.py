@@ -112,6 +112,7 @@ class ConnectionMap(object):
         self._connector_params = connector_params  # parameters passed into connector
         self._iterator = iterator  # rule for iterating between sources and targets
         self._edge_type_properties = edge_type_properties
+        self._max_connections = None
 
         self._params = []
         self._param_keys = []
@@ -169,7 +170,9 @@ class ConnectionMap(object):
         return str(ordered_keys)
 
     def max_connections(self):
-        return len(self._source_nodes) * len(self._target_nodes)
+        if self._max_connections is None:
+            self._max_connections = len(self._source_nodes) * len(self._target_nodes)
+        return self._max_connections
 
     def add_properties(self, names, rule=None, rule_params=None, values=None, dtypes=None):
         """Add a synaptic property for an individual edge.

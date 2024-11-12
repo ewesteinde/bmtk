@@ -44,7 +44,7 @@ logger = logging.getLogger(__name__)
 
 
 
-class Network(object):
+class NetworkV02(object):
     """The Network class is used for building and saving a brain network/circuit. By default it will save to SONATA
     format for running network simulations using BioNet, PointNet, PopNet or FilterNet bmtk modules, however it can
     be generalized to build any time of network for any time of simulation.
@@ -1122,7 +1122,52 @@ class Network(object):
     @property
     def nedges(self):
         return self._nedges
-    
+
+
+class NetworkV03(NetworkV02):
+    def __init__(self, name, **network_props):
+        super(NetworkV03, self).__init__(name, **network_props)
+        self._next_rank = 0
+        self._cm_rank_order = [0 for _ in range(mpi_size)]
+
+    def _add_connection_on_rank(self, connection_map):
+        selected_rank = self._next_rank
+        self._cm_rank_order[selected_rank] += connection_map.max_connections()
+        self._next_rank = np.argmin(self._cm_rank_order)
+
+        if selected_rank == mpi_rank:
+            self._connection_maps.append(connection_map)
+            return connection_map
+        else:
+            return MockConnectionMap()
+
+
+class NetworkV04(NetworkV02):
+    def __init__(self, name, **network_props):
+        super(NetworkV04, self).__init__(name, **network_props)
+        self._next_rank = 0
+        # self._cm_rank_order = [0 for _ in range(mpi_size)]
+
+    def _add_connection_on_rank(self, connection_map):
+        selected_rank = self._next_rank
+        self._next_rank = (selected_rank+1) % mpi_size
+        if mpi_rank == self._next_rank:
+            self._connection_maps.append(connection_map)
+            return connection_map
+        else:
+            return MockConnectionMap()
+
+        # selected_rank = self._next_rank
+        # self._cm_rank_order[selected_rank] += connection_map.max_connections()
+        # self._next_rank = np.argmin(self._cm_rank_order)
+
+        # if selected_rank == mpi_rank:
+        #     self._connection_maps.append(connection_map)
+        #     return connection_map
+        # else:
+        #     return MockConnectionMap()
+
+
 def add_hdf5_attrs(hdf5_handle):
     # TODO: move this as a utility function
     hdf5_handle['/'].attrs['magic'] = np.uint32(0x0A7A)
