@@ -85,7 +85,8 @@ class NetworkBuilder(object):
         'MPINetwork': mpi_network.MPINetworkV02,
         'V02': mpi_network.MPINetworkV02,
         'V03': mpi_network.MPINetworkV03,
-        'V04': mpi_network.MPINetworkV04
+        'V04': mpi_network.MPINetworkV04,
+        'V05': mpi_network.MPINetworkV05,
     }
 
     def __init__(self, name, adaptor_cls=DenseNetwork, **network_props):

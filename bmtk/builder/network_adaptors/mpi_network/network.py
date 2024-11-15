@@ -40,6 +40,9 @@ from bmtk.builder.index_builders import create_index_in_memory, create_index_on_
 from bmtk.builder.builder_utils import mpi_rank, mpi_size, barrier
 from bmtk.builder.edges_sorter import sort_edges
 
+from .edge_props_table_updated import EdgeTypesTableUpdated
+
+
 logger = logging.getLogger(__name__)
 
 
@@ -136,7 +139,7 @@ class NetworkV02(object):
         self._connected_networks = {}
 
         self._nodes = []
-        self.__edges_tables = []
+        self._edges_tables = []
         self._target_networks = {}
 
         self._connection_maps = []
@@ -781,7 +784,7 @@ class NetworkV02(object):
         if compression == 'none':
             compression = None  # legit option for h5py for no compression
 
-        for et in self.__edges_tables:
+        for et in self._edges_tables:
             try:
                 is_gap = et.edge_type_properties['is_gap_junction']
             except:
@@ -819,7 +822,7 @@ class NetworkV02(object):
 
         filtered_edge_types = [
             # Some edges may not match the source/target population
-            et for et in self.__edges_tables
+            et for et in self._edges_tables
             if et.source_network == src_network and et.target_network == trg_network
         ]
 
@@ -936,7 +939,7 @@ class NetworkV02(object):
 
         filtered_edge_types = [
             # Some edges may not match the source/target population
-            et for et in self.__edges_tables
+            et for et in self._edges_tables
             if et.source_network == src_network and et.target_network == trg_network
         ]
 
@@ -1107,7 +1110,7 @@ class NetworkV02(object):
         # To EdgeTypesTable the number of synaptic/gap connections between all source/target paris, which can be more
         # than the number of actual edges stored (for efficency), may be a better user-representation.
         self._nedges += edges_table.n_syns  # edges_table.n_edges
-        self.__edges_tables.append(edges_table)
+        self._edges_tables.append(edges_table)
 
     def _clear(self):
         self._nedges = 0
@@ -1166,6 +1169,83 @@ class NetworkV04(NetworkV02):
         #     return connection_map
         # else:
         #     return MockConnectionMap()
+
+
+class NetworkV05(NetworkV04):
+    def __init__(self, name, **network_props):
+        super(NetworkV04, self).__init__(name, **network_props)
+        self._next_rank = 0
+        # self._cm_rank_order = [0 for _ in range(mpi_size)]
+
+    def _add_connection_on_rank(self, connection_map):
+        selected_rank = self._next_rank
+        self._next_rank = (selected_rank+1) % mpi_size
+        if mpi_rank == self._next_rank:
+            self._connection_maps.append(connection_map)
+            return connection_map
+        else:
+            return MockConnectionMap()
+
+    def _add_edges(self, connection_map, i):
+        """
+
+        :param connection_map:
+        :param i:
+        """
+        edge_type_id = connection_map.edge_type_properties['edge_type_id']
+        logger.debug('Generating edges data for edge_types_id {}.'.format(edge_type_id))
+        edges_table = EdgeTypesTableUpdated(connection_map, network_name=self.name)
+        connections = connection_map.connection_itr()
+
+        # iterate through all possible SxT source/target pairs and use the user-defined function/list/value to update
+        # the number of syns between each pair. TODO: See if this can be vectorized easily.
+        for conn in connections:
+            if conn[2]:
+                edges_table.set_nsyn(source_id=conn[0], target_id=conn[1], nsyn=conn[2])
+
+        target_net = connection_map.target_nodes
+        self._target_networks[target_net.network_name] = target_net.network
+
+        # For when the user specified individual edge properties to be put in the hdf5 (syn_weight, syn_location, etc),
+        # get prop value and add it to the edge-types table. Need to fetch and store SxTxN value (where N is the avg
+        # num of nsyns between each source/target pair) and it is necessary that the nsyns table be finished.
+        for param in connection_map.params:
+            rule = param.rule
+            rets_multiple_vals = isinstance(param.names, (list, tuple, np.ndarray))
+
+            if not rets_multiple_vals:
+                prop_name = param.names  # name of property
+                prop_type = param.dtypes.get(prop_name, None)
+                edges_table.create_property(prop_name=param.names, prop_type=prop_type)  # initialize property array
+
+                for source_node, target_node, edge_index in edges_table.iter_edges():
+                    # calls connection map rule and saves value to edge table
+                    pval = rule(source_node, target_node)
+                    edges_table.set_property_value(prop_name=prop_name, edge_index=edge_index, prop_value=pval)
+
+            else:
+                # Same as loop above, but some connection-map 'rules' will return multiple properties for each edge.
+                pnames = param.names
+                ptypes = [param.dtypes[pn] for pn in pnames]
+                for prop_name, prop_type in zip(pnames, ptypes):
+                    edges_table.create_property(prop_name=prop_name, prop_type=prop_type)  # initialize property arrays
+
+                for source_node, target_node, edge_index in edges_table.iter_edges():
+                    pvals = rule(source_node, target_node)
+                    for pname, pval in zip(pnames, pvals):
+                        edges_table.set_property_value(prop_name=pname, edge_index=edge_index, prop_value=pval)
+
+        logger.debug('Edge-types {} data built with {} connection ({} synapses)'.format(
+            edge_type_id, edges_table.n_edges, edges_table.n_syns)
+        )
+
+        edges_table.save()
+
+        # To EdgeTypesTable the number of synaptic/gap connections between all source/target paris, which can be more
+        # than the number of actual edges stored (for efficency), may be a better user-representation.
+        self._nedges += edges_table.n_syns  # edges_table.n_edges
+        self._edges_tables.append(edges_table)
+
 
 
 def add_hdf5_attrs(hdf5_handle):
